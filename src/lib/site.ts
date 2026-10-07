@@ -2,7 +2,7 @@ import { fileLimits } from "@/lib/config/limits";
 import { siteEnv } from "@/lib/env";
 
 /**
- * Studio identity and contact channels.
+ * Company identity and contact channels.
  *
  * Every contact channel is optional and comes from validated environment
  * configuration. Unset or malformed values resolve to `null`, and the UI hides
@@ -53,22 +53,22 @@ function validUrl(value: string | undefined, hostIncludes: string) {
 const phone = validPhone(process.env.NEXT_PUBLIC_PHONE);
 
 export const site = {
-  name: "Brandstitch Works",
-  shortName: "Brandstitch",
+  name: "OneGo Stitch",
+  shortName: "OneGo Stitch",
   copyrightYear: 2026,
   legalName: clean(process.env.NEXT_PUBLIC_LEGAL_NAME),
-  tagline: "Embroidery Digitizing, Custom Patches and Branded Apparel",
+  tagline: "Embroidery Digitizing, Custom Patches & Branded Apparel",
   description:
-    "Explore embroidery digitizing, vector artwork, custom patches, embroidery, and screen printing with Brandstitch Works. Tell us about your project.",
+    "Embroidery digitizing, vector tracing, logo design, custom patches, embroidered apparel, screen printing and caps for print shops, brands, teams and individual orders.",
   /** Truthful location statement. Kept out of the hero; used on About, Contact and footer. */
-  location: "Based in Pakistan, serving businesses and organizations in the United States, the United Kingdom, Australia and worldwide.",
-  country: "Pakistan",
+  location: "Based in the United States, working with customers in the United States, the United Kingdom, Australia and worldwide.",
+  country: "United States",
   markets: ["United States", "United Kingdom", "Australia"],
   url: siteEnv.baseUrl,
   email: validEmail(process.env.NEXT_PUBLIC_CONTACT_EMAIL),
   phone,
   whatsapp: validWhatsApp(process.env.NEXT_PUBLIC_WHATSAPP),
-  /** Customer-service availability, e.g. "Monday to Saturday, 09:00–18:00 PKT". Hidden when unset. */
+  /** Customer-service availability, e.g. "Monday to Saturday, 09:00–18:00 ET". Hidden when unset. */
   hours: clean(process.env.NEXT_PUBLIC_SUPPORT_HOURS),
   /**
    * Response-time statement shown on Contact and in confirmations, e.g.
@@ -78,7 +78,7 @@ export const site = {
   address: {
     line1: clean(process.env.NEXT_PUBLIC_ADDRESS_LINE1),
     city: clean(process.env.NEXT_PUBLIC_ADDRESS_CITY),
-    country: "Pakistan",
+    country: "United States",
   },
   social: {
     instagram: validUrl(process.env.NEXT_PUBLIC_INSTAGRAM_URL, "instagram.com"),
@@ -113,7 +113,7 @@ export const fileUpload = {
 /** WhatsApp deep link with the international number (digits only, no leading +). */
 export function whatsappHref(message?: string) {
   if (!site.whatsapp) return null;
-  const text = encodeURIComponent(message ?? "Hello Brandstitch Works, I would like a quote.");
+  const text = encodeURIComponent(message ?? "Hello OneGo Stitch, I would like a quote.");
   return `https://wa.me/${site.whatsapp}?text=${text}`;
 }
 

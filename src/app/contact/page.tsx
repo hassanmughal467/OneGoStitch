@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import { ContactChannels } from "@/components/contact/ContactChannels";
 import { QuoteIntake } from "@/components/quote/QuoteIntake";
 import { PageHero } from "@/components/sections/PageHero";
@@ -10,7 +10,7 @@ import { contactChannels, site } from "@/lib/site";
 
 export const metadata = pageMetadata({
   title: "Contact",
-  description: "Contact Brandstitch Works about embroidery digitizing, vector artwork, patches, apparel, printing or caps. Email, WhatsApp and quote form.",
+  description: "Contact OneGo Stitch about embroidery digitizing, vector artwork, patches, apparel, printing or caps. Email, WhatsApp and quote form.",
   path: "/contact",
 });
 
@@ -21,7 +21,7 @@ export default function Page() {
     <>
       <PageHero
         eyebrow="Contact"
-        title="Contact Brandstitch Works"
+        title="Talk to OneGo Stitch"
         lede={
           contactChannels.hasAny
             ? "Email or message us with a question. You can also send a quote request when you already know the service and details."
@@ -31,10 +31,10 @@ export default function Page() {
       <section className="py-14 sm:py-16">
         <Container className="grid gap-12 lg:grid-cols-12">
           <aside className="lg:col-span-4">
-            <h2 className="text-2xl font-semibold">Business details</h2>
+            <h2 className="text-2xl font-semibold">Company details</h2>
             <p className="mt-3 text-sm leading-6 text-ink-soft">{site.location}</p>
             <div className="mt-6">
-              <ContactChannels message="Hello Brandstitch Works, I have a question." />
+              <ContactChannels message="Hello OneGo Stitch, I have a question." />
             </div>
             {contactChannels.hasAny ? (
               <p className="mt-6 text-sm leading-6 text-ink-soft">

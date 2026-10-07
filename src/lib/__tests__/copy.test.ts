@@ -3,10 +3,10 @@ import { quoteCta, quoteCtaByService } from "@/lib/copy";
 import { quoteServiceIds } from "@/lib/quote";
 
 describe("quote CTAs", () => {
-  it("covers every service with a service-specific quote CTA", () => {
+  it("covers every service with Request a/an wording", () => {
     for (const id of quoteServiceIds) {
-      expect(quoteCtaByService[id]).toMatch(/^(Get an?|Request an?) /);
-      expect(quoteCta(id).length).toBeGreaterThan(10);
+      expect(quoteCtaByService[id]).toMatch(/^Request an? /);
+      expect(quoteCta(id)).not.toMatch(/^Get a /);
     }
     expect(quoteCta()).toBe("Request a quote");
   });

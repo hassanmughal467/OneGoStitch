@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import { Logo } from "@/components/brand/Logo";
 import { Container } from "@/components/ui/Container";
 import { ContactChannels } from "@/components/contact/ContactChannels";
@@ -16,7 +16,7 @@ export function Footer() {
             <Logo invert />
             <p className="mt-5 max-w-sm text-sm leading-6 text-card/70">{site.location}</p>
             <div className="mt-6 max-w-sm">
-              <ContactChannels compact invert message="Hello Brandstitch Works, I have a question." />
+              <ContactChannels compact invert message="Hello OneGo Stitch, I have a question." />
             </div>
             {addressParts.length ? <p className="mt-4 text-sm text-card/60">{addressParts.join(", ")}</p> : null}
             {socialLinks.length ? (

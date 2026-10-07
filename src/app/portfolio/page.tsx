@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { PortfolioGallery } from "@/components/portfolio/PortfolioGallery";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { PageHero } from "@/components/sections/PageHero";
@@ -10,7 +10,7 @@ import { services } from "@/lib/services";
 
 export const metadata: Metadata = pageMetadata({
   title: "Portfolio",
-  description: "Embroidery digitizing, patch, apparel and cap projects by Brandstitch Works, shown with customer permission or labeled as studio samples.",
+  description: "Embroidery digitizing, patch, apparel and cap projects by OneGo Stitch, shown with customer permission or labeled as company samples.",
   path: "/portfolio",
   // Not indexable until published work exists.
   noindex: !hasPublishedPortfolio(),
@@ -43,7 +43,7 @@ export default function Page() {
 
   return (
     <>
-      <PageHero eyebrow="Portfolio" title="Selected projects and studio samples" lede="Client projects are shown with permission. Studio samples are self-initiated pieces made to demonstrate a technique." dark={false} />
+      <PageHero eyebrow="Portfolio" title="Selected projects and company samples" lede="Client projects are shown with permission. Company samples are self-initiated pieces made to demonstrate a technique." dark={false} />
       <section className="py-14 sm:py-16">
         <Container>
           <PortfolioGallery items={items} filters={portfolioFilters()} serviceTitles={serviceTitles} />

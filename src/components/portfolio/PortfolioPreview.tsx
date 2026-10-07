@@ -17,7 +17,7 @@ export function PortfolioPreview({ serviceId, limit = 6, featured = false }: { s
     <section className="border-b border-line py-16 sm:py-20">
       <Container>
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-          <SectionHeading eyebrow={featured ? "Featured work" : "Selected work"} title={serviceId ? `${getService(serviceId)?.title} projects` : featured ? "Featured projects and studio samples" : "Recent projects and studio samples"} />
+          <SectionHeading eyebrow={featured ? "Featured work" : "Selected work"} title={serviceId ? `${getService(serviceId)?.title} projects` : featured ? "Featured projects and company samples" : "Recent projects and company samples"} />
           <ButtonLink href="/portfolio" variant="secondary">
             View all work
           </ButtonLink>

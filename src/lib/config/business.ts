@@ -67,15 +67,13 @@ export function commercialRows(serviceId: string): CommercialRow[] {
 }
 
 /**
- * Process statements that are always true of the studio workflow.
+ * Process statements that are always true of the company workflow.
  * These are not prices or guarantees — they explain sequence, not speed.
- * Digital and physical jobs use different wording so file work is not described as manufacturing.
  */
 export const fulfilmentCopy = {
-  afterQuoteDigital: "Digitizing or artwork work begins after you confirm the written quote.",
-  afterApprovalPhysical: "Production starts after you approve the proof and payment is received.",
+  afterApproval: "Production starts after you approve the proof and payment is received.",
   shippingSeparate: "Shipping time is quoted separately from production time.",
   deadlinesUnconfirmed: "Requested dates are noted but are not confirmed until they appear on your written quotation.",
-  digitalDelivery: "Stitch previews and artwork proofs are part of the digital work. Final files are delivered by download after you approve them.",
+  digitalDelivery: "Digital files are delivered by download after approval.",
   physicalDelivery: "Finished products are manufactured after proof approval, then shipped with tracking.",
 } as const;

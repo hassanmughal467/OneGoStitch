@@ -4,7 +4,7 @@ These statements appear (or would appear) on public or legal pages. They are pro
 
 | Claim | Where it appears | Status |
 | --- | --- | --- |
-| Based in Pakistan, serving US, UK, Australia and worldwide | About, Contact, footer | Confirm |
+| Based in the United States, serving US, UK, Australia and worldwide | About, Contact, footer | Confirm |
 | Production starts after proof approval and payment | Service pages, quote success | Confirm sequence and payment timing |
 | Shipping time is separate from production time | Service pages, shipping | Confirm |
 | Requested dates are not confirmed until written on the quotation | Quote form, confirmations | Confirm |
