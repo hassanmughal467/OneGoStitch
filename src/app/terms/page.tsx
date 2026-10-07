@@ -4,7 +4,7 @@ import { Container } from "@/components/ui/Container";
 import { pageMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 
-export const metadata = pageMetadata({ title: "Terms of Service", description: "Terms for quotes, artwork, proofs, payment and delivery at Stitchcraft Studio.", path: "/terms" });
+export const metadata = pageMetadata({ title: "Terms of Service", description: "Terms for quotes, artwork, proofs, payment and delivery at OneGo Stitch.", path: "/terms" });
 
 export default function Page() {
   return (

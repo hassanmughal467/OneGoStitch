@@ -856,7 +856,7 @@ export function QuoteForm({ initialService = "", initialCustomerType = "Business
           <label id={`${uid}-consent`} className="flex items-start gap-3 text-sm leading-6 sm:col-span-2">
             <input type="checkbox" name="consent" checked={values.consent} onChange={(e) => update("consent", e.target.checked)} className="mt-1 h-4 w-4 accent-blue" aria-invalid={errors.consent ? true : undefined} aria-describedby={errors.consent ? `${uid}-consent-error` : undefined} />
             <span>
-              Stitchcraft Studio may use these details and files to prepare my quote, as described in the{" "}
+              OneGo Stitch may use these details and files to prepare my quote, as described in the{" "}
               <Link href="/privacy" className="font-semibold text-blue hover:underline">
                 privacy policy
               </Link>
@@ -872,7 +872,7 @@ export function QuoteForm({ initialService = "", initialCustomerType = "Business
           </label>
           <label className="flex items-start gap-3 text-sm leading-6 sm:col-span-2">
             <input type="checkbox" name="marketing" checked={values.marketing} onChange={(e) => update("marketing", e.target.checked)} className="mt-1 h-4 w-4 accent-blue" />
-            <span>Optional: email me occasional studio updates. Separate from quote messages; unsubscribe any time.</span>
+            <span>Optional: email me occasional company updates. Separate from quote messages; unsubscribe any time.</span>
           </label>
 
           {config.spamCheck === "turnstile" && config.turnstileSiteKey ? <Turnstile siteKey={config.turnstileSiteKey} onToken={onToken} /> : null}

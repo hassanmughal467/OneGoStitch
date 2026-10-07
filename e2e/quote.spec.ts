@@ -64,7 +64,7 @@ test.describe("quote form", () => {
     await page.getByLabel("Height").fill("2");
     await page.getByRole("radio", { name: /Flexible/ }).check();
     await page.getByLabel("Project description").fill("Left chest shop logo, one colour.");
-    await page.getByLabel(/Stitchcraft Studio may use these details/).check();
+    await page.getByLabel(/OneGo Stitch may use these details/).check();
     await page.getByRole("button", { name: "Send quote request" }).click();
     await expect(page.getByRole("heading", { name: /your reference is SC-\d{6}-[A-Z2-9]{4}/i })).toBeVisible({ timeout: 20_000 });
   });
@@ -78,7 +78,7 @@ test.describe("quote form", () => {
     await page.getByRole("radio", { name: /Exact reproduction/ }).check();
     await page.getByRole("radio", { name: /Flexible/ }).check();
     await page.getByLabel("Project description").fill("Trace the supplied mark.");
-    await page.getByLabel(/Stitchcraft Studio may use these details/).check();
+    await page.getByLabel(/OneGo Stitch may use these details/).check();
     await page.getByRole("button", { name: "Send quote request" }).dblclick();
     await expect(page.getByRole("heading", { name: /your reference is SC-\d{6}-[A-Z2-9]{4}/i })).toBeVisible({ timeout: 20_000 });
     await expect(page.getByRole("heading", { name: /your reference is/i })).toHaveCount(1);

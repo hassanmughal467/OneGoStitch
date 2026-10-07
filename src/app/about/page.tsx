@@ -9,7 +9,7 @@ import { site } from "@/lib/site";
 
 export const metadata = pageMetadata({
   title: "About",
-  description: "Stitchcraft Studio is a Pakistan-based embroidery digitizing and custom products studio working with print shops, brands and teams in the US, UK and Australia.",
+  description: "OneGo Stitch is a US-based embroidery digitizing and custom products company working with print shops, brands and teams in the US, UK and Australia.",
   path: "/about",
 });
 
@@ -18,7 +18,7 @@ export default function Page() {
     <>
       <PageHero
         eyebrow="About"
-        title="A digitizing and custom products studio built for shops, brands and teams."
+        title="A digitizing and custom products company built for shops, brands and teams."
         lede={site.location}
       />
       <section className="border-b border-line py-14 sm:py-16">
@@ -27,7 +27,7 @@ export default function Page() {
             <h2 className="text-2xl font-semibold">What we do</h2>
             <div className="prose-site mt-4 leading-7 text-ink-soft">
               <p>
-                Stitchcraft Studio does two kinds of work. The first is artwork: turning a logo into an embroidery file that sews cleanly, redrawing a low-quality
+                OneGo Stitch does two kinds of work. The first is artwork: turning a logo into an embroidery file that sews cleanly, redrawing a low-quality
                 logo as vector paths, or designing a new mark. The second is finished products: custom patches, embroidered apparel, screen-printed shirts and caps,
                 produced to an approved proof and shipped to you.
               </p>
@@ -49,7 +49,7 @@ export default function Page() {
             </div>
             <h2 className="mt-10 text-2xl font-semibold">Where we are</h2>
             <p className="mt-4 leading-7 text-ink-soft">
-              The studio is in {site.address.country}. We work in English with customers in the United States, the United Kingdom, Australia and elsewhere, and we
+              OneGo Stitch is in {site.address.country}. We work in English with customers in the United States, the United Kingdom, Australia and elsewhere, and we
               quote shipping to your postal code for every product order. We do not operate offices or warehouses outside {site.address.country}.
             </p>
           </div>

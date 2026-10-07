@@ -103,7 +103,7 @@ export function portfolioFilters() {
 }
 
 export function displayName(item: PortfolioItem) {
-  if (item.status === "studio-sample") return "Studio sample";
+  if (item.status === "studio-sample") return "Company sample";
   return item.permission.nameApproved && item.permission.customerName ? item.permission.customerName : "Client project";
 }
 

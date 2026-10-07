@@ -11,14 +11,14 @@ export const metadata = pageMetadata({
 export default function Page() {
   return (
     <>
-      <PageHero compact eyebrow="Help" title="Shipping & delivery" lede="Digital files are delivered by download. Physical orders ship from our studio in Pakistan with tracking, and shipping is quoted separately for your destination." dark={false} />
+      <PageHero compact eyebrow="Help" title="Shipping & delivery" lede="Digital files are delivered by download. Physical orders ship from OneGo Stitch in the United States with tracking, and shipping is quoted separately for your destination." dark={false} />
       <section className="py-12 sm:py-14">
         <Container className="prose-site max-w-2xl leading-7 text-ink-soft">
           <h2 className="text-xl font-semibold text-charcoal">Digital files</h2>
           <p>Embroidery files, vector artwork and logo files are sent as a download link once payment is received. There is nothing to ship and no shipping charge.</p>
           <h2 className="mt-8 text-xl font-semibold text-charcoal">Physical orders</h2>
           <p>
-            Patches, apparel, printed goods and caps ship internationally from Pakistan. Every product quote shows the shipping cost and an estimated transit time for your postal
+            Patches, apparel, printed goods and caps ship from the United States. Every product quote shows the shipping cost and an estimated transit time for your postal
             code, separate from the production time. Once dispatched, you receive a tracking number.
           </p>
           <p>We ship to the United States, the United Kingdom, Australia and most other countries. Tell us the destination when you request a quote.</p>

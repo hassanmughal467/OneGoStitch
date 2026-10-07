@@ -33,7 +33,7 @@ Baseline problems found:
 - Tokens in `globals.css`: warm `#F7F5EF`, charcoal `#20252B`, blue `#174A66`, copper `#C97744` (graphics) / `#A45E32` (text, AA on warm and white) / `#E6B896` (text on blue/charcoal), card, line, error, success. Container 1200px.
 - Homepage: hero with illustrated artwork-to-stitch composition, "files or finished products" routes, 7 service cards, artwork-to-stitch section, 4-step process, trade section, buying answers with FAQ JSON-LD, guides, CTA band.
 - Service page template (`ServiceView`): breadcrumb, H1 per the prompt, who it is for, deliverables, what to send, specs, price factors, process, turnaround, revisions, FAQ (JSON-LD), related services, CTA to `/quote?service=<id>`.
-- Homepage title: "Embroidery Digitizing & Custom Patches | Stitchcraft Studio".
+- Homepage title: "Embroidery Digitizing & Custom Patches | OneGo Stitch".
 
 ## Phase 4: Portfolio, trade, guides — tested (portfolio hidden)
 

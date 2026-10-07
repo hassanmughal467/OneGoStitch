@@ -34,7 +34,7 @@ export const productsNav: NavGroup = {
 
 export const studioNav: NavGroup = {
   href: "/about",
-  label: "Studio",
+  label: "Company",
   children: [
     { href: "/how-it-works", label: "How It Works" },
     { href: "/about", label: "About" },

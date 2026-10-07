@@ -94,7 +94,7 @@ describe("screen printing", () => {
       quantity: "24",
       garmentColors: "Navy",
       placements: "Full front",
-      supplyMode: "Stitchcraft supplies the garments",
+      supplyMode: "OneGo Stitch supplies the garments",
       destinationCity: "Austin",
       postalCode: "78701",
     });

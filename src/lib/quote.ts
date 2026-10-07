@@ -54,17 +54,17 @@ export const serviceOptions = {
     productType: ["Structured 6-panel", "Unstructured or dad hat", "Trucker", "5-panel or flat peak", "Beanie", notSure],
     decoration: ["Flat embroidery", "3D puff", "Applied patch", notSure],
     placements: ["Front centre", "Front offset", "Left side", "Right side", "Rear", "Multiple locations"],
-    supplyMode: ["Stitchcraft supplies the caps", "I will supply the caps", notSure],
+    supplyMode: ["OneGo Stitch supplies the caps", "I will supply the caps", notSure],
   },
   "embroidered-apparel": {
     productType: ["Polos", "T-shirts", "Hoodies or sweatshirts", "Jackets or softshells", "Workwear or hi-vis", "Aprons", "Mixed order"],
     placements: ["Left chest", "Right chest", "Sleeve", "Full back", "Nape", "Multiple locations"],
-    supplyMode: ["Stitchcraft supplies the garments", "I will supply the garments", notSure],
+    supplyMode: ["OneGo Stitch supplies the garments", "I will supply the garments", notSure],
   },
   "screen-printing": {
     productType: ["T-shirts", "Hoodies or sweatshirts", "Long sleeves", "Tote bags", "Mixed order"],
     placements: ["Full front", "Left chest", "Full back", "Sleeve", "Nape", "Multiple locations"],
-    supplyMode: ["Stitchcraft supplies the garments", "I will supply the garments", notSure],
+    supplyMode: ["OneGo Stitch supplies the garments", "I will supply the garments", notSure],
     inkColors: ["1 colour", "2 colours", "3 colours", "4 or more", notSure],
   },
 } as const;

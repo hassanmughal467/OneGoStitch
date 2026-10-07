@@ -33,7 +33,7 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ s
         title={service ? `Quote for ${service.title.toLowerCase()}` : "Tell us about your job"}
         lede={
           !status.online
-            ? "Online quote requests are paused. The contact details below still reach the studio."
+            ? "Online quote requests are paused. The contact details below still reach the company."
             : service
               ? `${service.kind === "digital" ? "You receive files by download." : "You receive finished products, shipped with tracking."} Two short steps; attach artwork if you have it.`
               : "Two short steps: who you are and which service, then only the details that service needs. Attach artwork if you have it."
@@ -80,7 +80,7 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ s
               <div className="rounded-sm border border-line bg-card p-6">
                 <h2 className="text-base font-semibold text-charcoal">Prefer to talk first?</h2>
                 <div className="mt-3">
-                  <ContactChannels compact message={`Hello Stitchcraft Studio, I have a question before requesting a quote${service ? ` for ${service.title.toLowerCase()}` : ""}.`} />
+                  <ContactChannels compact message={`Hello OneGo Stitch, I have a question before requesting a quote${service ? ` for ${service.title.toLowerCase()}` : ""}.`} />
                 </div>
               </div>
             ) : null}

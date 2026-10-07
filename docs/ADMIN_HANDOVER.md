@@ -1,6 +1,6 @@
 # Admin Handover
 
-Operational guide for whoever runs the Stitchcraft Studio site. Companion documents: `OWNER_INPUTS_REQUIRED.md` (what is still missing), `ASSETS_REQUIRED.md`, `QA_REPORT.md`, `UPGRADE_PLAN.md`.
+Operational guide for whoever runs the OneGo Stitch site. Companion documents: `OWNER_INPUTS_REQUIRED.md` (what is still missing), `ASSETS_REQUIRED.md`, `QA_REPORT.md`, `UPGRADE_PLAN.md`.
 
 ## 1. Run, build, test
 

@@ -5,7 +5,7 @@ import { site } from "@/lib/site";
 
 export const metadata = pageMetadata({
   title: "Accessibility",
-  description: "Accessibility statement for the Stitchcraft Studio website.",
+  description: "Accessibility statement for the OneGo Stitch website.",
   path: "/accessibility",
 });
 

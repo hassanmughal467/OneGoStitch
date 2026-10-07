@@ -7,7 +7,7 @@ Nothing on this list is published until it is supplied and confirmed. Items mark
 | # | Item | Why it matters | Where it goes | Blocker |
 | --- | --- | --- | --- | --- |
 | 1 | Registered legal business name and trading name | Terms, privacy policy, invoices, Organization JSON-LD | `NEXT_PUBLIC_LEGAL_NAME`; `/terms`, `/privacy` | yes |
-| 2 | Business address (or a statement that the studio does not publish a street address) | Privacy policy, customs paperwork, trust | `NEXT_PUBLIC_ADDRESS_LINE1`, `NEXT_PUBLIC_ADDRESS_CITY` (optional) | for legal pages |
+| 2 | Business address (or a statement that the company does not publish a street address) | Privacy policy, customs paperwork, trust | `NEXT_PUBLIC_ADDRESS_LINE1`, `NEXT_PUBLIC_ADDRESS_CITY` (optional) | for legal pages |
 | 3 | Confirmed production domain (e.g. `https://www.stitchcraft…`) | Canonicals, sitemap, Open Graph, indexing switch | `NEXT_PUBLIC_SITE_URL` + `NEXT_PUBLIC_SITE_ENV=production` | yes |
 | 4 | Business hours and time zone | Reply expectations, Organization JSON-LD | `NEXT_PUBLIC_SUPPORT_HOURS` (optional) | no |
 
@@ -56,5 +56,5 @@ Nothing on this list is published until it is supplied and confirmed. Items mark
 | --- | --- |
 | 24 | Written permission per client for any portfolio item that names a client or shows their logo |
 | 25 | Approval of all policy pages (`/terms`, `/privacy`, `/refund-policy`, `/cookies`, `/shipping`) by the owner or counsel |
-| 26 | Confirmation of the "based in Pakistan" statement and target markets wording |
+| 26 | Confirmation of the "based in the United States" statement and target markets wording |
 | 27 | Analytics decision (provider, consent approach). A consent-gated no-op sink exists in `src/lib/analytics.ts` |

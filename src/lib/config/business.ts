@@ -67,7 +67,7 @@ export function commercialRows(serviceId: string): CommercialRow[] {
 }
 
 /**
- * Process statements that are always true of the studio workflow.
+ * Process statements that are always true of the company workflow.
  * These are not prices or guarantees — they explain sequence, not speed.
  */
 export const fulfilmentCopy = {

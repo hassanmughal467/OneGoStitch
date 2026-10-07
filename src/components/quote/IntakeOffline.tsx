@@ -15,12 +15,12 @@ export function IntakeOffline({ message, service }: { message: string; service?:
       <p className="mt-3 leading-7 text-ink-soft">{message}</p>
       {contactChannels.hasAny ? (
         <div className="mt-6 rounded-sm border border-line bg-warm p-5">
-          <h3 className="text-base font-semibold">Reach the studio directly</h3>
+          <h3 className="text-base font-semibold">Reach the company directly</h3>
           <p className="mt-1 text-sm leading-6 text-ink-soft">
             Tell us the service{service ? ` (${service})` : ""}, quantity or size, the date you need it and attach your artwork. We will reply with a reference and a quotation.
           </p>
           <div className="mt-4">
-            <ContactChannels message={`Hello Stitchcraft Studio, I would like a quote${service ? ` for ${service}` : ""}.`} compact />
+            <ContactChannels message={`Hello OneGo Stitch, I would like a quote${service ? ` for ${service}` : ""}.`} compact />
           </div>
         </div>
       ) : (

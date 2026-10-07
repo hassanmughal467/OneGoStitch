@@ -5,7 +5,7 @@ import { site } from "@/lib/site";
 
 export const metadata = pageMetadata({
   title: "Privacy Policy",
-  description: "What information Stitchcraft Studio collects through quote requests, how artwork is stored, and how to ask for deletion.",
+  description: "What information OneGo Stitch collects through quote requests, how artwork is stored, and how to ask for deletion.",
   path: "/privacy",
 });
 
@@ -22,7 +22,7 @@ export default function Page() {
           </p>
           <h2 className="mt-8 text-xl font-semibold text-charcoal">How it is used</h2>
           <p>
-            To reply to you, prepare the quote, produce the job, ship it and handle corrections. We do not sell or share your details for marketing. Studio updates are sent
+            To reply to you, prepare the quote, produce the job, ship it and handle corrections. We do not sell or share your details for marketing. Company updates are sent
             only if you tick the optional box, and you can unsubscribe at any time.
           </p>
           <h2 className="mt-8 text-xl font-semibold text-charcoal">Artwork</h2>
