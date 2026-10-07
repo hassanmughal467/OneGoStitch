@@ -77,7 +77,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-warm/95 backdrop-blur">
-      <Container className="flex h-[4.25rem] items-center justify-between gap-4">
+      <Container className="flex h-24 items-center justify-between gap-4">
         <Link href="/" className="shrink-0 rounded-sm">
           <Logo />
         </Link>
