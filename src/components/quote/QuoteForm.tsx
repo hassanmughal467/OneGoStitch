@@ -723,8 +723,8 @@ export function QuoteForm({ initialService = "", initialCustomerType = "Business
               ) : null}
               {apparel ? (
                 <>
-                  <ChoiceGroup uid={uid} id="placements" legend="Decoration locations" options={(opts[values.service as "embroidered-apparel" | "screen-printing" | "dft-printing"]).placements} value={values.placements} onChange={(v) => update("placements", v)} multiple required error={errors.placements} className="sm:col-span-2" />
-                  <ChoiceGroup uid={uid} id="supplyMode" legend="Who supplies the garments?" options={(opts[values.service as "embroidered-apparel" | "screen-printing" | "dft-printing"]).supplyMode} value={values.supplyMode} onChange={(v) => update("supplyMode", v)} required error={errors.supplyMode} className="sm:col-span-2" />
+                  <ChoiceGroup uid={uid} id="placements" legend="Decoration locations" options={(opts[values.service as "embroidered-apparel" | "screen-printing" | "dtf-printing"]).placements} value={values.placements} onChange={(v) => update("placements", v)} multiple required error={errors.placements} className="sm:col-span-2" />
+                  <ChoiceGroup uid={uid} id="supplyMode" legend="Who supplies the garments?" options={(opts[values.service as "embroidered-apparel" | "screen-printing" | "dtf-printing"]).supplyMode} value={values.supplyMode} onChange={(v) => update("supplyMode", v)} required error={errors.supplyMode} className="sm:col-span-2" />
                 </>
               ) : null}
             </>

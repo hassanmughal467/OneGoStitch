@@ -26,8 +26,9 @@ export function pageMetadata({ title, description, path, noindex, type = "websit
   return {
     title: path === "/" ? { absolute: title } : title,
     description,
-    // Canonicals are only emitted once the production domain is confirmed and indexing is on.
-    alternates: siteEnv.indexable && publicUrl ? { canonical: publicUrl } : undefined,
+    // Self-canonical on the production origin whenever that origin is known.
+    // Preview pages stay noindex; they still point crawlers at the live URL.
+    alternates: !noindex && publicUrl ? { canonical: publicUrl } : undefined,
     robots: robotsFor(noindex),
     openGraph: {
       title: fullTitle,

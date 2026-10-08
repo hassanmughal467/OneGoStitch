@@ -77,8 +77,8 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-warm/95 backdrop-blur">
-      <Container className="flex h-24 items-center justify-between gap-4">
-        <Link href="/" className="shrink-0 rounded-sm">
+      <Container className="flex h-16 items-center justify-between gap-2 sm:h-20 sm:gap-4 lg:h-24">
+        <Link href="/" className="min-w-0 shrink rounded-sm">
           <Logo />
         </Link>
 
@@ -108,7 +108,7 @@ export function Header() {
           </ButtonLink>
         </div>
 
-        <div className="flex items-center gap-2 lg:hidden">
+        <div className="flex shrink-0 items-center gap-2 lg:hidden">
           <ButtonLink href="/quote" className="min-h-10 px-3 text-[0.72rem]">
             Quote
           </ButtonLink>
@@ -131,7 +131,7 @@ export function Header() {
       </Container>
 
       <div id="mobile-nav" hidden={!open} className="border-t border-line bg-warm lg:hidden">
-        <Container as="nav" className="flex max-h-[calc(100vh-4.25rem)] flex-col gap-1 overflow-y-auto py-4">
+        <Container as="nav" className="flex max-h-[calc(100dvh-4rem)] flex-col gap-1 overflow-y-auto py-4">
           <MobileGroup group={digitizingNav} />
           <MobileGroup group={printingNav} />
           <MobileGroup group={productsNav} />

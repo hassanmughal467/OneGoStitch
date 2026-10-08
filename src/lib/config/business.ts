@@ -48,7 +48,7 @@ const labels: Record<keyof ServiceCommercial, string> = {
 export const serviceCommercial: Record<string, ServiceCommercial> = {
   "embroidery-digitizing": { ...empty },
   "vector-tracing": { ...empty },
-  "dft-printing": { ...empty },
+  "dtf-printing": { ...empty },
   "custom-logo-design": { ...empty },
   "custom-patches": { ...empty },
   "embroidered-apparel": { ...empty },

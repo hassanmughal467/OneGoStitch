@@ -23,7 +23,7 @@ export type IntakeStatus = {
   spamCheck: "honeypot" | "turnstile";
 };
 
-const defaultOfflineMessage = "Online quote requests are paused. If a contact method is shown on this page, use it. Otherwise the form will return when intake is available.";
+const defaultOfflineMessage = "Online quote requests are paused. The form will take requests again when intake is available.";
 
 export function getIntakeStatus(env: NodeJS.ProcessEnv = process.env): IntakeStatus {
   const mode = env.QUOTE_INTAKE_MODE?.trim().toLowerCase();

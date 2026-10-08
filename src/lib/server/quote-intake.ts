@@ -1,7 +1,7 @@
 import { createHash, randomBytes } from "node:crypto";
 import { fileLimits, extensionOf } from "@/lib/config/limits";
 import { countryName } from "@/lib/countries";
-import { booleanFields, emptyQuote, validateArtworkFiles, validateQuote, type QuoteFieldErrors, type QuotePayload } from "@/lib/quote";
+import { booleanFields, canonicalServiceId, emptyQuote, validateArtworkFiles, validateQuote, type QuoteFieldErrors, type QuotePayload } from "@/lib/quote";
 import { checkArtworkBytes } from "@/lib/server/file-check";
 import { getIntakeStatus } from "@/lib/server/intake-config";
 import { log } from "@/lib/server/log";
@@ -33,6 +33,7 @@ export function payloadFromForm(form: FormData): QuotePayload {
       (payload as Record<string, unknown>)[key] = raw.slice(0, 8000);
     }
   });
+  payload.service = canonicalServiceId(payload.service);
   return payload;
 }
 

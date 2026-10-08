@@ -36,8 +36,20 @@ describe("service and customer preselection", () => {
   it("accepts known service ids and ignores unknown ones", () => {
     expect(resolveServiceParam("embroidery-digitizing")).toBe("embroidery-digitizing");
     expect(resolveServiceParam("custom-hats")).toBe("custom-hats");
-    expect(resolveServiceParam("dtf-printing")).toBe("dft-printing");
-    expect(resolveServiceParam("dft-printing")).toBe("dft-printing");
+    expect(resolveServiceParam("dtf-printing")).toBe("dtf-printing");
+    expect(resolveServiceParam("dft-printing")).toBe("dtf-printing");
+    const legacy = base({
+      service: "dft-printing",
+      productType: "T-shirts",
+      quantity: "24",
+      garmentColors: "Black",
+      placements: "Full front",
+      supplyMode: "OneGo Stitch supplies the garments",
+      destinationCity: "Austin",
+      postalCode: "78701",
+    });
+    expect(validateQuote(legacy)).toEqual({});
+    expect(legacy.service).toBe("dtf-printing");
     expect(resolveServiceParam("not-a-service")).toBe("");
     expect(resolveServiceParam(undefined)).toBe("");
   });

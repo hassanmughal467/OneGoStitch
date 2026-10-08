@@ -12,6 +12,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/api/", "/account", "/quote/"],
     },
-    sitemap: `${siteEnv.baseUrl}/sitemap.xml`,
+    sitemap: `${siteEnv.productionUrl ?? siteEnv.baseUrl}/sitemap.xml`,
   };
 }

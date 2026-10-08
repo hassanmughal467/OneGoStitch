@@ -163,10 +163,10 @@ export const services: ServicePage[] = [
       { q: "My file is very low quality. Can you still trace it?", a: "Usually yes for simple marks. If the source does not contain enough information we will tell you before quoting." },
       { q: "Do I get the font?", a: "We match or redraw the lettering as outlines. We do not supply commercial font files." },
     ],
-    related: ["custom-logo-design", "dft-printing", "embroidery-digitizing"],
+    related: ["custom-logo-design", "dtf-printing", "embroidery-digitizing"],
   },
   {
-    id: "dft-printing",
+    id: "dtf-printing",
     href: "/dtf-printing",
     route: "printing",
     kind: "physical",
@@ -418,7 +418,7 @@ export const services: ServicePage[] = [
       { q: "Can you print photos or gradients?", a: "Screen printing works best with solid spot colors. For photographic artwork we will recommend an alternative on the quote." },
       { q: "Will the colors match my brand?", a: "Send Pantone references and we mix to match as closely as the ink system allows. The proof shows the intended colors." },
     ],
-    related: ["vector-tracing", "dft-printing", "embroidered-apparel"],
+    related: ["vector-tracing", "dtf-printing", "embroidered-apparel"],
   },
   {
     id: "custom-hats",
@@ -480,7 +480,8 @@ export const services: ServicePage[] = [
 ];
 
 export function getService(id: string) {
-  return services.find((item) => item.id === id);
+  const canonical = id === "dft-printing" ? "dtf-printing" : id;
+  return services.find((item) => item.id === canonical);
 }
 
 export function getServiceByHref(href: string) {

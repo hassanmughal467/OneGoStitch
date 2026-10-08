@@ -81,8 +81,17 @@ export type StoreResolution = { store: QuoteStore; reason: null } | { store: nul
  * durable is configured, which keeps the public form in offline mode rather
  * than pretending a submission succeeded.
  */
+function inferredStoreKind(env: NodeJS.ProcessEnv): string | undefined {
+  if (env.BLOB_READ_WRITE_TOKEN?.trim()) return "vercel-blob";
+  const serverless = Boolean(env.VERCEL);
+  const production = env.NODE_ENV === "production";
+  const test = env.NODE_ENV === "test" || env.VITEST === "true";
+  if (!serverless && !production && !test) return "file";
+  return undefined;
+}
+
 export function resolveQuoteStore(env: NodeJS.ProcessEnv = process.env): StoreResolution {
-  const kind = env.QUOTE_STORE?.trim();
+  const kind = env.QUOTE_STORE?.trim() || inferredStoreKind(env);
   if (!kind) return { store: null, reason: "unset" };
   if (kind === "file") {
     if (env.VERCEL && !env.QUOTE_STORE_DIR?.trim()) return { store: null, reason: "file-on-serverless" };

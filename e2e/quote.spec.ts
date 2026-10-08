@@ -3,7 +3,7 @@ import { expect, test, type Page } from "@playwright/test";
 const services = [
   { id: "embroidery-digitizing", article: "an", title: "Embroidery Digitizing" },
   { id: "vector-tracing", article: "a", title: "Vector Tracing" },
-  { id: "dft-printing", article: "a", title: "DTF Printing" },
+  { id: "dtf-printing", article: "a", title: "DTF Printing" },
   { id: "custom-logo-design", article: "a", title: "Custom Logo Design" },
   { id: "custom-patches", article: "a", title: "Custom Patches" },
   { id: "embroidered-apparel", article: "an", title: "Embroidered Apparel" },

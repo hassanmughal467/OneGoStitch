@@ -23,9 +23,13 @@ export default function Page() {
         eyebrow="Contact"
         title="Talk to OneGo Stitch"
         lede={
-          contactChannels.hasAny
-            ? "Email or message us with a question. You can also send a quote request when you already know the service and details."
-            : "Send a quote request with the details we need to reply with a price, or add questions to the project description and we will answer them in the same reply."
+          status.online
+            ? contactChannels.hasAny
+              ? "Email or message us with a question, or send a quote request when you already know the service and details."
+              : "Send a quote request with the service, size or quantity, and your artwork. We reply with a price and any questions."
+            : contactChannels.hasAny
+              ? "Email or message us with the service, size or quantity, the date you need it, and your artwork. We reply with a reference and a quotation."
+              : "The online quote form is paused until requests can be saved. Check this page again when intake is available."
         }
       />
       <section className="py-14 sm:py-16">

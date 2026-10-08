@@ -2,7 +2,7 @@ import { ServiceView } from "@/components/services/ServicePage";
 import { pageMetadata } from "@/lib/seo";
 import { getService } from "@/lib/services";
 
-const service = getService("dft-printing")!;
+const service = getService("dtf-printing")!;
 
 export const metadata = pageMetadata({
   title: service.metaTitle,

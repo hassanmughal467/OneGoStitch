@@ -25,11 +25,11 @@ export function IntakeOffline({ message, service }: { message: string; service?:
         </div>
       ) : (
         <p className="mt-6 text-sm leading-6 text-ink-soft">
-          Please check back shortly. In the meantime, the{" "}
+          Check this page again when the form is taking requests. The{" "}
           <Link href="/how-it-works" className="font-semibold text-blue hover:underline">
             how ordering works
           </Link>{" "}
-          page explains what we will need from you.
+          page explains what we will need.
         </p>
       )}
     </div>

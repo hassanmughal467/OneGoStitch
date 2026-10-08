@@ -115,6 +115,8 @@ describe("store resolution and intake status", () => {
     expect(resolveQuoteStore(env({ QUOTE_STORE: "memory", NODE_ENV: "production" })).reason).toBe("memory-in-production");
     expect(resolveQuoteStore(env({ QUOTE_STORE: "vercel-blob" })).reason).toBe("blob-missing-token");
     expect(resolveQuoteStore(env({ QUOTE_STORE: "vercel-blob", BLOB_READ_WRITE_TOKEN: "x" })).store?.name).toBe("vercel-blob");
+    expect(resolveQuoteStore(env({ BLOB_READ_WRITE_TOKEN: "x" })).store?.name).toBe("vercel-blob");
+    expect(resolveQuoteStore(env({ NODE_ENV: "development" })).store?.name).toBe("file");
   });
 
   it("supports deliberate maintenance mode with a configurable message", async () => {

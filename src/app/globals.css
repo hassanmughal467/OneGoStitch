@@ -30,6 +30,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -43,6 +44,7 @@ html {
 }
 
 body {
+  overflow-x: clip;
   background: var(--color-warm);
   color: var(--color-charcoal);
   font-family: var(--font-sans);

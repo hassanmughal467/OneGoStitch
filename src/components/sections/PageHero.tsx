@@ -28,8 +28,8 @@ export function PageHero({
       <StitchField />
       <Container className="relative z-10 w-full">
         {eyebrow ? <Eyebrow className="text-copper-soft">{eyebrow}</Eyebrow> : null}
-        <h1 className="mt-3 max-w-4xl text-4xl font-semibold tracking-[-0.03em] sm:text-5xl">{title}</h1>
-        {lede ? <p className="mt-5 max-w-2xl text-lg leading-8 text-card/75">{lede}</p> : null}
+        <h1 className="mt-3 max-w-4xl text-[1.75rem] font-semibold leading-[1.15] tracking-[-0.03em] sm:text-4xl lg:text-5xl">{title}</h1>
+        {lede ? <p className="mt-5 max-w-2xl text-base leading-7 text-card/75 sm:text-lg sm:leading-8">{lede}</p> : null}
         {children}
       </Container>
     </section>

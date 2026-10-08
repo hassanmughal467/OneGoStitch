@@ -20,7 +20,7 @@ export const metadata = pageMetadata({
   path: "/",
 });
 
-const serviceOrder = ["embroidery-digitizing", "custom-patches", "vector-tracing", "custom-logo-design", "screen-printing", "dft-printing", "embroidered-apparel", "custom-hats"];
+const serviceOrder = ["embroidery-digitizing", "custom-patches", "vector-tracing", "custom-logo-design", "screen-printing", "dtf-printing", "embroidered-apparel", "custom-hats"];
 
 export default function HomePage() {
   const showWork = hasPublishedPortfolio();
@@ -37,7 +37,7 @@ export default function HomePage() {
           <div className="grid items-center gap-8 lg:grid-cols-12 lg:gap-x-10">
             <div className="lg:col-span-5">
               <Eyebrow className="text-copper-soft">Embroidery digitizing and custom patches</Eyebrow>
-              <h1 className="mt-4 text-[2rem] font-semibold leading-[1.12] tracking-[-0.03em] text-card sm:text-[2.75rem] lg:text-[3.05rem]">
+              <h1 className="mt-4 max-w-[18ch] text-[1.75rem] font-semibold leading-[1.15] tracking-[-0.03em] text-card sm:text-[2.5rem] lg:text-[3.05rem]">
                 Digitizing and patches, ready to produce
               </h1>
               <p className="mt-5 max-w-md text-base leading-7 text-card/80 sm:text-lg sm:leading-8">
@@ -113,9 +113,13 @@ export default function HomePage() {
       <section className="border-b border-line py-16 sm:py-20">
         <Container>
           <SectionHeading eyebrow="Services" title="Every service, one quote form" lede="Each service page explains what to send, what you receive, what affects the price and how revisions work." />
-          <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="mt-10 flex flex-wrap justify-center gap-5">
             {orderedServices.map((service) => (
-              <ServiceCard key={service.id} service={service} />
+              <ServiceCard
+                key={service.id}
+                service={service}
+                className="w-full sm:w-[calc(50%-0.625rem)] lg:w-[calc((100%-2.5rem)/3)]"
+              />
             ))}
           </ul>
         </Container>

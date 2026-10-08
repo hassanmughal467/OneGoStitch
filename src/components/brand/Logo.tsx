@@ -7,7 +7,7 @@ export function Logo({ className, invert = false }: { className?: string; invert
       alt="OneGo Stitch"
       width={320}
       height={291}
-      className={cn("h-20 w-auto object-contain", invert && "h-24", className)}
+      className={cn("w-auto max-w-[min(100%,11rem)] object-contain sm:max-w-[13rem]", invert ? "h-14 sm:h-20 lg:h-24" : "h-11 sm:h-16 lg:h-20", className)}
     />
   );
 }

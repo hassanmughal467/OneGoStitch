@@ -34,8 +34,8 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ s
         lede={
           !status.online
             ? contactChannels.hasAny
-              ? "Online quote requests are paused. Use the contact method on this page."
-              : "Online quote requests are paused until intake is available again."
+              ? "The online form is paused. Email or message us with the service, size or quantity, and your artwork."
+              : "The online form is paused until requests can be saved. Check this page again when intake is available."
             : service
               ? `${service.kind === "digital" ? "You receive files by download." : "You receive finished products, shipped with tracking."} Two short steps; attach artwork if you have it.`
               : "Two short steps: who you are and which service, then only the details that service needs. Attach artwork if you have it."
@@ -53,10 +53,32 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ s
             <div className="rounded-sm border border-line bg-card p-6 text-sm leading-6 text-ink-soft">
               <h2 className="text-base font-semibold text-charcoal">What happens next</h2>
               <ol className="mt-3 list-decimal space-y-2 pl-5">
-                {status.online ? <li>You receive a reference number as soon as the request is saved.</li> : <li>We log your request and reply with a reference.</li>}
-                <li>We review the details and ask for anything missing.</li>
-                <li>You get an itemised quotation with timing and payment terms.</li>
-                <li>Work starts after you approve the quotation and the proof.</li>
+                {status.online ? (
+                  <>
+                    <li>You receive a reference number as soon as the request is saved.</li>
+                    <li>We review the details and ask for anything missing.</li>
+                    <li>You get an itemised quotation with timing and payment terms.</li>
+                    <li>Work starts after you approve the quotation and the proof.</li>
+                  </>
+                ) : contactChannels.hasAny ? (
+                  <>
+                    <li>Send the service, size or quantity, date and artwork using the contact details on this page.</li>
+                    <li>We reply with a reference and any questions.</li>
+                    <li>You receive an itemised quotation with timing and payment terms.</li>
+                  </>
+                ) : (
+                  <>
+                    <li>Online requests are paused, so nothing is submitted from this page yet.</li>
+                    <li>When the form is back, you will receive a reference as soon as the request is saved.</li>
+                    <li>
+                      See{" "}
+                      <Link href="/how-it-works" className="font-semibold text-blue hover:underline">
+                        how ordering works
+                      </Link>{" "}
+                      for what we will need.
+                    </li>
+                  </>
+                )}
               </ol>
               {status.responseStatement ? <p className="mt-4">{status.responseStatement}</p> : null}
               {service ? (
@@ -77,11 +99,11 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ s
                 </p>
               )}
             </div>
-            {contactChannels.hasAny && status.online ? (
+            {contactChannels.hasAny ? (
               <div className="rounded-sm border border-line bg-card p-6">
-                <h2 className="text-base font-semibold text-charcoal">Prefer to talk first?</h2>
+                <h2 className="text-base font-semibold text-charcoal">{status.online ? "Prefer to talk first?" : "Contact OneGo Stitch"}</h2>
                 <div className="mt-3">
-                  <ContactChannels compact message={`Hello OneGo Stitch, I have a question before requesting a quote${service ? ` for ${service.title.toLowerCase()}` : ""}.`} />
+                  <ContactChannels compact message={`Hello OneGo Stitch, I would like a quote${service ? ` for ${service.title.toLowerCase()}` : ""}.`} />
                 </div>
               </div>
             ) : null}

@@ -47,9 +47,13 @@ export function RouteOverview({ route, lede, points }: { route: ServiceRoute; le
       </section>
       <section className="border-b border-line bg-card py-14 sm:py-16">
         <Container>
-          <ul className={`grid gap-5 sm:grid-cols-2 ${list.length > 3 ? "lg:grid-cols-4" : list.length === 2 ? "lg:grid-cols-2" : "lg:grid-cols-3"}`}>
+          <ul className="flex flex-wrap justify-center gap-5">
             {list.map((service) => (
-              <ServiceCard key={service.id} service={service} />
+              <ServiceCard
+                key={service.id}
+                service={service}
+                className="w-full sm:w-[calc(50%-0.625rem)] lg:w-[calc((100%-2.5rem)/3)]"
+              />
             ))}
           </ul>
         </Container>

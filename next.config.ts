@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
+import { siteEnv } from "./src/lib/env";
 
-const productionConfirmed =
-  process.env.NEXT_PUBLIC_SITE_ENV === "production" && Boolean(process.env.NEXT_PUBLIC_SITE_URL?.trim());
+const productionConfirmed = siteEnv.indexable;
 
 const isDev = process.env.NODE_ENV !== "production";
 

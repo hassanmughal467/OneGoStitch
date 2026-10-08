@@ -8,10 +8,10 @@ Set on **Production** only:
 
 | Name | Scope | Value rule |
 |---|---|---|
-| `NEXT_PUBLIC_SITE_ENV` | Production | `production` |
-| `NEXT_PUBLIC_SITE_URL` | Production | `https://` plus the confirmed hostname. Do not invent a domain. |
-| `QUOTE_STORE` | Production | `vercel-blob` |
-| `BLOB_READ_WRITE_TOKEN` | Production | Vercel Blob read/write token. Server only. |
+| `NEXT_PUBLIC_SITE_ENV` | Production | `production` if you are not using Vercel Production (`VERCEL_ENV=production` is enough on Vercel). |
+| `NEXT_PUBLIC_SITE_URL` | Production | Optional on Vercel if `VERCEL_PROJECT_PRODUCTION_URL` is the intended host. Set it when the public domain is a custom hostname. |
+| `QUOTE_STORE` | Production | Optional when `BLOB_READ_WRITE_TOKEN` is present (inferred as `vercel-blob`). Set `vercel-blob` explicitly if you prefer. |
+| `BLOB_READ_WRITE_TOKEN` | Production | Vercel Blob read/write token. Server only. Linking Blob in the Vercel project injects this. |
 | `QUOTE_ARTWORK_LINK_SECRET` | Production | 32+ random characters. Server only. |
 | `QUOTE_IP_SALT` | Production | Random string. Server only. |
 | `EMAIL_PROVIDER` | Production | `resend` when sending mail |

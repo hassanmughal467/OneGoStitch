@@ -25,7 +25,7 @@ export const deadlineLabels: Record<DeadlineMode, string> = {
 };
 
 export const digitalServices = ["embroidery-digitizing", "vector-tracing", "custom-logo-design"];
-export const physicalServices = ["custom-patches", "embroidered-apparel", "screen-printing", "dft-printing", "custom-hats"];
+export const physicalServices = ["custom-patches", "embroidered-apparel", "screen-printing", "dtf-printing", "custom-hats"];
 
 export const notSure = "Not sure, please advise";
 
@@ -67,7 +67,7 @@ export const serviceOptions = {
     supplyMode: ["OneGo Stitch supplies the garments", "I will supply the garments", notSure],
     inkColors: ["1 colour", "2 colours", "3 colours", "4 or more", notSure],
   },
-  "dft-printing": {
+  "dtf-printing": {
     productType: ["T-shirts", "Hoodies or sweatshirts", "Long sleeves", "Tote bags", "Mixed order"],
     placements: ["Full front", "Left chest", "Full back", "Sleeve", "Nape", "Multiple locations"],
     supplyMode: ["OneGo Stitch supplies the garments", "I will supply the garments", notSure],
@@ -175,7 +175,7 @@ export function isVector(service: string) {
   return service === "vector-tracing";
 }
 export function isApparel(service: string) {
-  return service === "embroidered-apparel" || service === "screen-printing" || service === "dft-printing";
+  return service === "embroidered-apparel" || service === "screen-printing" || service === "dtf-printing";
 }
 export function isScreenPrint(service: string) {
   return service === "screen-printing";
@@ -302,6 +302,7 @@ export function validateQuote(data: QuotePayload, ctx: ValidationContext = { fil
   if (!includes(contactMethods, data.contactMethod)) errors.contactMethod = "Choose how we should reply.";
   if (data.contactMethod !== "Email" && !data.phone.trim()) errors.phone = "Add a phone number with country code so we can reply by WhatsApp or phone.";
   else if (data.phone.trim() && !/^[+\d][\d\s().-]{5,}$/.test(data.phone.trim())) errors.phone = "Enter the number with its country code, for example +1 212 555 0100.";
+  data.service = canonicalServiceId(data.service);
   if (!quoteServiceIds.includes(data.service)) errors.service = "Select a service.";
   if (data.previousReference.trim() && !referencePattern.test(data.previousReference.trim())) {
     errors.previousReference = "Use the reference as it appears on your quote or invoice (letters, numbers and dashes).";
@@ -492,15 +493,19 @@ export function stepOneErrors(data: QuotePayload): QuoteFieldErrors {
   return out;
 }
 
-/** Public slug aliases. Stored service ids stay stable so old records still match. */
-const serviceParamAliases: Record<string, string> = {
-  "dtf-printing": "dft-printing",
+/** Legacy query and stored values. New submissions use the canonical id. */
+const serviceIdAliases: Record<string, string> = {
+  "dft-printing": "dtf-printing",
 };
+
+export function canonicalServiceId(value: string) {
+  return serviceIdAliases[value] ?? value;
+}
 
 /** Service id from a URL parameter, or "" when unknown. */
 export function resolveServiceParam(value: string | undefined | null) {
   if (!value) return "";
-  const id = serviceParamAliases[value] ?? value;
+  const id = canonicalServiceId(value);
   return quoteServiceIds.includes(id) ? id : "";
 }
 
