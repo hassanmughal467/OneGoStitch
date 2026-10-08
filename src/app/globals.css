@@ -5,8 +5,9 @@
   --color-charcoal: #141414;
   --color-ink: #141414;
   --color-ink-soft: #3a332e;
-  --color-blue: #d06a2c;
-  --color-blue-dark: #a04a16;
+  --color-blue: #a04a16;
+  --color-blue-dark: #7a3410;
+  --color-accent: #d06a2c;
   --color-copper: #a04a16;
   --color-copper-dark: #8a3e12;
   --color-card: #ffffff;
@@ -60,12 +61,14 @@ body {
 }
 
 .hoop-glow {
-  transform-origin: 467px 350px;
+  transform-box: fill-box;
+  transform-origin: center;
   animation: hoop-pulse 12s ease-in-out infinite;
 }
 
 .hoop-ring {
-  transform-origin: 467px 350px;
+  transform-box: fill-box;
+  transform-origin: center;
   animation: hoop-turn 48s linear infinite;
 }
 
@@ -119,7 +122,7 @@ body {
   }
   50% {
     opacity: 1;
-    transform: scale(1.04);
+    transform: scale(1.02);
   }
 }
 

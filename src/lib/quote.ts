@@ -36,7 +36,7 @@ export const serviceOptions = {
     formats: ["DST", "PES", "EXP", "JEF", "EMB", "OFM", "PXF", "Other or not sure"],
   },
   "vector-tracing": {
-    intendedUse: ["Screen printing", "DFT printing", "Embroidery preparation", "Signage or vinyl cutting", "Engraving", "Web or documents", "Several uses"],
+    intendedUse: ["Screen printing", "DTF printing", "Embroidery preparation", "Signage or vinyl cutting", "Engraving", "Web or documents", "Several uses"],
     formats: ["AI", "EPS", "SVG", "PDF", "Other or not sure"],
     fontsEditable: ["Yes, keep fonts editable", "No, outlined text is fine", notSure],
     reproductionMode: ["Exact reproduction of the original", "Cleaned-up redraw (fix rough edges and spacing)", notSure],
@@ -492,9 +492,16 @@ export function stepOneErrors(data: QuotePayload): QuoteFieldErrors {
   return out;
 }
 
+/** Public slug aliases. Stored service ids stay stable so old records still match. */
+const serviceParamAliases: Record<string, string> = {
+  "dtf-printing": "dft-printing",
+};
+
 /** Service id from a URL parameter, or "" when unknown. */
 export function resolveServiceParam(value: string | undefined | null) {
-  return value && quoteServiceIds.includes(value) ? value : "";
+  if (!value) return "";
+  const id = serviceParamAliases[value] ?? value;
+  return quoteServiceIds.includes(id) ? id : "";
 }
 
 /** Customer type from the `?customer=` parameter. Business is the default. */

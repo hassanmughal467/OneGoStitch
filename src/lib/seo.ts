@@ -56,8 +56,7 @@ export function organizationJsonLd() {
     name: site.name,
     ...(site.legalName ? { legalName: site.legalName } : {}),
     description: site.description,
-    address: { "@type": "PostalAddress", addressCountry: "PK" },
-    areaServed: ["US", "GB", "AU"],
+    areaServed: "Worldwide",
     ...(site.email ? { email: site.email } : {}),
     ...(site.phone ? { telephone: site.phone.href } : {}),
     ...(sameAs.length ? { sameAs } : {}),
@@ -75,7 +74,7 @@ export function serviceJsonLd(input: { name: string; description: string; path: 
     description: input.description,
     ...(url ? { url } : {}),
     ...(origin ? { provider: { "@id": `${origin}/#organization` } } : {}),
-    areaServed: ["US", "GB", "AU"],
+    areaServed: "Worldwide",
   };
 }
 

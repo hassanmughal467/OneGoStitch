@@ -33,9 +33,9 @@ export function ServiceView({ service }: { service: Service }) {
       <JsonLd data={faqJsonLd(service.faqs)} />
 
       {/* Hero */}
-      <section className="overflow-hidden border-b border-charcoal bg-hero text-card">
+      <section className="relative overflow-hidden border-b border-charcoal bg-hero text-card">
         <StitchField />
-        <Container className="relative z-10 grid items-center gap-10 py-12 sm:py-16 lg:grid-cols-12 lg:py-20">
+        <Container className="relative z-10 grid items-center gap-8 py-14 sm:py-16 lg:min-h-[34rem] lg:grid-cols-12 lg:gap-x-10 lg:py-20">
           <div className="lg:col-span-5">
             <nav aria-label="Breadcrumb" className="text-xs text-card/55">
               <ol className="flex flex-wrap gap-1.5">
@@ -71,8 +71,10 @@ export function ServiceView({ service }: { service: Service }) {
             <p className="mt-5 text-sm text-card/55">{service.kind === "digital" ? "You receive files by download." : "You receive finished products, shipped with tracking."}</p>
           </div>
           <div className="hidden lg:col-span-2 lg:block" aria-hidden />
-          <div className="overflow-hidden rounded-sm border border-line bg-card shadow-sm lg:col-span-5">
-            <ServiceVisual kind={service.visual} />
+          <div className="w-full overflow-hidden rounded-sm border border-line bg-card shadow-sm lg:col-span-5">
+            <div className="aspect-[520/300]">
+              <ServiceVisual kind={service.visual} />
+            </div>
           </div>
         </Container>
       </section>

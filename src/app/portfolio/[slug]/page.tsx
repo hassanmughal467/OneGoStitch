@@ -50,9 +50,9 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     <>
       <ViewTracker event={{ name: "portfolio_project_viewed", project: item.slug, service: item.service }} />
       <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Portfolio", path: "/portfolio" }, { name: item.title, path: `/portfolio/${item.slug}` }])} />
-      <section className="overflow-hidden border-b border-charcoal bg-hero py-12 text-card sm:py-16">
+      <section className="relative overflow-hidden border-b border-charcoal bg-hero py-14 text-card sm:py-16">
         <StitchField />
-        <Container className="relative z-10 grid gap-10 lg:grid-cols-12">
+        <Container className="relative z-10 grid items-center gap-8 lg:min-h-[28rem] lg:grid-cols-12 lg:gap-x-10">
           <div className="lg:col-span-5">
             <nav aria-label="Breadcrumb" className="text-xs text-card/55">
               <Link href="/portfolio" className="hover:text-card">

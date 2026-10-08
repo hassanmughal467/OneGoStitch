@@ -20,25 +20,28 @@ export const metadata = pageMetadata({
   path: "/",
 });
 
+const serviceOrder = ["embroidery-digitizing", "custom-patches", "vector-tracing", "custom-logo-design", "screen-printing", "dft-printing", "embroidered-apparel", "custom-hats"];
+
 export default function HomePage() {
   const showWork = hasPublishedPortfolio();
+  const orderedServices = [...services].sort((a, b) => serviceOrder.indexOf(a.id) - serviceOrder.indexOf(b.id));
 
   return (
     <>
       <JsonLd data={faqJsonLd([...buyingAnswers])} />
 
       {/* 1. Hero */}
-      <section className="overflow-hidden border-b border-charcoal bg-hero text-card">
+      <section className="relative overflow-hidden border-b border-charcoal bg-hero text-card">
         <StitchField />
-        <Container className="relative z-10 py-12 sm:py-16 lg:py-20">
-          <div className="grid items-start gap-8 lg:grid-cols-12 lg:gap-x-0">
+        <Container className="relative z-10 py-14 sm:py-16 lg:min-h-[36rem] lg:py-20">
+          <div className="grid items-center gap-8 lg:grid-cols-12 lg:gap-x-10">
             <div className="lg:col-span-5">
-              <Eyebrow className="text-copper-soft">Embroidery digitizing · Custom patches · Apparel · Caps</Eyebrow>
+              <Eyebrow className="text-copper-soft">Embroidery digitizing and custom patches</Eyebrow>
               <h1 className="mt-4 text-[2rem] font-semibold leading-[1.12] tracking-[-0.03em] text-card sm:text-[2.75rem] lg:text-[3.05rem]">
-                Embroidery Digitizing, Custom Patches &amp; Branded Apparel
+                Digitizing and patches, ready to produce
               </h1>
               <p className="mt-5 max-w-md text-base leading-7 text-card/80 sm:text-lg sm:leading-8">
-                From production-ready artwork to finished caps, patches and apparel. Custom work for print shops, brands, teams and individual orders.
+                Stitch files and custom patches for print shops, brands and teams. Apparel, caps, screen printing and DTF stay one click away.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <ButtonLink href="/quote" className="bg-card text-charcoal hover:bg-warm">Request a Quote</ButtonLink>
@@ -61,7 +64,7 @@ export default function HomePage() {
           <ul className="mt-10 grid gap-4 text-sm text-card/75 sm:grid-cols-3">
             {[
               ["Artwork reviewed", "We check every file for stitch or print suitability before quoting."],
-              ["Proof before production", "You approve a stitch preview or placement proof first."],
+              ["Preview before the final", "A stitch preview comes from the digitized draft. Bulk goods wait for proof approval."],
               ["Repeat orders on file", "Approved files stay with your reference for reorders."],
             ].map(([title, body]) => (
               <li key={title} className="border-l-2 border-copper-soft pl-3">
@@ -76,7 +79,7 @@ export default function HomePage() {
       {/* 2. Two entry points */}
       <section className="border-b border-line bg-card py-16 sm:py-20">
         <Container>
-          <SectionHeading eyebrow="Start here" title="Do you need files, or finished products?" lede="Both routes start with the same quote form. Choosing the right one tells us which details to ask for." />
+          <SectionHeading eyebrow="Start here" title="Choose a starting point" lede="Three groups, one quote form. Pick the group that matches the job so we ask only for the details that matter." />
           <div className="mt-10 grid gap-5 md:grid-cols-3">
             {routes.map((route, index) => (
               <Link
@@ -111,7 +114,7 @@ export default function HomePage() {
         <Container>
           <SectionHeading eyebrow="Services" title="Every service, one quote form" lede="Each service page explains what to send, what you receive, what affects the price and how revisions work." />
           <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((service) => (
+            {orderedServices.map((service) => (
               <ServiceCard key={service.id} service={service} />
             ))}
           </ul>

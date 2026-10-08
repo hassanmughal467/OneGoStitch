@@ -49,7 +49,8 @@ const nextConfig: NextConfig = {
     return [
       { source: "/services", destination: "/digitizing-artwork", permanent: true },
       { source: "/industries", destination: "/trade", permanent: true },
-      { source: "/vector", destination: "/screen-printing", permanent: false },
+      { source: "/vector", destination: "/vector-tracing", permanent: true },
+      { source: "/dft-printing", destination: "/dtf-printing", permanent: true },
     ];
   },
 };

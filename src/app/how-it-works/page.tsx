@@ -14,14 +14,14 @@ export const metadata = pageMetadata({
 const detail: Record<string, string[]> = {
   "01": ["Use the quote form; it asks only for what your service needs.", "Attach artwork if you have it. If not, describe it and we will advise.", "Give the date you need files or delivery."],
   "02": ["Digital work: price per file or per design, with formats listed.", "Products: unit price, decoration, and shipping to your postal code shown separately.", "Payment terms and quote validity are written on the quote."],
-  "03": ["Stitch preview or placement proof sent for your approval.", "Changes at this stage are part of the job.", "Approval locks the exact version for production."],
+  "03": ["Digital jobs: the preview is generated from the draft file, then you approve it.", "Product jobs: a placement proof is approved before bulk production.", "Changes at this stage are part of the job. Approval locks that version."],
   "04": ["Files: download link sent on payment.", "Products: production after approval and payment, then dispatch with tracking.", "Reorders reuse the approved specification under your reference."],
 };
 
 export default function Page() {
   return (
     <>
-      <PageHero eyebrow="How it works" title="From your artwork to files or finished products in four steps" lede="Nothing is produced until you approve a proof. Every quote states what is included, the price, the timing and how to pay." />
+      <PageHero eyebrow="How it works" title="From your artwork to files or finished products in four steps" lede="A digital draft is made so you can review a preview. Bulk goods are manufactured only after that proof and the payment on the quote. Every quote states what is included, the price, the timing and how to pay." />
       <section className="border-b border-line bg-card py-14 sm:py-16">
         <Container>
           <ol className="grid gap-5 md:grid-cols-2">
@@ -54,7 +54,7 @@ export default function Page() {
             <div className="rounded-sm border border-line bg-card p-6">
               <h3 className="text-lg font-semibold">Files (digitizing, vector, logo)</h3>
               <p className="mt-3 text-sm leading-6 text-ink-soft">
-                You receive files by download link after payment. Production correction is included if an embroidery file needs adjusting on your machine. Nothing is shipped.
+                After you accept the quote we prepare a draft, you approve the preview, and the final files arrive by download. A production correction is included if an embroidery file needs adjusting on your machine. Nothing is shipped.
               </p>
             </div>
             <div className="rounded-sm border border-line bg-card p-6">

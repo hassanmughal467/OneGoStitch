@@ -4,7 +4,23 @@ const osPath =
 export function StitchField() {
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
-      <svg className="stitch-stage h-full w-full" viewBox="0 0 1440 720" preserveAspectRatio="xMidYMid slice">
+      <svg className="absolute inset-0 h-full w-full" viewBox="0 0 1440 720" preserveAspectRatio="xMidYMid slice">
+        <rect width="1440" height="720" fill="#141414" />
+        <g className="digitizing-grid" stroke="#e38a45" strokeWidth="0.6">
+          {Array.from({ length: 25 }).map((_, i) => (
+            <line key={`v${i}`} x1={i * 60} y1="0" x2={i * 60} y2="720" />
+          ))}
+          {Array.from({ length: 13 }).map((_, i) => (
+            <line key={`h${i}`} x1="0" y1={i * 60} x2="1440" y2={i * 60} />
+          ))}
+        </g>
+      </svg>
+
+      <svg
+        className="stitch-stage absolute left-1/2 top-1/2 h-[min(32rem,78%)] w-auto max-w-[min(32rem,78%)] -translate-x-1/2 -translate-y-1/2"
+        viewBox="100 -20 734 740"
+        preserveAspectRatio="xMidYMid meet"
+      >
         <defs>
           <radialGradient id="hoop-glow" cx="50%" cy="45%" r="48%">
             <stop offset="0%" stopColor="#e38a45" stopOpacity="0.32" />
@@ -20,18 +36,7 @@ export function StitchField() {
           </filter>
         </defs>
 
-        <rect width="1440" height="720" fill="#141414" />
-
-        <g className="digitizing-grid" stroke="#e38a45" strokeWidth="0.6">
-          {Array.from({ length: 25 }).map((_, i) => (
-            <line key={`v${i}`} x1={i * 60} y1="0" x2={i * 60} y2="720" />
-          ))}
-          {Array.from({ length: 13 }).map((_, i) => (
-            <line key={`h${i}`} x1="0" y1={i * 60} x2="1440" y2={i * 60} />
-          ))}
-        </g>
-
-        <g className="sew-out" transform="translate(380 28) scale(0.9)">
+        <g className="sew-out">
           <circle className="hoop-glow" cx="467" cy="350" r="340" fill="url(#hoop-glow)" />
           <circle cx="467" cy="350" r="318" fill="none" stroke="#2a221c" strokeWidth="22" />
           <circle className="hoop-ring" cx="467" cy="350" r="304" fill="none" stroke="#c56a2e" strokeWidth="2.4" strokeDasharray="5 12" />

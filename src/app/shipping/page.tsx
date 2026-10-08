@@ -11,17 +11,17 @@ export const metadata = pageMetadata({
 export default function Page() {
   return (
     <>
-      <PageHero compact eyebrow="Help" title="Shipping & delivery" lede="Digital files are delivered by download. Physical orders ship from OneGo Stitch in the United States with tracking, and shipping is quoted separately for your destination." />
+      <PageHero compact eyebrow="Help" title="Shipping & delivery" lede="Digital files are delivered by download. Physical orders ship with tracking. The quote states the shipping cost and an estimated transit time for your destination. The dispatch origin is confirmed on that quote." />
       <section className="py-12 sm:py-14">
         <Container className="prose-site max-w-2xl leading-7 text-ink-soft">
           <h2 className="text-xl font-semibold text-charcoal">Digital files</h2>
           <p>Embroidery files, vector artwork and logo files are sent as a download link once payment is received. There is nothing to ship and no shipping charge.</p>
           <h2 className="mt-8 text-xl font-semibold text-charcoal">Physical orders</h2>
           <p>
-            Patches, apparel, printed goods and caps ship from the United States. Every product quote shows the shipping cost and an estimated transit time for your postal
-            code, separate from the production time. Once dispatched, you receive a tracking number.
+            Patches, apparel, printed goods and caps are shipped with tracking. Every product quote shows the shipping cost and an estimated transit time for your postal
+            code, separate from the production time. The dispatch location is the one written on that quote.
           </p>
-          <p>We ship to the United States, the United Kingdom, Australia and most other countries. Tell us the destination when you request a quote.</p>
+          <p>Tell us the destination country and postal code when you request a quote so shipping can be estimated. We do not publish a dispatch country until it is confirmed.</p>
           <h2 className="mt-8 text-xl font-semibold text-charcoal">Customs and duties</h2>
           <p>
             Import duties and taxes charged by your country are the responsibility of the recipient unless your quote states otherwise. Commercial invoices are included with each

@@ -1,6 +1,6 @@
-export type ServiceRoute = "digitizing" | "vector" | "products";
+export type ServiceRoute = "digitizing" | "printing" | "products";
 export type ServiceKind = "digital" | "physical";
-export type ServiceVisual = "digitizing" | "vector" | "logo" | "patches" | "apparel" | "printing" | "caps";
+export type ServiceVisual = "digitizing" | "vector" | "logo" | "patches" | "apparel" | "printing" | "dtf" | "caps";
 
 export type SpecGroup = {
   title: string;
@@ -37,15 +37,15 @@ export const routes = [
     id: "digitizing",
     href: "/digitizing-artwork",
     title: "Digitizing & Artwork",
-    body: "You receive files: embroidery files for your machine, or an original logo.",
-    items: ["Embroidery digitizing", "Custom logo design"],
+    body: "You receive files: a stitch file, a vector redraw, or an original logo.",
+    items: ["Embroidery digitizing", "Vector tracing", "Custom logo design"],
   },
   {
-    id: "vector",
+    id: "printing",
     href: "/screen-printing",
-    title: "Screen Printing",
-    body: "Screen printing, vector tracing and DTF prints from the same artwork.",
-    items: ["Screen printing", "Vector tracing", "DTF printing"],
+    title: "Screen Printing & DTF",
+    body: "Finished garments with screen printing or Direct-to-Film. These are separate services.",
+    items: ["Screen printing", "DTF printing"],
   },
   {
     id: "products",
@@ -120,7 +120,7 @@ export const services: ServicePage[] = [
   {
     id: "vector-tracing",
     href: "/vector-tracing",
-    route: "vector",
+    route: "digitizing",
     kind: "digital",
     visual: "vector",
     title: "Vector Tracing",
@@ -167,20 +167,20 @@ export const services: ServicePage[] = [
   },
   {
     id: "dft-printing",
-    href: "/dft-printing",
-    route: "vector",
+    href: "/dtf-printing",
+    route: "printing",
     kind: "physical",
-    visual: "printing",
+    visual: "dtf",
     title: "DTF Printing",
     short: "Full-colour DTF transfers printed onto apparel.",
     h1: "DTF Printing for Apparel & Merchandise",
     metaTitle: "DTF Printing for T-Shirts, Hoodies & Apparel",
     metaDescription:
-      "DFT printing (direct-to-film) for full-colour logos on t-shirts, hoodies and merchandise. Placement proof, garment options and shipping to the US, UK and Australia.",
+      "DTF printing (direct-to-film) for full-colour logos on t-shirts, hoodies and merchandise. Placement proof, garment options and shipping to the US, UK and Australia.",
     intro:
-      "DFT printing transfers a full-colour film onto the garment, so photographic logos and many-colour marks print without a screen for each ink. Send the artwork, garment style and quantities and we quote the transfer and the finished pieces.",
+      "Direct-to-Film (DTF) printing places a full-colour film onto a finished garment, so photographic logos and many-colour marks print without a screen for each ink. This page is for decorated garments, not loose transfers or gang sheets. Send the artwork, garment style and quantities and we quote the finished pieces.",
     buyers: ["Brands with full-colour or photographic logos", "Short runs that do not suit screen setup", "Shops outsourcing overflow print", "Teams and events ordering mixed sizes"],
-    deliverables: ["Printed garments in the styles, colors and sizes quoted", "Digital placement proof", "DFT transfer applied and cured", "Packed by size and shipped with tracking"],
+    deliverables: ["Printed garments in the styles, colors and sizes quoted", "Digital placement proof", "DTF transfer applied and cured", "Packed by size and shipped with tracking"],
     inputs: ["Artwork, ideally vector or a high-resolution PNG", "Garment style and colors", "Size breakdown and total quantity", "Print locations and sizes", "Delivery country and postal code"],
     specs: [
       {
@@ -193,7 +193,7 @@ export const services: ServicePage[] = [
         ],
       },
       {
-        title: "What DFT suits",
+        title: "What DTF suits",
         items: [
           { name: "Full colour", note: "Gradients and photographs without a screen per colour" },
           { name: "Mixed garments", note: "The same transfer can go on several garment colours" },
@@ -207,7 +207,7 @@ export const services: ServicePage[] = [
     turnaround: "Production timing is stated on the quote and starts after proof approval and payment. Shipping is quoted separately for your destination.",
     revisions: "Placement and size changes on the proof are included. Changes after transfers are printed are quoted as new production.",
     faqs: [
-      { q: "How is this different from screen printing?", a: "Screen printing uses a screen per ink colour and suits bold spot colours on larger runs. DFT printing is a colour film transfer and suits full-colour artwork and shorter runs." },
+      { q: "How is this different from screen printing?", a: "Screen printing uses a screen per ink colour and suits bold spot colours on larger runs. DTF printing is a colour film transfer and suits full-colour artwork and shorter runs." },
       { q: "Do I need a vector file?", a: "A vector is best. If you only have a JPG or PNG, send the largest version; we can quote vector tracing first when the file needs it." },
       { q: "Can I supply my own garments?", a: "Ask when you request the quote. If we accept customer-supplied garments, the terms are written on the quote." },
     ],
@@ -374,7 +374,7 @@ export const services: ServicePage[] = [
   {
     id: "screen-printing",
     href: "/screen-printing",
-    route: "vector",
+    route: "printing",
     kind: "physical",
     visual: "printing",
     title: "Screen Printing",
@@ -500,13 +500,13 @@ export const processSteps = [
   },
   {
     n: "03",
-    title: "Approve the proof",
-    body: "You approve a stitch preview or placement proof before anything is produced. Changes are made at this stage.",
+    title: "Approve the preview",
+    body: "For files, we digitize or redraw a draft, then you review the preview. For products, you approve a placement proof before bulk production. Changes are made at this stage.",
   },
   {
     n: "04",
     title: "Receive files or products",
-    body: "Files are delivered for download. Products are made after approval and payment, then shipped with tracking.",
+    body: "Approved files are delivered for download. Products are manufactured after proof approval and the payment on the quote, then shipped with tracking.",
   },
 ] as const;
 
@@ -521,7 +521,7 @@ export const buyingAnswers = [
   },
   {
     q: "How long does it take?",
-    a: "Each quote states production time and, for products, an estimated shipping time to your country. Production starts after proof approval and payment.",
+    a: "Each quote separates response, draft or production time, and shipping. Draft artwork is created so you can review a preview. Bulk product production starts after that proof is approved and the payment on the quote is received.",
   },
   {
     q: "What about revisions?",
@@ -532,8 +532,8 @@ export const buyingAnswers = [
 export const tradeBenefits = [
   { title: "Artwork kept on file", body: "Approved embroidery files, vectors and proofs stay attached to your quote reference, so repeat jobs start from the approved version." },
   { title: "Overflow and white-label work", body: "Digitizing, vector and production work delivered under your reference. We do not contact your customers." },
-  { title: "Consistent proofs", body: "Every job gets a stitch preview or placement proof before production, in a format you can forward to your customer." },
-  { title: "Trade pricing by agreement", body: "Trade terms are agreed after your first job based on volume and job mix, and confirmed in writing on each quote." },
+  { title: "Consistent proofs", body: "Digital jobs include a preview of the draft file. Product jobs include a placement proof before bulk production, in a format you can forward to your customer." },
+  { title: "Trade pricing by agreement", body: "Tell us the volume you expect. Terms are confirmed in writing on each quote. Volume does not by itself guarantee a discount." },
 ] as const;
 
 export const guides = [

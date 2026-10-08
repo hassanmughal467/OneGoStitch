@@ -9,7 +9,7 @@ import { site } from "@/lib/site";
 
 export const metadata = pageMetadata({
   title: "About",
-  description: "OneGo Stitch is a US-based embroidery digitizing and custom products company working with print shops, brands and teams in the US, UK and Australia.",
+  description: "OneGo Stitch provides embroidery digitizing, vector artwork and custom decorated products for print shops, brands and teams.",
   path: "/about",
 });
 
@@ -47,10 +47,10 @@ export default function Page() {
                 trade customer&apos;s clients.
               </p>
             </div>
-            <h2 className="mt-10 text-2xl font-semibold">Where we are</h2>
+            <h2 className="mt-10 text-2xl font-semibold">Who we work with</h2>
             <p className="mt-4 leading-7 text-ink-soft">
-              OneGo Stitch is in {site.address.country}. We work in English with customers in the United States, the United Kingdom, Australia and elsewhere, and we
-              quote shipping to your postal code for every product order. We do not operate offices or warehouses outside {site.address.country}.
+              We work in English and quote shipping to the postal code on each product order. A registered address, production location and dispatch origin are published
+              only after they are confirmed. Serving a country is not the same as having an office there.
             </p>
           </div>
           <aside className="lg:col-span-5">

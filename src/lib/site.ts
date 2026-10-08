@@ -59,11 +59,14 @@ export const site = {
   legalName: clean(process.env.NEXT_PUBLIC_LEGAL_NAME),
   tagline: "Embroidery Digitizing, Custom Patches & Branded Apparel",
   description:
-    "Embroidery digitizing, vector tracing, DFT printing, logo design, custom patches, embroidered apparel, screen printing and caps for print shops, brands, teams and individual orders.",
-  /** Truthful location statement. Kept out of the hero; used on About, Contact and footer. */
-  location: "Based in the United States, working with customers in the United States, the United Kingdom, Australia and worldwide.",
-  country: "United States",
-  markets: ["United States", "United Kingdom", "Australia"],
+    "Embroidery digitizing, vector tracing, DTF printing, logo design, custom patches, embroidered apparel, screen printing and caps for print shops, brands, teams and individual orders.",
+  /**
+   * Public location line. Country is not stated until the owner sets
+   * NEXT_PUBLIC_ADDRESS_COUNTRY. Markets served are not an office address.
+   */
+  location: "Embroidery digitizing, custom patches and decorated apparel for customers who order from anywhere we can quote.",
+  country: clean(process.env.NEXT_PUBLIC_ADDRESS_COUNTRY),
+  markets: [] as string[],
   url: siteEnv.baseUrl,
   email: validEmail(process.env.NEXT_PUBLIC_CONTACT_EMAIL),
   phone,
@@ -78,7 +81,7 @@ export const site = {
   address: {
     line1: clean(process.env.NEXT_PUBLIC_ADDRESS_LINE1),
     city: clean(process.env.NEXT_PUBLIC_ADDRESS_CITY),
-    country: "United States",
+    country: clean(process.env.NEXT_PUBLIC_ADDRESS_COUNTRY),
   },
   social: {
     instagram: validUrl(process.env.NEXT_PUBLIC_INSTAGRAM_URL, "instagram.com"),

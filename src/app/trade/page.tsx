@@ -43,9 +43,9 @@ export default function Page() {
     <>
       <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "For Trade", path: "/trade" }])} />
       <JsonLd data={faqJsonLd(faqs)} />
-      <section className="overflow-hidden border-b border-charcoal bg-hero text-card">
+      <section className="relative overflow-hidden border-b border-charcoal bg-hero text-card">
         <StitchField />
-        <Container className="relative z-10 grid gap-10 py-12 sm:py-16 lg:grid-cols-12 lg:py-20">
+        <Container className="relative z-10 grid items-center gap-8 py-14 sm:py-16 lg:min-h-[34rem] lg:grid-cols-12 lg:gap-x-10 lg:py-20">
           <div className="lg:col-span-7">
             <Eyebrow className="text-copper-soft">For trade and wholesale</Eyebrow>
             <h1 className="mt-4 text-[2rem] font-semibold leading-[1.1] tracking-[-0.03em] sm:text-5xl">Production partner for print shops, decorators and agencies</h1>
@@ -102,7 +102,7 @@ export default function Page() {
           <ol className="mt-8 grid gap-5 md:grid-cols-3">
             {[
               ["Submit a job", "Use the quote form with your shop name and select Business. Attach artwork and your customer's specification. You receive an itemized quote under your reference."],
-              ["Approve and produce", "You forward our stitch preview or placement proof to your customer, approve it, and production or digitizing starts. Files are delivered to you, not your customer."],
+              ["Approve and produce", "For files, we prepare a draft and you approve the preview before the final file is released. For products, you approve the proof and then bulk production starts. Files and goods are delivered to you, not your customer."],
               ["Reorder", "Quote the previous reference. The approved file and specification are reused, and we reconfirm price, availability and any changes before running the job."],
             ].map(([title, body], i) => (
               <li key={title} className="rounded-sm border border-line bg-card p-6">

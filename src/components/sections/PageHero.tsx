@@ -21,12 +21,12 @@ export function PageHero({
   return (
     <section
       className={cn(
-        "overflow-hidden border-b border-charcoal bg-hero text-card",
-        compact ? "py-12 sm:py-14" : "py-14 sm:py-20",
+        "relative overflow-hidden border-b border-charcoal bg-hero text-card",
+        compact ? "py-12 sm:py-14" : "flex min-h-[22rem] items-center py-14 sm:min-h-[26rem] sm:py-20",
       )}
     >
       <StitchField />
-      <Container className="relative z-10">
+      <Container className="relative z-10 w-full">
         {eyebrow ? <Eyebrow className="text-copper-soft">{eyebrow}</Eyebrow> : null}
         <h1 className="mt-3 max-w-4xl text-4xl font-semibold tracking-[-0.03em] sm:text-5xl">{title}</h1>
         {lede ? <p className="mt-5 max-w-2xl text-lg leading-8 text-card/75">{lede}</p> : null}

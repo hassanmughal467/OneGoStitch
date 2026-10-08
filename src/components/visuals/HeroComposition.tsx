@@ -20,7 +20,7 @@ export function HeroComposition() {
           <PatchSwatches />
         </div>
       </div>
-      <figcaption className="mt-3 text-center text-[0.72rem] text-stone lg:text-left">
+      <figcaption className="mt-3 inline-block rounded-sm bg-charcoal px-2 py-1 text-left text-sm leading-5 text-[#D0C7BF]">
         Illustrated overview of the artwork-to-stitch process, cap embroidery and patch types.
       </figcaption>
     </figure>

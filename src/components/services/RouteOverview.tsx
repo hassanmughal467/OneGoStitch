@@ -15,15 +15,15 @@ export function RouteOverview({ route, lede, points }: { route: ServiceRoute; le
   return (
     <>
       <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: info.title, path: info.href }])} />
-      <section className="overflow-hidden border-b border-charcoal bg-hero text-card">
+      <section className="relative overflow-hidden border-b border-charcoal bg-hero text-card">
         <StitchField />
-        <Container className="relative z-10 grid gap-10 py-12 sm:py-16 lg:grid-cols-12 lg:py-20">
+        <Container className="relative z-10 grid items-center gap-8 py-14 sm:py-16 lg:min-h-[34rem] lg:grid-cols-12 lg:gap-x-10 lg:py-20">
           <div className="lg:col-span-5">
             <Eyebrow className="text-copper-soft">
               {route === "digitizing"
                 ? "Files delivered by download"
-                : route === "vector"
-                  ? "Screen printing, vector files and DTF prints"
+                : route === "printing"
+                  ? "Screen printing and Direct-to-Film on finished garments"
                   : "Products made to order and shipped"}
             </Eyebrow>
             <h1 className="mt-4 text-[2rem] font-semibold leading-[1.1] tracking-[-0.03em] sm:text-5xl">{info.title}</h1>

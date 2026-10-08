@@ -550,9 +550,9 @@ export function QuoteForm({ initialService = "", initialCustomerType = "Business
                     </option>
                   ))}
                 </optgroup>
-                <optgroup label="Screen printing (artwork and garments)">
+                <optgroup label="Printing (finished garments)">
                   {services
-                    .filter((s) => s.route === "vector")
+                    .filter((s) => s.route === "printing")
                     .slice()
                     .sort((a, b) => (a.id === "screen-printing" ? -1 : b.id === "screen-printing" ? 1 : 0))
                     .map((item) => (

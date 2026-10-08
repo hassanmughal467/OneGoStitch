@@ -24,8 +24,9 @@ export default function Page() {
           </p>
           <h2 className="mt-8 text-xl font-semibold text-charcoal">Proofs</h2>
           <p>
-            Nothing is produced until you approve a stitch preview or placement proof. Approval applies to the exact version sent. A change after approval requires a new proof
-            and may change the price and date.
+            Digital work: after you accept the quote, we prepare a draft and send a preview. You approve that preview before the final file is released. Physical work: bulk
+            production starts after you approve the placement or stitch proof and the payment stated on the quote. Approval applies to the exact version sent. A change after
+            approval requires a new proof and may change the price and date.
           </p>
           <h2 className="mt-8 text-xl font-semibold text-charcoal">Payment</h2>
           <p>
@@ -51,7 +52,9 @@ export default function Page() {
           </p>
           <h2 className="mt-8 text-xl font-semibold text-charcoal">Business details</h2>
           <p>
-            {site.legalName ?? site.name} is based in {site.address.country}. {site.email ? `Questions about these terms: ${site.email}.` : "Use the contact page for questions about these terms."}
+            {site.legalName ? `${site.legalName} (${site.name})` : site.name}
+            {site.address.country ? ` lists its location as ${site.address.country}.` : " will publish a registered location once it is confirmed."}{" "}
+            {site.email ? `Questions about these terms: ${site.email}.` : "Use the contact page for questions about these terms."}
           </p>
         </Container>
       </section>

@@ -17,6 +17,8 @@ export function ServiceVisual({ kind }: { kind: VisualKind }) {
       return <PlacementDiagram />;
     case "printing":
       return <PrintLocations />;
+    case "dtf":
+      return <DtfTransfer />;
     case "caps":
       return <CapPuff id="svc-cap" />;
   }
@@ -172,6 +174,37 @@ export function PrintLocations() {
         ))}
         <text x="0" y="230" fontSize="10.5" fontWeight="600" letterSpacing="1.4" fill="#A04A16">
           ONE SCREEN PER INK COLOR
+        </text>
+      </g>
+    </svg>
+  );
+}
+
+export function DtfTransfer() {
+  return (
+    <svg viewBox="0 0 520 300" className="h-full w-full" role="img" aria-label="Illustration of a DTF colour film being transferred onto a t-shirt">
+      <rect width="520" height="300" fill="#F7F5EF" />
+      <g transform="translate(36 28)">
+        <path d="M60 20 L100 6 C110 20 130 20 140 6 L180 20 L200 80 L170 92 L170 230 H70 V92 L40 80 Z" fill="#1a1a1a" />
+        <path d="M100 6 L120 38 L140 6" fill="none" stroke="#31383F" strokeWidth="2" />
+        <rect x="82" y="100" width="76" height="76" rx="3" fill="#141414" />
+        <circle cx="120" cy="138" r="22" fill="#A04A16" />
+        <circle cx="120" cy="138" r="10" fill="#E38A45" />
+        <text x="52" y="256" fontSize="10.5" fontWeight="600" letterSpacing="1.4" fill="#A04A16">
+          GARMENT · FULL-COLOUR PRINT
+        </text>
+      </g>
+      <g transform="translate(290 48)">
+        <rect x="8" y="18" width="168" height="118" rx="4" fill="#FFFFFF" stroke="#E7E7E2" />
+        <rect x="20" y="30" width="144" height="94" fill="#F4ECE4" stroke="#D06A2C" strokeWidth="1.2" strokeDasharray="4 3" />
+        <g transform="translate(68 52)">
+          <rect width="48" height="48" fill="#141414" />
+          <circle cx="24" cy="24" r="14" fill="#A04A16" />
+          <circle cx="24" cy="24" r="6" fill="#E38A45" />
+        </g>
+        <path d="M176 18 L196 4 L196 122 L176 136 Z" fill="#F6F1EA" stroke="#E7E7E2" />
+        <text x="8" y="168" fontSize="10.5" fontWeight="600" letterSpacing="1.4" fill="#A04A16">
+          DTF FILM · HEAT TRANSFER
         </text>
       </g>
     </svg>

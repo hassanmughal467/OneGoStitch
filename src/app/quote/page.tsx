@@ -12,7 +12,7 @@ import { contactChannels } from "@/lib/site";
 
 export const metadata = pageMetadata({
   title: "Request a quote",
-  description: "Request a quote for embroidery digitizing, vector tracing, DFT printing, logo design, custom patches, embroidered apparel, screen printing or caps.",
+  description: "Request a quote for embroidery digitizing, vector tracing, DTF printing, logo design, custom patches, embroidered apparel, screen printing or caps.",
   path: "/quote",
   // Transactional page: excluded from the sitemap and robots, never indexed.
   noindex: true,
@@ -33,7 +33,9 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ s
         title={service ? `Quote for ${service.title.toLowerCase()}` : "Tell us about your job"}
         lede={
           !status.online
-            ? "Online quote requests are paused. The contact details below still reach the company."
+            ? contactChannels.hasAny
+              ? "Online quote requests are paused. Use the contact method on this page."
+              : "Online quote requests are paused until intake is available again."
             : service
               ? `${service.kind === "digital" ? "You receive files by download." : "You receive finished products, shipped with tracking."} Two short steps; attach artwork if you have it.`
               : "Two short steps: who you are and which service, then only the details that service needs. Attach artwork if you have it."

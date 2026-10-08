@@ -34,9 +34,9 @@ export function GuideLayout({
     <>
       <JsonLd data={articleJsonLd({ headline: title, description, path: href, datePublished: guide?.datePublished ?? "2026-09-12" })} />
       <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Guides", path: "/resources" }, { name: title, path: href }])} />
-      <section className="overflow-hidden border-b border-charcoal bg-hero py-12 text-card sm:py-16">
+      <section className="relative overflow-hidden border-b border-charcoal bg-hero py-14 text-card sm:py-16">
         <StitchField />
-        <Container className="relative z-10 grid gap-10 lg:grid-cols-12">
+        <Container className="relative z-10 grid items-center gap-8 lg:min-h-[28rem] lg:grid-cols-12 lg:gap-x-10">
           <div className="lg:col-span-5">
             <nav aria-label="Breadcrumb" className="text-xs text-card/55">
               <Link href="/resources" className="hover:text-card">
@@ -51,7 +51,9 @@ export function GuideLayout({
           {visual ? (
             <>
               <div className="hidden lg:col-span-2 lg:block" aria-hidden />
-              <div className="overflow-hidden rounded-sm border border-line bg-card lg:col-span-5">{visual}</div>
+              <div className="w-full overflow-hidden rounded-sm border border-line bg-card lg:col-span-5">
+                <div className="aspect-[520/300]">{visual}</div>
+              </div>
             </>
           ) : null}
         </Container>

@@ -36,6 +36,8 @@ describe("service and customer preselection", () => {
   it("accepts known service ids and ignores unknown ones", () => {
     expect(resolveServiceParam("embroidery-digitizing")).toBe("embroidery-digitizing");
     expect(resolveServiceParam("custom-hats")).toBe("custom-hats");
+    expect(resolveServiceParam("dtf-printing")).toBe("dft-printing");
+    expect(resolveServiceParam("dft-printing")).toBe("dft-printing");
     expect(resolveServiceParam("not-a-service")).toBe("");
     expect(resolveServiceParam(undefined)).toBe("");
   });

@@ -39,7 +39,8 @@ export function Footer() {
         </div>
         <div className="mt-12 flex flex-col gap-4 border-t border-card/10 pt-6 text-xs text-card/50 sm:flex-row sm:justify-between">
           <p>
-            © {site.copyrightYear} {site.legalName ?? site.name}. {site.address.country}.
+            © {site.copyrightYear} {site.legalName ?? site.name}
+            {site.address.country ? `. ${site.address.country}.` : "."}
           </p>
           <div className="flex flex-wrap gap-4">
             {legalNav.map((item) => (
