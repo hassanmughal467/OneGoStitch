@@ -7,6 +7,7 @@ import { services } from "@/lib/services";
 export const quoteCtaByService: Record<string, string> = {
   "embroidery-digitizing": "Request an embroidery digitizing quote",
   "vector-tracing": "Request a vector tracing quote",
+  "dft-printing": "Request a DTF printing quote",
   "custom-logo-design": "Request a logo design quote",
   "custom-patches": "Request a custom patch quote",
   "embroidered-apparel": "Request an embroidered apparel quote",

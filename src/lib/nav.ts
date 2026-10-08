@@ -16,8 +16,16 @@ export const digitizingNav: NavGroup = {
   label: "Digitizing & Artwork",
   children: [
     { href: "/embroidery-digitizing", label: "Embroidery Digitizing" },
-    { href: "/vector-tracing", label: "Vector Tracing" },
     { href: "/custom-logo-design", label: "Custom Logo Design" },
+  ],
+};
+
+export const printingNav: NavGroup = {
+  href: "/screen-printing",
+  label: "Screen Printing",
+  children: [
+    { href: "/vector-tracing", label: "Vector Tracing" },
+    { href: "/dft-printing", label: "DTF Printing" },
   ],
 };
 
@@ -27,7 +35,6 @@ export const productsNav: NavGroup = {
   children: [
     { href: "/custom-patches", label: "Custom Patches" },
     { href: "/embroidered-apparel", label: "Embroidered Apparel" },
-    { href: "/screen-printing", label: "Screen Printing" },
     { href: "/custom-hats", label: "Custom Hats & Caps" },
   ],
 };
@@ -50,7 +57,12 @@ export const primaryLinks: NavItem[] = [
   { href: "/contact", label: "Contact" },
 ];
 
-export const footerServices: NavItem[] = [...digitizingNav.children, ...productsNav.children];
+export const footerServices: NavItem[] = [
+  ...digitizingNav.children,
+  { href: printingNav.href, label: printingNav.label },
+  ...printingNav.children,
+  ...productsNav.children,
+];
 
 export const footerHelp: NavItem[] = [
   { href: "/how-it-works", label: "How it works" },

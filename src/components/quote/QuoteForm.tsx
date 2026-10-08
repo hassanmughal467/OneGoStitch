@@ -550,6 +550,17 @@ export function QuoteForm({ initialService = "", initialCustomerType = "Business
                     </option>
                   ))}
                 </optgroup>
+                <optgroup label="Screen printing (artwork and garments)">
+                  {services
+                    .filter((s) => s.route === "vector")
+                    .slice()
+                    .sort((a, b) => (a.id === "screen-printing" ? -1 : b.id === "screen-printing" ? 1 : 0))
+                    .map((item) => (
+                      <option key={item.id} value={item.id}>
+                        {item.title}
+                      </option>
+                    ))}
+                </optgroup>
                 <optgroup label="Custom products (shipped to you)">
                   {services.filter((s) => s.route === "products").map((item) => (
                     <option key={item.id} value={item.id}>
@@ -712,8 +723,8 @@ export function QuoteForm({ initialService = "", initialCustomerType = "Business
               ) : null}
               {apparel ? (
                 <>
-                  <ChoiceGroup uid={uid} id="placements" legend="Decoration locations" options={(opts[values.service as "embroidered-apparel" | "screen-printing"]).placements} value={values.placements} onChange={(v) => update("placements", v)} multiple required error={errors.placements} className="sm:col-span-2" />
-                  <ChoiceGroup uid={uid} id="supplyMode" legend="Who supplies the garments?" options={(opts[values.service as "embroidered-apparel" | "screen-printing"]).supplyMode} value={values.supplyMode} onChange={(v) => update("supplyMode", v)} required error={errors.supplyMode} className="sm:col-span-2" />
+                  <ChoiceGroup uid={uid} id="placements" legend="Decoration locations" options={(opts[values.service as "embroidered-apparel" | "screen-printing" | "dft-printing"]).placements} value={values.placements} onChange={(v) => update("placements", v)} multiple required error={errors.placements} className="sm:col-span-2" />
+                  <ChoiceGroup uid={uid} id="supplyMode" legend="Who supplies the garments?" options={(opts[values.service as "embroidered-apparel" | "screen-printing" | "dft-printing"]).supplyMode} value={values.supplyMode} onChange={(v) => update("supplyMode", v)} required error={errors.supplyMode} className="sm:col-span-2" />
                 </>
               ) : null}
             </>

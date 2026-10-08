@@ -42,7 +42,7 @@ const groups = [
 export default function Page() {
   return (
     <>
-      <PageHero compact eyebrow="Help" title="File format guide" lede="Which files to send and which files you receive." dark={false} />
+      <PageHero compact eyebrow="Help" title="File format guide" lede="Which files to send and which files you receive." />
       <section className="py-12 sm:py-14">
         <Container className="max-w-3xl">
           {groups.map((group) => (

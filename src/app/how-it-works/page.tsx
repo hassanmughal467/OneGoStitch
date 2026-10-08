@@ -21,7 +21,7 @@ const detail: Record<string, string[]> = {
 export default function Page() {
   return (
     <>
-      <PageHero eyebrow="How it works" title="From your artwork to files or finished products in four steps" lede="Nothing is produced until you approve a proof. Every quote states what is included, the price, the timing and how to pay." dark={false} />
+      <PageHero eyebrow="How it works" title="From your artwork to files or finished products in four steps" lede="Nothing is produced until you approve a proof. Every quote states what is included, the price, the timing and how to pay." />
       <section className="border-b border-line bg-card py-14 sm:py-16">
         <Container>
           <ol className="grid gap-5 md:grid-cols-2">

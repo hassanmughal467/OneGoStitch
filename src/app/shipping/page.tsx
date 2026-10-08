@@ -11,7 +11,7 @@ export const metadata = pageMetadata({
 export default function Page() {
   return (
     <>
-      <PageHero compact eyebrow="Help" title="Shipping & delivery" lede="Digital files are delivered by download. Physical orders ship from OneGo Stitch in the United States with tracking, and shipping is quoted separately for your destination." dark={false} />
+      <PageHero compact eyebrow="Help" title="Shipping & delivery" lede="Digital files are delivered by download. Physical orders ship from OneGo Stitch in the United States with tracking, and shipping is quoted separately for your destination." />
       <section className="py-12 sm:py-14">
         <Container className="prose-site max-w-2xl leading-7 text-ink-soft">
           <h2 className="text-xl font-semibold text-charcoal">Digital files</h2>

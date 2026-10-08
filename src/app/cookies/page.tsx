@@ -7,7 +7,7 @@ export const metadata = pageMetadata({ title: "Cookies", description: "Which coo
 export default function Page() {
   return (
     <>
-      <PageHero compact eyebrow="Policy" title="Cookies" lede="This website does not use advertising or tracking cookies." dark={false} />
+      <PageHero compact eyebrow="Policy" title="Cookies" lede="This website does not use advertising or tracking cookies." />
       <section className="py-12 sm:py-14">
         <Container className="prose-site max-w-2xl leading-7 text-ink-soft">
           <p>

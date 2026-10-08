@@ -21,7 +21,7 @@ const help = [
 export default function Page() {
   return (
     <>
-      <PageHero eyebrow="Guides" title="Short, practical reading before you order" lede="Written from production experience to help you specify the right product and send artwork that works first time." dark={false} />
+      <PageHero eyebrow="Guides" title="Short, practical reading before you order" lede="Written from production experience to help you specify the right product and send artwork that works first time." />
       <section className="border-b border-line bg-card py-14 sm:py-16">
         <Container>
           <ul className="grid gap-5 sm:grid-cols-2">

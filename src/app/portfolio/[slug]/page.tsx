@@ -10,6 +10,7 @@ import { ServiceCard } from "@/components/services/ServiceCard";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow, SectionHeading } from "@/components/ui/SectionHeading";
+import { StitchField } from "@/components/visuals/StitchField";
 import { similarProjectCta } from "@/lib/copy";
 import { adjacentProjects, displayName, getPortfolioItem, publishedPortfolio, quoteSimilarHref } from "@/lib/portfolio";
 import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
@@ -49,62 +50,63 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     <>
       <ViewTracker event={{ name: "portfolio_project_viewed", project: item.slug, service: item.service }} />
       <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Portfolio", path: "/portfolio" }, { name: item.title, path: `/portfolio/${item.slug}` }])} />
-      <section className="border-b border-line bg-warm py-12 sm:py-16">
-        <Container className="grid gap-10 lg:grid-cols-12">
+      <section className="overflow-hidden border-b border-charcoal bg-hero py-12 text-card sm:py-16">
+        <StitchField />
+        <Container className="relative z-10 grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <nav aria-label="Breadcrumb" className="text-xs text-stone">
-              <Link href="/portfolio" className="hover:text-charcoal">
+            <nav aria-label="Breadcrumb" className="text-xs text-card/55">
+              <Link href="/portfolio" className="hover:text-card">
                 Portfolio
               </Link>{" "}
               / {item.title}
             </nav>
-            <Eyebrow className="mt-4">{displayName(item)}</Eyebrow>
+            <Eyebrow className="mt-4 text-copper-soft">{displayName(item)}</Eyebrow>
             <h1 className="mt-3 text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">{item.title}</h1>
-            <p className="mt-4 leading-7 text-ink-soft">{item.problem || item.brief}</p>
-            {item.solution ? <p className="mt-3 leading-7 text-ink-soft">{item.solution}</p> : null}
+            <p className="mt-4 leading-7 text-card/75">{item.problem || item.brief}</p>
+            {item.solution ? <p className="mt-3 leading-7 text-card/70">{item.solution}</p> : null}
             <dl className="mt-6 grid grid-cols-2 gap-4 text-sm">
               <div>
-                <dt className="text-stone">Service</dt>
+                <dt className="text-card/55">Service</dt>
                 <dd className="font-medium">{service?.title}</dd>
               </div>
               {item.placement ? (
                 <div>
-                  <dt className="text-stone">Placement</dt>
+                  <dt className="text-card/55">Placement</dt>
                   <dd className="font-medium">{item.placement}</dd>
                 </div>
               ) : null}
               {item.material ? (
                 <div>
-                  <dt className="text-stone">Material</dt>
+                  <dt className="text-card/55">Material</dt>
                   <dd className="font-medium">{item.material}</dd>
                 </div>
               ) : null}
               {item.finishedSize ? (
                 <div>
-                  <dt className="text-stone">Finished size</dt>
+                  <dt className="text-card/55">Finished size</dt>
                   <dd className="font-medium">{item.finishedSize}</dd>
                 </div>
               ) : null}
               {item.decorationMethod ? (
                 <div>
-                  <dt className="text-stone">Decoration</dt>
+                  <dt className="text-card/55">Decoration</dt>
                   <dd className="font-medium">{item.decorationMethod}</dd>
                 </div>
               ) : null}
               {item.formatsDelivered.length ? (
                 <div>
-                  <dt className="text-stone">Formats delivered</dt>
+                  <dt className="text-card/55">Formats delivered</dt>
                   <dd className="font-medium">{item.formatsDelivered.join(", ")}</dd>
                 </div>
               ) : null}
               {item.quantity ? (
                 <div>
-                  <dt className="text-stone">Quantity</dt>
+                  <dt className="text-card/55">Quantity</dt>
                   <dd className="font-medium">{item.quantity}</dd>
                 </div>
               ) : null}
             </dl>
-            <ButtonLink href={quoteHref} className="mt-8">
+            <ButtonLink href={quoteHref} className="mt-8 bg-card text-charcoal hover:bg-warm">
               {similarProjectCta(item.service)}
             </ButtonLink>
           </div>

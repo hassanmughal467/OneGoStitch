@@ -25,7 +25,7 @@ export const deadlineLabels: Record<DeadlineMode, string> = {
 };
 
 export const digitalServices = ["embroidery-digitizing", "vector-tracing", "custom-logo-design"];
-export const physicalServices = ["custom-patches", "embroidered-apparel", "screen-printing", "custom-hats"];
+export const physicalServices = ["custom-patches", "embroidered-apparel", "screen-printing", "dft-printing", "custom-hats"];
 
 export const notSure = "Not sure, please advise";
 
@@ -36,7 +36,7 @@ export const serviceOptions = {
     formats: ["DST", "PES", "EXP", "JEF", "EMB", "OFM", "PXF", "Other or not sure"],
   },
   "vector-tracing": {
-    intendedUse: ["Screen printing", "Embroidery preparation", "Signage or vinyl cutting", "Engraving", "Web or documents", "Several uses"],
+    intendedUse: ["Screen printing", "DFT printing", "Embroidery preparation", "Signage or vinyl cutting", "Engraving", "Web or documents", "Several uses"],
     formats: ["AI", "EPS", "SVG", "PDF", "Other or not sure"],
     fontsEditable: ["Yes, keep fonts editable", "No, outlined text is fine", notSure],
     reproductionMode: ["Exact reproduction of the original", "Cleaned-up redraw (fix rough edges and spacing)", notSure],
@@ -66,6 +66,11 @@ export const serviceOptions = {
     placements: ["Full front", "Left chest", "Full back", "Sleeve", "Nape", "Multiple locations"],
     supplyMode: ["OneGo Stitch supplies the garments", "I will supply the garments", notSure],
     inkColors: ["1 colour", "2 colours", "3 colours", "4 or more", notSure],
+  },
+  "dft-printing": {
+    productType: ["T-shirts", "Hoodies or sweatshirts", "Long sleeves", "Tote bags", "Mixed order"],
+    placements: ["Full front", "Left chest", "Full back", "Sleeve", "Nape", "Multiple locations"],
+    supplyMode: ["OneGo Stitch supplies the garments", "I will supply the garments", notSure],
   },
 } as const;
 
@@ -170,7 +175,7 @@ export function isVector(service: string) {
   return service === "vector-tracing";
 }
 export function isApparel(service: string) {
-  return service === "embroidered-apparel" || service === "screen-printing";
+  return service === "embroidered-apparel" || service === "screen-printing" || service === "dft-printing";
 }
 export function isScreenPrint(service: string) {
   return service === "screen-printing";

@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { Logo } from "@/components/brand/Logo";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { digitizingNav, primaryLinks, productsNav, studioNav, type NavGroup } from "@/lib/nav";
+import { digitizingNav, primaryLinks, printingNav, productsNav, studioNav, type NavGroup } from "@/lib/nav";
 import { cn } from "@/lib/utils";
 
 export function Header() {
@@ -84,6 +84,7 @@ export function Header() {
 
         <nav ref={navRef} className="hidden items-center gap-0.5 lg:flex" aria-label="Primary">
           <DesktopGroup group={digitizingNav} pathname={pathname} />
+          <DesktopGroup group={printingNav} pathname={pathname} />
           <DesktopGroup group={productsNav} pathname={pathname} />
           {primaryLinks.map((item) => (
             <Link
@@ -132,6 +133,7 @@ export function Header() {
       <div id="mobile-nav" hidden={!open} className="border-t border-line bg-warm lg:hidden">
         <Container as="nav" className="flex max-h-[calc(100vh-4.25rem)] flex-col gap-1 overflow-y-auto py-4">
           <MobileGroup group={digitizingNav} />
+          <MobileGroup group={printingNav} />
           <MobileGroup group={productsNav} />
           {primaryLinks.map((item) => (
             <Link key={item.href} href={item.href} className="border-b border-line py-3 text-base font-medium">

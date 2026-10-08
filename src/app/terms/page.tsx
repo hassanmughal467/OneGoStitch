@@ -9,7 +9,7 @@ export const metadata = pageMetadata({ title: "Terms of Service", description: "
 export default function Page() {
   return (
     <>
-      <PageHero compact eyebrow="Policy" title="Terms of service" lede="These terms cover how quotes, artwork, proofs, payment and delivery work. The quote you approve forms the contract for each job." dark={false} />
+      <PageHero compact eyebrow="Policy" title="Terms of service" lede="These terms cover how quotes, artwork, proofs, payment and delivery work. The quote you approve forms the contract for each job." />
       <section className="py-12 sm:py-14">
         <Container className="prose-site max-w-2xl leading-7 text-ink-soft">
           <h2 className="text-xl font-semibold text-charcoal">Quotes</h2>

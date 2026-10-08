@@ -1,4 +1,4 @@
-export type ServiceRoute = "digitizing" | "products";
+export type ServiceRoute = "digitizing" | "vector" | "products";
 export type ServiceKind = "digital" | "physical";
 export type ServiceVisual = "digitizing" | "vector" | "logo" | "patches" | "apparel" | "printing" | "caps";
 
@@ -37,15 +37,22 @@ export const routes = [
     id: "digitizing",
     href: "/digitizing-artwork",
     title: "Digitizing & Artwork",
-    body: "You receive files: embroidery files for your machine, clean vector artwork, or an original logo.",
-    items: ["Embroidery digitizing", "Vector tracing", "Custom logo design"],
+    body: "You receive files: embroidery files for your machine, or an original logo.",
+    items: ["Embroidery digitizing", "Custom logo design"],
+  },
+  {
+    id: "vector",
+    href: "/screen-printing",
+    title: "Screen Printing",
+    body: "Screen printing, vector tracing and DTF prints from the same artwork.",
+    items: ["Screen printing", "Vector tracing", "DTF printing"],
   },
   {
     id: "products",
     href: "/custom-products",
     title: "Custom Products",
-    body: "You receive finished goods: patches, embroidered apparel, printed shirts and caps, shipped to you.",
-    items: ["Custom patches", "Embroidered apparel", "Screen printing", "Hats & caps"],
+    body: "You receive finished goods: patches, embroidered apparel and caps, shipped to you.",
+    items: ["Custom patches", "Embroidered apparel", "Hats & caps"],
   },
 ] as const;
 
@@ -113,7 +120,7 @@ export const services: ServicePage[] = [
   {
     id: "vector-tracing",
     href: "/vector-tracing",
-    route: "digitizing",
+    route: "vector",
     kind: "digital",
     visual: "vector",
     title: "Vector Tracing",
@@ -156,7 +163,55 @@ export const services: ServicePage[] = [
       { q: "My file is very low quality. Can you still trace it?", a: "Usually yes for simple marks. If the source does not contain enough information we will tell you before quoting." },
       { q: "Do I get the font?", a: "We match or redraw the lettering as outlines. We do not supply commercial font files." },
     ],
-    related: ["custom-logo-design", "screen-printing", "embroidery-digitizing"],
+    related: ["custom-logo-design", "dft-printing", "embroidery-digitizing"],
+  },
+  {
+    id: "dft-printing",
+    href: "/dft-printing",
+    route: "vector",
+    kind: "physical",
+    visual: "printing",
+    title: "DTF Printing",
+    short: "Full-colour DTF transfers printed onto apparel.",
+    h1: "DTF Printing for Apparel & Merchandise",
+    metaTitle: "DTF Printing for T-Shirts, Hoodies & Apparel",
+    metaDescription:
+      "DFT printing (direct-to-film) for full-colour logos on t-shirts, hoodies and merchandise. Placement proof, garment options and shipping to the US, UK and Australia.",
+    intro:
+      "DFT printing transfers a full-colour film onto the garment, so photographic logos and many-colour marks print without a screen for each ink. Send the artwork, garment style and quantities and we quote the transfer and the finished pieces.",
+    buyers: ["Brands with full-colour or photographic logos", "Short runs that do not suit screen setup", "Shops outsourcing overflow print", "Teams and events ordering mixed sizes"],
+    deliverables: ["Printed garments in the styles, colors and sizes quoted", "Digital placement proof", "DFT transfer applied and cured", "Packed by size and shipped with tracking"],
+    inputs: ["Artwork, ideally vector or a high-resolution PNG", "Garment style and colors", "Size breakdown and total quantity", "Print locations and sizes", "Delivery country and postal code"],
+    specs: [
+      {
+        title: "Print locations",
+        items: [
+          { name: "Full front", note: "Standard chest print" },
+          { name: "Left chest", note: "Small logo, typically 3–4 in wide" },
+          { name: "Full back", note: "Large designs and event listings" },
+          { name: "Sleeve", note: "Narrow marks and names" },
+        ],
+      },
+      {
+        title: "What DFT suits",
+        items: [
+          { name: "Full colour", note: "Gradients and photographs without a screen per colour" },
+          { name: "Mixed garments", note: "The same transfer can go on several garment colours" },
+          { name: "Smaller runs", note: "No screen setup, so short runs are practical" },
+          { name: "Vector first", note: "A clean vector or high-resolution file prints sharper" },
+        ],
+      },
+    ],
+    priceFactors: ["Print size and number of locations", "Quantity", "Garment style and color", "Artwork complexity", "Delivery destination"],
+    process: ["Send artwork, garments, sizes and locations", "Receive an itemized quote", "Approve the placement proof", "Transfers printed and applied", "Dispatch with tracking"],
+    turnaround: "Production timing is stated on the quote and starts after proof approval and payment. Shipping is quoted separately for your destination.",
+    revisions: "Placement and size changes on the proof are included. Changes after transfers are printed are quoted as new production.",
+    faqs: [
+      { q: "How is this different from screen printing?", a: "Screen printing uses a screen per ink colour and suits bold spot colours on larger runs. DFT printing is a colour film transfer and suits full-colour artwork and shorter runs." },
+      { q: "Do I need a vector file?", a: "A vector is best. If you only have a JPG or PNG, send the largest version; we can quote vector tracing first when the file needs it." },
+      { q: "Can I supply my own garments?", a: "Ask when you request the quote. If we accept customer-supplied garments, the terms are written on the quote." },
+    ],
+    related: ["vector-tracing", "screen-printing", "embroidered-apparel"],
   },
   {
     id: "custom-logo-design",
@@ -319,7 +374,7 @@ export const services: ServicePage[] = [
   {
     id: "screen-printing",
     href: "/screen-printing",
-    route: "products",
+    route: "vector",
     kind: "physical",
     visual: "printing",
     title: "Screen Printing",
@@ -363,7 +418,7 @@ export const services: ServicePage[] = [
       { q: "Can you print photos or gradients?", a: "Screen printing works best with solid spot colors. For photographic artwork we will recommend an alternative on the quote." },
       { q: "Will the colors match my brand?", a: "Send Pantone references and we mix to match as closely as the ink system allows. The proof shows the intended colors." },
     ],
-    related: ["vector-tracing", "embroidered-apparel", "custom-hats"],
+    related: ["vector-tracing", "dft-printing", "embroidered-apparel"],
   },
   {
     id: "custom-hats",

@@ -12,7 +12,7 @@ export const metadata = pageMetadata({
 export default function Page() {
   return (
     <>
-      <PageHero compact eyebrow="Policy" title="Privacy" lede="We collect only what is needed to quote and produce your job. This page explains what that is and how it is handled." dark={false} />
+      <PageHero compact eyebrow="Policy" title="Privacy" lede="We collect only what is needed to quote and produce your job. This page explains what that is and how it is handled." />
       <section className="py-12 sm:py-14">
         <Container className="prose-site max-w-2xl leading-7 text-ink-soft">
           <h2 className="text-xl font-semibold text-charcoal">What we collect</h2>

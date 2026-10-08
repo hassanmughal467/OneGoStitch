@@ -8,6 +8,7 @@ import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow, SectionHeading } from "@/components/ui/SectionHeading";
 import { ArtworkToStitch, HeroComposition } from "@/components/visuals/HeroComposition";
+import { StitchField } from "@/components/visuals/StitchField";
 import { featuredPortfolio, hasPublishedPortfolio } from "@/lib/portfolio";
 import { faqJsonLd, pageMetadata } from "@/lib/seo";
 import { buyingAnswers, guides, routes, services, tradeBenefits } from "@/lib/services";
@@ -27,44 +28,48 @@ export default function HomePage() {
       <JsonLd data={faqJsonLd([...buyingAnswers])} />
 
       {/* 1. Hero */}
-      <section className="border-b border-line bg-warm">
-        <Container className="grid items-center gap-10 py-12 sm:py-16 lg:grid-cols-12 lg:gap-12 lg:py-20">
-          <div className="lg:col-span-6">
-            <Eyebrow>Embroidery digitizing · Custom patches · Apparel · Caps</Eyebrow>
-            <h1 className="mt-4 text-[2rem] font-semibold leading-[1.1] tracking-[-0.03em] sm:text-5xl lg:text-[3.25rem]">
-              Embroidery Digitizing, Custom Patches &amp; Branded Apparel
-            </h1>
-            <p className="mt-5 max-w-xl text-lg leading-8 text-ink-soft">
-              From production-ready artwork to finished caps, patches and apparel. Custom work for print shops, brands, teams and individual orders.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <ButtonLink href="/quote">Request a Quote</ButtonLink>
-              {showWork ? (
-                <ButtonLink href="/portfolio" variant="secondary">
-                  Explore Our Work
-                </ButtonLink>
-              ) : (
-                <ButtonLink href="/how-it-works" variant="secondary">
-                  How Ordering Works
-                </ButtonLink>
-              )}
+      <section className="overflow-hidden border-b border-charcoal bg-hero text-card">
+        <StitchField />
+        <Container className="relative z-10 py-12 sm:py-16 lg:py-20">
+          <div className="grid items-start gap-8 lg:grid-cols-12 lg:gap-x-0">
+            <div className="lg:col-span-5">
+              <Eyebrow className="text-copper-soft">Embroidery digitizing · Custom patches · Apparel · Caps</Eyebrow>
+              <h1 className="mt-4 text-[2rem] font-semibold leading-[1.12] tracking-[-0.03em] text-card sm:text-[2.75rem] lg:text-[3.05rem]">
+                Embroidery Digitizing, Custom Patches &amp; Branded Apparel
+              </h1>
+              <p className="mt-5 max-w-md text-base leading-7 text-card/80 sm:text-lg sm:leading-8">
+                From production-ready artwork to finished caps, patches and apparel. Custom work for print shops, brands, teams and individual orders.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <ButtonLink href="/quote" className="bg-card text-charcoal hover:bg-warm">Request a Quote</ButtonLink>
+                {showWork ? (
+                  <ButtonLink href="/portfolio" variant="invertGhost">
+                    Explore Our Work
+                  </ButtonLink>
+                ) : (
+                  <ButtonLink href="/how-it-works" variant="invertGhost">
+                    How Ordering Works
+                  </ButtonLink>
+                )}
+              </div>
             </div>
-            <ul className="mt-8 grid gap-3 text-sm text-ink-soft sm:grid-cols-3">
-              {[
-                ["Artwork reviewed", "We check every file for stitch or print suitability before quoting."],
-                ["Proof before production", "You approve a stitch preview or placement proof first."],
-                ["Repeat orders on file", "Approved files stay with your reference for reorders."],
-              ].map(([title, body]) => (
-                <li key={title} className="border-l-2 border-copper pl-3">
-                  <span className="block font-semibold text-charcoal">{title}</span>
-                  <span className="mt-0.5 block leading-5">{body}</span>
-                </li>
-              ))}
-            </ul>
+            <div className="hidden lg:col-span-2 lg:block" aria-hidden />
+            <div className="lg:col-span-5">
+              <HeroComposition />
+            </div>
           </div>
-          <div className="lg:col-span-6">
-            <HeroComposition />
-          </div>
+          <ul className="mt-10 grid gap-4 text-sm text-card/75 sm:grid-cols-3">
+            {[
+              ["Artwork reviewed", "We check every file for stitch or print suitability before quoting."],
+              ["Proof before production", "You approve a stitch preview or placement proof first."],
+              ["Repeat orders on file", "Approved files stay with your reference for reorders."],
+            ].map(([title, body]) => (
+              <li key={title} className="border-l-2 border-copper-soft pl-3">
+                <span className="block font-semibold text-card">{title}</span>
+                <span className="mt-0.5 block leading-5">{body}</span>
+              </li>
+            ))}
+          </ul>
         </Container>
       </section>
 
@@ -72,7 +77,7 @@ export default function HomePage() {
       <section className="border-b border-line bg-card py-16 sm:py-20">
         <Container>
           <SectionHeading eyebrow="Start here" title="Do you need files, or finished products?" lede="Both routes start with the same quote form. Choosing the right one tells us which details to ask for." />
-          <div className="mt-10 grid gap-5 md:grid-cols-2">
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
             {routes.map((route, index) => (
               <Link
                 key={route.id}
@@ -101,10 +106,10 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* 3. Seven services */}
+      {/* 3. Services */}
       <section className="border-b border-line py-16 sm:py-20">
         <Container>
-          <SectionHeading eyebrow="Services" title="Seven services, one quote form" lede="Each service page explains what to send, what you receive, what affects the price and how revisions work." />
+          <SectionHeading eyebrow="Services" title="Every service, one quote form" lede="Each service page explains what to send, what you receive, what affects the price and how revisions work." />
           <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((service) => (
               <ServiceCard key={service.id} service={service} />

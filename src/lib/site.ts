@@ -59,7 +59,7 @@ export const site = {
   legalName: clean(process.env.NEXT_PUBLIC_LEGAL_NAME),
   tagline: "Embroidery Digitizing, Custom Patches & Branded Apparel",
   description:
-    "Embroidery digitizing, vector tracing, logo design, custom patches, embroidered apparel, screen printing and caps for print shops, brands, teams and individual orders.",
+    "Embroidery digitizing, vector tracing, DFT printing, logo design, custom patches, embroidered apparel, screen printing and caps for print shops, brands, teams and individual orders.",
   /** Truthful location statement. Kept out of the hero; used on About, Contact and footer. */
   location: "Based in the United States, working with customers in the United States, the United Kingdom, Australia and worldwide.",
   country: "United States",

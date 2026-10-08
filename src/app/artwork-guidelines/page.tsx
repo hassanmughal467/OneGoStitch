@@ -12,7 +12,7 @@ export const metadata = pageMetadata({
 export default function Page() {
   return (
     <>
-      <PageHero compact eyebrow="Help" title="Artwork guidelines" lede="What to send so we can quote accurately and produce your job without delays." dark={false} />
+      <PageHero compact eyebrow="Help" title="Artwork guidelines" lede="What to send so we can quote accurately and produce your job without delays." />
       <section className="py-12 sm:py-14">
         <Container className="prose-site max-w-2xl leading-7 text-ink-soft">
           <h2 className="text-xl font-semibold text-charcoal">Best file types</h2>

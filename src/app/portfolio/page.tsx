@@ -27,7 +27,6 @@ export default function Page() {
           eyebrow="Portfolio"
           title="Project examples are shared on request"
           lede="We publish customer work only with written permission, so this page is being prepared. Ask for examples of the product or placement you are planning and we will send relevant samples with your quote."
-          dark={false}
         />
         <section className="py-14">
           <Container className="flex flex-wrap gap-3">
@@ -43,7 +42,7 @@ export default function Page() {
 
   return (
     <>
-      <PageHero eyebrow="Portfolio" title="Selected projects and company samples" lede="Client projects are shown with permission. Company samples are self-initiated pieces made to demonstrate a technique." dark={false} />
+      <PageHero eyebrow="Portfolio" title="Selected projects and company samples" lede="Client projects are shown with permission. Company samples are self-initiated pieces made to demonstrate a technique." />
       <section className="py-14 sm:py-16">
         <Container>
           <PortfolioGallery items={items} filters={portfolioFilters()} serviceTitles={serviceTitles} />

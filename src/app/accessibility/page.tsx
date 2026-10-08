@@ -12,7 +12,7 @@ export const metadata = pageMetadata({
 export default function Page() {
   return (
     <>
-      <PageHero compact eyebrow="Policy" title="Accessibility" lede="We aim to meet WCAG 2.2 level AA across this website." dark={false} />
+      <PageHero compact eyebrow="Policy" title="Accessibility" lede="We aim to meet WCAG 2.2 level AA across this website." />
       <section className="py-12 sm:py-14">
         <Container className="prose-site max-w-2xl leading-7 text-ink-soft">
           <p>

@@ -2,8 +2,8 @@ import { RouteOverview } from "@/components/services/RouteOverview";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "Custom Products: Patches, Apparel, Printing & Caps",
-  description: "Custom patches, embroidered apparel, screen-printed shirts and caps made to your artwork, proof approved before production and shipped with tracking.",
+  title: "Custom Products: Patches, Apparel & Caps",
+  description: "Custom patches, embroidered apparel and caps made to your artwork, proof approved before production and shipped with tracking.",
   path: "/custom-products",
 });
 

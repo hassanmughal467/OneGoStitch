@@ -55,7 +55,7 @@ export default function Page() {
           </div>
           <aside className="lg:col-span-5">
             <div className="rounded-sm border border-line bg-card p-6">
-              <p className="text-[0.75rem] font-semibold uppercase tracking-[0.16em] text-copper-dark">Two ways to buy</p>
+              <p className="text-[0.75rem] font-semibold uppercase tracking-[0.16em] text-copper-dark">How to buy</p>
               <ul className="mt-4 space-y-5">
                 {routes.map((route) => (
                   <li key={route.id}>

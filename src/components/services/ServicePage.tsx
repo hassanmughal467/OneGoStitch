@@ -9,6 +9,7 @@ import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow, SectionHeading } from "@/components/ui/SectionHeading";
 import { ServiceVisual } from "@/components/visuals/ServiceVisual";
+import { StitchField } from "@/components/visuals/StitchField";
 import { quoteCta } from "@/lib/copy";
 import { publishedPortfolio } from "@/lib/portfolio";
 import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from "@/lib/seo";
@@ -19,48 +20,58 @@ export function ServiceView({ service }: { service: Service }) {
   const route = routes.find((r) => r.id === service.route)!;
   const quoteHref = `/quote?service=${service.id}`;
   const work = publishedPortfolio().filter((item) => item.service === service.id);
+  const crumbs =
+    service.href === route.href
+      ? [{ name: "Home", path: "/" }, { name: service.title, path: service.href }]
+      : [{ name: "Home", path: "/" }, { name: route.title, path: route.href }, { name: service.title, path: service.href }];
 
   return (
     <>
       <ViewTracker event={{ name: "service_page_viewed", service: service.id }} />
       <JsonLd data={serviceJsonLd({ name: service.title, description: service.metaDescription, path: service.href, serviceType: service.title })} />
-      <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: route.title, path: route.href }, { name: service.title, path: service.href }])} />
+      <JsonLd data={breadcrumbJsonLd(crumbs)} />
       <JsonLd data={faqJsonLd(service.faqs)} />
 
       {/* Hero */}
-      <section className="border-b border-line bg-warm">
-        <Container className="grid items-center gap-10 py-12 sm:py-16 lg:grid-cols-12 lg:py-20">
-          <div className="lg:col-span-6">
-            <nav aria-label="Breadcrumb" className="text-xs text-stone">
+      <section className="overflow-hidden border-b border-charcoal bg-hero text-card">
+        <StitchField />
+        <Container className="relative z-10 grid items-center gap-10 py-12 sm:py-16 lg:grid-cols-12 lg:py-20">
+          <div className="lg:col-span-5">
+            <nav aria-label="Breadcrumb" className="text-xs text-card/55">
               <ol className="flex flex-wrap gap-1.5">
-                <li>
-                  <Link href="/" className="hover:text-charcoal">
-                    Home
-                  </Link>
-                  <span aria-hidden> /</span>
-                </li>
-                <li>
-                  <Link href={route.href} className="hover:text-charcoal">
-                    {route.title}
-                  </Link>
-                  <span aria-hidden> /</span>
-                </li>
-                <li aria-current="page" className="text-charcoal">
-                  {service.title}
-                </li>
+                {crumbs.map((crumb, index) => {
+                  const last = index === crumbs.length - 1;
+                  return (
+                    <li key={crumb.path} aria-current={last ? "page" : undefined} className={last ? "text-card" : undefined}>
+                      {last ? (
+                        crumb.name
+                      ) : (
+                        <>
+                          <Link href={crumb.path} className="hover:text-card">
+                            {crumb.name}
+                          </Link>
+                          <span aria-hidden> /</span>
+                        </>
+                      )}
+                    </li>
+                  );
+                })}
               </ol>
             </nav>
             <h1 className="mt-4 text-[2rem] font-semibold leading-[1.1] tracking-[-0.03em] sm:text-5xl">{service.h1}</h1>
-            <p className="mt-5 max-w-xl text-lg leading-8 text-ink-soft">{service.intro}</p>
+            <p className="mt-5 max-w-xl text-lg leading-8 text-card/75">{service.intro}</p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <ButtonLink href={quoteHref}>{quoteCta(service.id)}</ButtonLink>
-              <ButtonLink href="#details" variant="secondary">
+              <ButtonLink href={quoteHref} className="bg-card text-charcoal hover:bg-warm">
+                {quoteCta(service.id)}
+              </ButtonLink>
+              <ButtonLink href="#details" variant="invertGhost">
                 What to send
               </ButtonLink>
             </div>
-            <p className="mt-5 text-sm text-stone">{service.kind === "digital" ? "You receive files by download." : "You receive finished products, shipped with tracking."}</p>
+            <p className="mt-5 text-sm text-card/55">{service.kind === "digital" ? "You receive files by download." : "You receive finished products, shipped with tracking."}</p>
           </div>
-          <div className="overflow-hidden rounded-sm border border-line bg-card shadow-sm lg:col-span-6">
+          <div className="hidden lg:col-span-2 lg:block" aria-hidden />
+          <div className="overflow-hidden rounded-sm border border-line bg-card shadow-sm lg:col-span-5">
             <ServiceVisual kind={service.visual} />
           </div>
         </Container>

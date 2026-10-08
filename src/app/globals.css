@@ -1,27 +1,27 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-warm: #f7f5ef;
-  --color-charcoal: #20252b;
-  --color-ink: #20252b;
-  --color-ink-soft: #3d444c;
-  --color-blue: #174a66;
-  --color-blue-dark: #123a50;
-  --color-copper: #c97744;
-  --color-copper-dark: #a45e32;
+  --color-warm: #f4ece4;
+  --color-charcoal: #141414;
+  --color-ink: #141414;
+  --color-ink-soft: #3a332e;
+  --color-blue: #d06a2c;
+  --color-blue-dark: #a04a16;
+  --color-copper: #a04a16;
+  --color-copper-dark: #8a3e12;
   --color-card: #ffffff;
-  --color-line: #e7e7e2;
-  --color-stone: #5c636b;
+  --color-line: #e8e0d6;
+  --color-stone: #5c534c;
   --color-error: #b42318;
   --color-success: #217a4b;
-  --color-cream: #f7f5ef;
-  --color-ivory: #f7f5ef;
-  --color-night: #20252b;
-  --color-paper: #ebe9e2;
-  --color-gold: #c97744;
-  --color-azure: #174a66;
-  --color-steel: #174a66;
-  --color-copper-soft: #e6b896; /* text on blue/charcoal: >= 5:1 */
+  --color-cream: #f6f1ea;
+  --color-ivory: #f6f1ea;
+  --color-night: #141414;
+  --color-paper: #efe6dc;
+  --color-gold: #a04a16;
+  --color-azure: #9a4514;
+  --color-steel: #9a4514;
+  --color-copper-soft: #e7b08a; /* text on copper/black: >= 5:1 */
   --font-sans: var(--font-sans-loaded), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-sans-loaded), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-sans-loaded), ui-sans-serif, system-ui, sans-serif;
@@ -46,6 +46,102 @@ body {
   color: var(--color-charcoal);
   font-family: var(--font-sans);
   text-rendering: optimizeLegibility;
+}
+
+.bg-hero {
+  position: relative;
+  background: #141414;
+  isolation: isolate;
+}
+
+.digitizing-grid {
+  opacity: 0.07;
+  animation: grid-breathe 12s ease-in-out infinite;
+}
+
+.hoop-glow {
+  transform-origin: 467px 350px;
+  animation: hoop-pulse 12s ease-in-out infinite;
+}
+
+.hoop-ring {
+  transform-origin: 467px 350px;
+  animation: hoop-turn 48s linear infinite;
+}
+
+.sew-out {
+  opacity: 0.82;
+}
+
+.os-merrow,
+.os-satin,
+.os-highlight {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.os-merrow {
+  animation: sew-once 3.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.os-satin {
+  animation: sew-once 3.4s cubic-bezier(0.4, 0, 0.2, 1) 0.25s forwards;
+}
+
+.os-highlight {
+  opacity: 0.7;
+  animation: sew-once 3.4s cubic-bezier(0.4, 0, 0.2, 1) 0.4s forwards;
+}
+
+.needle {
+  offset-path: path(
+    "M 318 248 C 318 168 382 112 462 112 C 542 112 598 168 598 236 C 598 286 558 318 492 324 C 568 332 628 382 628 456 C 628 532 558 588 462 588 C 366 588 306 532 306 456 C 306 396 354 352 432 344 C 368 336 318 298 318 248 Z"
+  );
+  offset-rotate: auto 90deg;
+  animation: needle-sew 8s linear infinite;
+}
+
+@keyframes grid-breathe {
+  0%,
+  100% {
+    opacity: 0.045;
+  }
+  50% {
+    opacity: 0.09;
+  }
+}
+
+@keyframes hoop-pulse {
+  0%,
+  100% {
+    opacity: 0.7;
+    transform: scale(0.96);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes hoop-turn {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes sew-once {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes needle-sew {
+  from {
+    offset-distance: 0%;
+  }
+  to {
+    offset-distance: 100%;
+  }
 }
 
 ::selection {

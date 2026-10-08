@@ -5,6 +5,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow, SectionHeading } from "@/components/ui/SectionHeading";
+import { StitchField } from "@/components/visuals/StitchField";
 import { breadcrumbJsonLd, faqJsonLd, pageMetadata } from "@/lib/seo";
 import { services, tradeBenefits } from "@/lib/services";
 
@@ -42,8 +43,9 @@ export default function Page() {
     <>
       <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "For Trade", path: "/trade" }])} />
       <JsonLd data={faqJsonLd(faqs)} />
-      <section className="border-b border-line bg-charcoal text-card">
-        <Container className="grid gap-10 py-12 sm:py-16 lg:grid-cols-12 lg:py-20">
+      <section className="overflow-hidden border-b border-charcoal bg-hero text-card">
+        <StitchField />
+        <Container className="relative z-10 grid gap-10 py-12 sm:py-16 lg:grid-cols-12 lg:py-20">
           <div className="lg:col-span-7">
             <Eyebrow className="text-copper-soft">For trade and wholesale</Eyebrow>
             <h1 className="mt-4 text-[2rem] font-semibold leading-[1.1] tracking-[-0.03em] sm:text-5xl">Production partner for print shops, decorators and agencies</h1>

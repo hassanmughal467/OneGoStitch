@@ -47,7 +47,7 @@ export default function Page() {
   return (
     <>
       <JsonLd data={faqJsonLd(all)} />
-      <PageHero eyebrow="FAQ" title="Practical answers before you send a file" dark={false} />
+      <PageHero eyebrow="FAQ" title="Practical answers before you send a file" />
       <section className="border-b border-line bg-card py-14 sm:py-16">
         <Container className="grid gap-12 lg:grid-cols-12">
           <nav aria-label="FAQ sections" className="lg:col-span-3">

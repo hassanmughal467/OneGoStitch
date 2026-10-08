@@ -11,7 +11,7 @@ export const metadata = pageMetadata({
 export default function Page() {
   return (
     <>
-      <PageHero compact eyebrow="Policy" title="Corrections, remakes and refunds" lede="Work is produced to the proof you approve. This page explains what happens when the result does not match it." dark={false} />
+      <PageHero compact eyebrow="Policy" title="Corrections, remakes and refunds" lede="Work is produced to the proof you approve. This page explains what happens when the result does not match it." />
       <section className="py-12 sm:py-14">
         <Container className="prose-site max-w-2xl leading-7 text-ink-soft">
           <h2 className="text-xl font-semibold text-charcoal">Digital files</h2>

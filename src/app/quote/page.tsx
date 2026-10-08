@@ -12,7 +12,7 @@ import { contactChannels } from "@/lib/site";
 
 export const metadata = pageMetadata({
   title: "Request a quote",
-  description: "Request a quote for embroidery digitizing, vector tracing, logo design, custom patches, embroidered apparel, screen printing or caps.",
+  description: "Request a quote for embroidery digitizing, vector tracing, DFT printing, logo design, custom patches, embroidered apparel, screen printing or caps.",
   path: "/quote",
   // Transactional page: excluded from the sitemap and robots, never indexed.
   noindex: true,
@@ -39,7 +39,6 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ s
               : "Two short steps: who you are and which service, then only the details that service needs. Attach artwork if you have it."
         }
         compact
-        dark={false}
       />
       <section className="py-10 sm:py-14">
         <Container className="grid gap-10 lg:grid-cols-12">

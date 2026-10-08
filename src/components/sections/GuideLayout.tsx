@@ -3,6 +3,7 @@ import { CtaBand } from "@/components/sections/CtaBand";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/SectionHeading";
+import { StitchField } from "@/components/visuals/StitchField";
 import { articleJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 import { guides } from "@/lib/services";
 
@@ -33,20 +34,26 @@ export function GuideLayout({
     <>
       <JsonLd data={articleJsonLd({ headline: title, description, path: href, datePublished: guide?.datePublished ?? "2026-09-12" })} />
       <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Guides", path: "/resources" }, { name: title, path: href }])} />
-      <section className="border-b border-line bg-warm py-12 sm:py-16">
-        <Container className="grid gap-10 lg:grid-cols-12">
-          <div className="lg:col-span-7">
-            <nav aria-label="Breadcrumb" className="text-xs text-stone">
-              <Link href="/resources" className="hover:text-charcoal">
+      <section className="overflow-hidden border-b border-charcoal bg-hero py-12 text-card sm:py-16">
+        <StitchField />
+        <Container className="relative z-10 grid gap-10 lg:grid-cols-12">
+          <div className="lg:col-span-5">
+            <nav aria-label="Breadcrumb" className="text-xs text-card/55">
+              <Link href="/resources" className="hover:text-card">
                 Guides
               </Link>{" "}
               / {title}
             </nav>
-            <Eyebrow className="mt-4">Guide</Eyebrow>
+            <Eyebrow className="mt-4 text-copper-soft">Guide</Eyebrow>
             <h1 className="mt-3 text-3xl font-semibold tracking-[-0.03em] sm:text-5xl">{title}</h1>
-            <p className="mt-5 max-w-2xl text-lg leading-8 text-ink-soft">{intro}</p>
+            <p className="mt-5 max-w-2xl text-lg leading-8 text-card/75">{intro}</p>
           </div>
-          {visual ? <div className="overflow-hidden rounded-sm border border-line bg-card lg:col-span-5">{visual}</div> : null}
+          {visual ? (
+            <>
+              <div className="hidden lg:col-span-2 lg:block" aria-hidden />
+              <div className="overflow-hidden rounded-sm border border-line bg-card lg:col-span-5">{visual}</div>
+            </>
+          ) : null}
         </Container>
       </section>
       <section className="py-14 sm:py-16">

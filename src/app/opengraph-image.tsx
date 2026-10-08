@@ -11,7 +11,7 @@ export default function OpenGraphImage() {
         style={{
           width: "100%",
           height: "100%",
-          background: "#20252B",
+          background: "#141414",
           color: "#F7F5EF",
           display: "flex",
           flexDirection: "column",
@@ -19,7 +19,7 @@ export default function OpenGraphImage() {
           padding: "72px",
         }}
       >
-        <div style={{ fontSize: 22, letterSpacing: "0.16em", textTransform: "uppercase", color: "#C97744" }}>
+        <div style={{ fontSize: 22, letterSpacing: "0.16em", textTransform: "uppercase", color: "#A04A16" }}>
           OneGo Stitch
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
