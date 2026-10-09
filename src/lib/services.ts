@@ -42,7 +42,7 @@ export const routes = [
   },
   {
     id: "printing",
-    href: "/screen-printing",
+    href: "/printing",
     title: "Screen Printing & DTF",
     body: "Finished garments with screen printing or Direct-to-Film. These are separate services.",
     items: ["Screen printing", "DTF printing"],

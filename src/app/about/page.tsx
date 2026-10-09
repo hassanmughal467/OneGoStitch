@@ -39,8 +39,8 @@ export default function Page() {
             <h2 className="mt-10 text-2xl font-semibold">How we work</h2>
             <div className="prose-site mt-4 leading-7 text-ink-soft">
               <p>
-                Every job starts with a written quote that lists what is included, the price and the timing. Nothing is produced until you approve a stitch
-                preview or placement proof. Digital work is delivered as files; products are made after approval and payment, then shipped with tracking.
+                Every job starts with a written quote that lists what is included, the price and the timing. Digital work: we prepare a draft, you approve the
+                preview, then the file is released. Products: bulk production starts after proof approval and the payment on the quote, then we ship with tracking.
               </p>
               <p>
                 Your artwork is used only to prepare and produce your job. We do not publish customer work without written permission, and we do not contact a
@@ -49,8 +49,7 @@ export default function Page() {
             </div>
             <h2 className="mt-10 text-2xl font-semibold">Who we work with</h2>
             <p className="mt-4 leading-7 text-ink-soft">
-              We work in English and quote shipping to the postal code on each product order. A registered address, production location and dispatch origin are published
-              only after they are confirmed. Serving a country is not the same as having an office there.
+              We work in English with print shops, brands, teams and individual customers. Product quotes include shipping to the destination you give us.
             </p>
           </div>
           <aside className="lg:col-span-5">

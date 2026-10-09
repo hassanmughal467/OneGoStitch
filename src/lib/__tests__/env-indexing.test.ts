@@ -80,6 +80,7 @@ describe("indexing by environment", () => {
     const urls = prod.sitemap.map((entry) => entry.url);
     expect(urls).toContain("https://onegostitch.vercel.app/");
     expect(urls).toContain("https://onegostitch.vercel.app/dtf-printing");
+    expect(urls).toContain("https://onegostitch.vercel.app/printing");
     expect(urls).not.toContain("https://onegostitch.vercel.app/dft-printing");
     const meta = prod.seo.pageMetadata({ title: "Test", description: "d", path: "/custom-patches" });
     expect(meta.alternates?.canonical).toBe("https://onegostitch.vercel.app/custom-patches");

@@ -5,7 +5,7 @@ export function CtaBand({
   title = "Tell us what you need",
   body = "Send the service, artwork, quantity and date. We reply with an itemized quote and timing.",
   href = "/quote",
-  cta = "Request a quote",
+  cta = "Request a Quote",
 }: {
   title?: string;
   body?: string;

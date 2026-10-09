@@ -68,7 +68,13 @@ export function ServiceView({ service }: { service: Service }) {
                 What to send
               </ButtonLink>
             </div>
-            <p className="mt-5 text-sm text-card/55">{service.kind === "digital" ? "You receive files by download." : "You receive finished products, shipped with tracking."}</p>
+            {service.id === "embroidery-digitizing" ? (
+              <p className="mt-5 max-w-xl text-sm leading-6 text-card/70">
+                If a file does not sew cleanly on your machine, send a sew-out photo and the fabric. We adjust density, underlay or pull compensation as a production correction.
+              </p>
+            ) : (
+              <p className="mt-5 text-sm text-card/55">{service.kind === "digital" ? "You receive files by download." : "You receive finished products, shipped with tracking."}</p>
+            )}
           </div>
           <div className="hidden lg:col-span-2 lg:block" aria-hidden />
           <div className="w-full overflow-hidden rounded-sm border border-line bg-card shadow-sm lg:col-span-5">

@@ -11,7 +11,10 @@ import { routes, services, type ServiceRoute } from "@/lib/services";
 
 export function RouteOverview({ route, lede, points }: { route: ServiceRoute; lede: string; points: string[] }) {
   const info = routes.find((r) => r.id === route)!;
-  const list = services.filter((s) => s.route === route);
+  const list = services
+    .filter((s) => s.route === route)
+    .slice()
+    .sort((a, b) => (a.id === "screen-printing" ? -1 : b.id === "screen-printing" ? 1 : 0));
   return (
     <>
       <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: info.title, path: info.href }])} />
@@ -29,7 +32,7 @@ export function RouteOverview({ route, lede, points }: { route: ServiceRoute; le
             <h1 className="mt-4 text-[2rem] font-semibold leading-[1.1] tracking-[-0.03em] sm:text-5xl">{info.title}</h1>
             <p className="mt-5 max-w-xl text-lg leading-8 text-card/75">{lede}</p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <ButtonLink href={`/quote?service=${list[0].id}`} className="bg-card text-charcoal hover:bg-warm">
+              <ButtonLink href={list.length === 1 ? `/quote?service=${list[0].id}` : "/quote"} className="bg-card text-charcoal hover:bg-warm">
                 Request a Quote
               </ButtonLink>
             </div>

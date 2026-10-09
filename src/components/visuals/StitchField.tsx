@@ -5,7 +5,7 @@ export function StitchField() {
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
       <svg className="absolute inset-0 h-full w-full" viewBox="0 0 1440 720" preserveAspectRatio="xMidYMid slice">
-        <rect width="1440" height="720" fill="#141414" />
+        <rect width="1440" height="720" fill="#151515" />
         <g className="digitizing-grid" stroke="#e38a45" strokeWidth="0.6">
           {Array.from({ length: 25 }).map((_, i) => (
             <line key={`v${i}`} x1={i * 60} y1="0" x2={i * 60} y2="720" />
@@ -17,7 +17,7 @@ export function StitchField() {
       </svg>
 
       <svg
-        className="stitch-stage absolute left-1/2 top-1/2 h-[min(32rem,78%)] w-auto max-w-[min(32rem,78%)] -translate-x-1/2 -translate-y-1/2"
+        className="stitch-stage absolute left-1/2 top-1/2 h-[min(22rem,58%)] w-auto max-w-[min(22rem,58%)] -translate-x-1/2 -translate-y-1/2 opacity-70"
         viewBox="100 -20 734 740"
         preserveAspectRatio="xMidYMid meet"
       >

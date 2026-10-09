@@ -1,17 +1,16 @@
 import Link from "next/link";
-import { PortfolioPreview } from "@/components/portfolio/PortfolioPreview";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { ProcessStrip } from "@/components/sections/ProcessStrip";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { ServiceCard } from "@/components/services/ServiceCard";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow, SectionHeading } from "@/components/ui/SectionHeading";
 import { ArtworkToStitch, HeroComposition } from "@/components/visuals/HeroComposition";
 import { StitchField } from "@/components/visuals/StitchField";
 import { featuredPortfolio, hasPublishedPortfolio } from "@/lib/portfolio";
+import { PortfolioPreview } from "@/components/portfolio/PortfolioPreview";
 import { faqJsonLd, pageMetadata } from "@/lib/seo";
-import { buyingAnswers, guides, routes, services, tradeBenefits } from "@/lib/services";
+import { buyingAnswers, routes, tradeBenefits } from "@/lib/services";
 import { site } from "@/lib/site";
 
 export const metadata = pageMetadata({
@@ -20,85 +19,90 @@ export const metadata = pageMetadata({
   path: "/",
 });
 
-const serviceOrder = ["embroidery-digitizing", "custom-patches", "vector-tracing", "custom-logo-design", "screen-printing", "dtf-printing", "embroidered-apparel", "custom-hats"];
-
 export default function HomePage() {
   const showWork = hasPublishedPortfolio();
-  const orderedServices = [...services].sort((a, b) => serviceOrder.indexOf(a.id) - serviceOrder.indexOf(b.id));
 
   return (
     <>
       <JsonLd data={faqJsonLd([...buyingAnswers])} />
 
-      {/* 1. Hero */}
       <section className="relative overflow-hidden border-b border-charcoal bg-hero text-card">
         <StitchField />
-        <Container className="relative z-10 py-14 sm:py-16 lg:min-h-[36rem] lg:py-20">
+        <Container className="relative z-10 py-14 sm:py-16 lg:min-h-[34rem] lg:py-20">
           <div className="grid items-center gap-8 lg:grid-cols-12 lg:gap-x-10">
-            <div className="lg:col-span-5">
+            <div className="lg:col-span-6">
               <Eyebrow className="text-copper-soft">Embroidery digitizing and custom patches</Eyebrow>
-              <h1 className="mt-4 max-w-[18ch] text-[1.75rem] font-semibold leading-[1.15] tracking-[-0.03em] text-card sm:text-[2.5rem] lg:text-[3.05rem]">
-                Digitizing and patches, ready to produce
+              <h1 className="mt-4 max-w-[16ch] text-[1.75rem] font-semibold leading-[1.15] tracking-[-0.03em] text-card sm:text-[2.5rem] lg:text-[3.05rem]">
+                Embroidery Digitizing &amp; Custom Patches for Your Next Order
               </h1>
               <p className="mt-5 max-w-md text-base leading-7 text-card/80 sm:text-lg sm:leading-8">
-                Stitch files and custom patches for print shops, brands and teams. Apparel, caps, screen printing and DTF stay one click away.
+                Machine-ready stitch files and custom patches for print shops, brands, and teams. Share your artwork and requirements for an itemized quote.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
-                <ButtonLink href="/quote" className="bg-card text-charcoal hover:bg-warm">Request a Quote</ButtonLink>
+                <ButtonLink href="/quote" className="bg-card text-charcoal hover:bg-warm">
+                  Request a Quote
+                </ButtonLink>
                 {showWork ? (
                   <ButtonLink href="/portfolio" variant="invertGhost">
-                    Explore Our Work
+                    View Our Work
                   </ButtonLink>
                 ) : (
-                  <ButtonLink href="/how-it-works" variant="invertGhost">
-                    How Ordering Works
+                  <ButtonLink href="#services" variant="invertGhost">
+                    Explore Services
                   </ButtonLink>
                 )}
               </div>
             </div>
-            <div className="hidden lg:col-span-2 lg:block" aria-hidden />
-            <div className="lg:col-span-5">
+            <div className="lg:col-span-6">
               <HeroComposition />
             </div>
           </div>
-          <ul className="mt-10 grid gap-4 text-sm text-card/75 sm:grid-cols-3">
-            {[
-              ["Artwork reviewed", "We check every file for stitch or print suitability before quoting."],
-              ["Preview before the final", "A stitch preview comes from the digitized draft. Bulk goods wait for proof approval."],
-              ["Repeat orders on file", "Approved files stay with your reference for reorders."],
-            ].map(([title, body]) => (
-              <li key={title} className="border-l-2 border-copper-soft pl-3">
-                <span className="block font-semibold text-card">{title}</span>
-                <span className="mt-0.5 block leading-5">{body}</span>
-              </li>
-            ))}
-          </ul>
         </Container>
       </section>
 
-      {/* 2. Two entry points */}
-      <section className="border-b border-line bg-card py-16 sm:py-20">
+      {featuredPortfolio().length ? (
+        <PortfolioPreview featured />
+      ) : (
+        <section className="border-b border-line bg-card py-16 sm:py-20">
+          <Container className="grid items-center gap-10 lg:grid-cols-12">
+            <div className="lg:col-span-5">
+              <SectionHeading
+                eyebrow="Quality"
+                title="What changes between your logo and the sew-out"
+                lede="Embroidery is not a print. Thin lines get thickened, tiny text is simplified, and the border is planned so the patch edge does not fray. The stitch preview shows these decisions before production."
+              />
+              <Link href="/resources/embroidery-proofs" className="mt-6 inline-block text-sm font-semibold text-blue hover:underline">
+                Understanding embroidery proofs
+              </Link>
+            </div>
+            <div className="overflow-hidden rounded-sm border border-line bg-warm shadow-[0_1px_2px_rgba(21,21,21,0.05)] lg:col-span-7">
+              <ArtworkToStitch id="home-compare" />
+            </div>
+          </Container>
+        </section>
+      )}
+
+      <section id="services" className="scroll-mt-24 border-b border-line py-16 sm:py-20">
         <Container>
-          <SectionHeading eyebrow="Start here" title="Choose a starting point" lede="Three groups, one quote form. Pick the group that matches the job so we ask only for the details that matter." />
+          <SectionHeading eyebrow="Services" title="Choose the work you need" lede="Three groups, one quote form. Every service stays in the menu." />
           <div className="mt-10 grid gap-5 md:grid-cols-3">
-            {routes.map((route, index) => (
+            {routes.map((route) => (
               <Link
                 key={route.id}
                 href={route.href}
-                className="group relative flex flex-col overflow-hidden rounded-sm border border-line bg-warm p-7 transition-colors hover:border-blue sm:p-8"
+                className="group flex flex-col rounded-sm border border-line bg-card p-7 shadow-[0_1px_2px_rgba(21,21,21,0.05)] transition-colors hover:border-blue sm:p-8"
               >
-                <span className="text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-copper-dark">Route {index + 1}</span>
-                <h3 className="mt-3 text-2xl font-semibold tracking-[-0.02em] sm:text-3xl">{route.title}</h3>
-                <p className="mt-3 max-w-md leading-7 text-ink-soft">{route.body}</p>
+                <h3 className="text-2xl font-semibold tracking-[-0.02em]">{route.title}</h3>
+                <p className="mt-3 leading-7 text-ink-soft">{route.body}</p>
                 <ul className="mt-5 flex flex-wrap gap-2">
                   {route.items.map((item) => (
-                    <li key={item} className="rounded-full border border-line bg-card px-3 py-1 text-xs font-medium text-ink-soft">
+                    <li key={item} className="rounded-full border border-line bg-warm px-3 py-1 text-xs font-medium text-ink-soft">
                       {item}
                     </li>
                   ))}
                 </ul>
                 <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-blue">
-                  Open {route.title}
+                  View {route.title}
                   <svg viewBox="0 0 16 16" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" aria-hidden>
                     <path d="M3 8h9M8 4l4 4-4 4" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
@@ -109,68 +113,8 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* 3. Services */}
-      <section className="border-b border-line py-16 sm:py-20">
-        <Container>
-          <SectionHeading eyebrow="Services" title="Every service, one quote form" lede="Each service page explains what to send, what you receive, what affects the price and how revisions work." />
-          <ul className="mt-10 flex flex-wrap justify-center gap-5">
-            {orderedServices.map((service) => (
-              <ServiceCard
-                key={service.id}
-                service={service}
-                className="w-full sm:w-[calc(50%-0.625rem)] lg:w-[calc((100%-2.5rem)/3)]"
-              />
-            ))}
-          </ul>
-        </Container>
-      </section>
-
-      {/* 4. Featured work: only when approved, featured projects exist */}
-      {featuredPortfolio().length ? <PortfolioPreview featured /> : null}
-
-      {/* 5. Artwork to finished product */}
-      <section className="border-b border-line bg-card py-16 sm:py-20">
-        <Container className="grid items-center gap-10 lg:grid-cols-12">
-          <div className="lg:col-span-5">
-            <SectionHeading
-              eyebrow="Artwork to stitches"
-              title="What changes between your logo and the sew-out"
-              lede="Embroidery is not a print. Thin lines get thickened, tiny text is simplified, gradients become stitch directions, and the border is planned so the patch edge does not fray. The stitch preview shows these decisions before production."
-            />
-            <ul className="mt-6 space-y-3 text-sm leading-6 text-ink-soft">
-              <li className="flex gap-3">
-                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-copper" aria-hidden />
-                <span>
-                  <strong className="text-charcoal">Artwork:</strong> your vector or high-resolution logo, with the finished size and fabric.
-                </span>
-              </li>
-              <li className="flex gap-3">
-                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-copper" aria-hidden />
-                <span>
-                  <strong className="text-charcoal">Proof:</strong> a stitch preview with color sequence and stitch count for your approval.
-                </span>
-              </li>
-              <li className="flex gap-3">
-                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-copper" aria-hidden />
-                <span>
-                  <strong className="text-charcoal">Result:</strong> the file for your machine, or the finished patch, cap or garment.
-                </span>
-              </li>
-            </ul>
-            <Link href="/resources/embroidery-proofs" className="mt-6 inline-block text-sm font-semibold text-blue hover:underline">
-              Read: understanding embroidery proofs
-            </Link>
-          </div>
-          <div className="overflow-hidden rounded-sm border border-line bg-warm lg:col-span-7">
-            <ArtworkToStitch id="home-compare" />
-          </div>
-        </Container>
-      </section>
-
-      {/* 6. Process */}
       <ProcessStrip />
 
-      {/* 7. Trade */}
       <section className="border-b border-charcoal bg-charcoal py-16 text-card sm:py-20">
         <Container className="grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-5">
@@ -178,7 +122,7 @@ export default function HomePage() {
               invert
               eyebrow="For trade"
               title="Overflow capacity for print shops, decorators and agencies"
-              lede="Send digitizing, vector and production jobs under your own reference. Files stay on record so repeat orders start from the approved version."
+              lede="Send digitizing, vector and production jobs under your own reference. Approved files stay on record for reorders. We do not contact your customers."
             />
             <div className="mt-8 flex flex-wrap gap-3">
               <ButtonLink href="/trade" variant="invert">
@@ -200,13 +144,10 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* 8. Testimonials: omitted until approved feedback exists */}
-
-      {/* 9. Buying answers */}
       <section className="border-b border-line py-16 sm:py-20">
         <Container className="grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <SectionHeading eyebrow="Before you order" title="Price, minimums, timing and revisions" />
+            <SectionHeading eyebrow="Before you order" title="Price, timing, minimums and revisions" />
             <Link href="/faq" className="mt-5 inline-block text-sm font-semibold text-blue hover:underline">
               All frequently asked questions
             </Link>
@@ -219,25 +160,6 @@ export default function HomePage() {
               </div>
             ))}
           </dl>
-        </Container>
-      </section>
-
-      {/* 10. Guides + CTA */}
-      <section className="border-b border-line bg-card py-16 sm:py-20">
-        <Container>
-          <SectionHeading eyebrow="Guides" title="Useful reading before you send artwork" />
-          <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {guides.map((guide) => (
-              <li key={guide.href} className="rounded-sm border border-line bg-warm p-5">
-                <h3 className="text-base font-semibold">
-                  <Link href={guide.href} className="hover:text-blue">
-                    {guide.title}
-                  </Link>
-                </h3>
-                <p className="mt-2 text-sm leading-6 text-ink-soft">{guide.body}</p>
-              </li>
-            ))}
-          </ul>
         </Container>
       </section>
 

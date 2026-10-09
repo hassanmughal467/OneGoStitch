@@ -22,7 +22,7 @@ export const digitizingNav: NavGroup = {
 };
 
 export const printingNav: NavGroup = {
-  href: "/screen-printing",
+  href: "/printing",
   label: "Printing",
   children: [
     { href: "/screen-printing", label: "Screen Printing" },

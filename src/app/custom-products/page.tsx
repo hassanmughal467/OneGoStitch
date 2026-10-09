@@ -15,7 +15,7 @@ export default function Page() {
       points={[
         "Itemized quotes: product, decoration and shipping shown separately.",
         "A placement or stitch proof is approved before anything is made.",
-        "Shipping quoted to your postal code in the US, UK, Australia and elsewhere.",
+        "Shipping is quoted to the postal code on your request.",
       ]}
     />
   );

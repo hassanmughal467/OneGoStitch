@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-warm: #f4ece4;
-  --color-charcoal: #141414;
-  --color-ink: #141414;
-  --color-ink-soft: #3a332e;
-  --color-blue: #a04a16;
+  --color-warm: #f6f0e8;
+  --color-charcoal: #151515;
+  --color-ink: #202020;
+  --color-ink-soft: #59534e;
+  --color-blue: #a84b16;
   --color-blue-dark: #7a3410;
   --color-accent: #d06a2c;
-  --color-copper: #a04a16;
+  --color-copper: #a84b16;
   --color-copper-dark: #8a3e12;
   --color-card: #ffffff;
   --color-line: #e8e0d6;
@@ -53,13 +53,13 @@ body {
 
 .bg-hero {
   position: relative;
-  background: #141414;
+  background: #151515;
   isolation: isolate;
 }
 
 .digitizing-grid {
-  opacity: 0.07;
-  animation: grid-breathe 12s ease-in-out infinite;
+  opacity: 0.035;
+  animation: grid-breathe 18s ease-in-out infinite;
 }
 
 .hoop-glow {
@@ -75,7 +75,7 @@ body {
 }
 
 .sew-out {
-  opacity: 0.82;
+  opacity: 0.45;
 }
 
 .os-merrow,
@@ -103,7 +103,7 @@ body {
     "M 318 248 C 318 168 382 112 462 112 C 542 112 598 168 598 236 C 598 286 558 318 492 324 C 568 332 628 382 628 456 C 628 532 558 588 462 588 C 366 588 306 532 306 456 C 306 396 354 352 432 344 C 368 336 318 298 318 248 Z"
   );
   offset-rotate: auto 90deg;
-  animation: needle-sew 8s linear infinite;
+  animation: needle-sew 16s linear infinite;
 }
 
 @keyframes grid-breathe {

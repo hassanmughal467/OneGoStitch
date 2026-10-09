@@ -24,28 +24,23 @@ export default function Page() {
         title="Talk to OneGo Stitch"
         lede={
           status.online
-            ? contactChannels.hasAny
-              ? "Email or message us with a question, or send a quote request when you already know the service and details."
-              : "Send a quote request with the service, size or quantity, and your artwork. We reply with a price and any questions."
+            ? "Send a quote request with the service, size or quantity, and your artwork. We reply with a price and any questions."
             : contactChannels.hasAny
-              ? "Email or message us with the service, size or quantity, the date you need it, and your artwork. We reply with a reference and a quotation."
-              : "The online quote form is paused until requests can be saved. Check this page again when intake is available."
+              ? "The online form is paused. Email or message us with the service, size or quantity, the date you need it, and your artwork."
+              : "The online quote form is paused until requests can be saved."
         }
       />
       <section className="py-14 sm:py-16">
         <Container className="grid gap-12 lg:grid-cols-12">
           <aside className="lg:col-span-4">
-            <h2 className="text-2xl font-semibold">Company details</h2>
+            <h2 className="text-2xl font-semibold">How to reach us</h2>
             <p className="mt-3 text-sm leading-6 text-ink-soft">{site.location}</p>
             <div className="mt-6">
               <ContactChannels message="Hello OneGo Stitch, I have a question." />
             </div>
-            {contactChannels.hasAny ? (
-              <p className="mt-6 text-sm leading-6 text-ink-soft">
-                When you write, include the service, quantity or size, the date you need it and your artwork. If you have ordered before, quote your previous reference so we can reuse the approved
-                file.
-              </p>
-            ) : null}
+            <p className="mt-6 text-sm leading-6 text-ink-soft">
+              Include the service, quantity or size, the date you need it and your artwork. If you have ordered before, quote your previous reference so we can reuse the approved file.
+            </p>
             <ul className="mt-6 space-y-2 text-sm">
               {[
                 ["/how-it-works", "How ordering works"],

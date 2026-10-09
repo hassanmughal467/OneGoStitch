@@ -64,7 +64,7 @@ export const site = {
    * Public location line. Country is not stated until the owner sets
    * NEXT_PUBLIC_ADDRESS_COUNTRY. Markets served are not an office address.
    */
-  location: "Embroidery digitizing, custom patches and decorated apparel for customers who order from anywhere we can quote.",
+  location: "Embroidery digitizing, custom patches and decorated apparel for print shops, brands, teams and individual orders.",
   country: clean(process.env.NEXT_PUBLIC_ADDRESS_COUNTRY),
   markets: [] as string[],
   url: siteEnv.baseUrl,

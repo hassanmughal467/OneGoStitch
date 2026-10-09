@@ -18,7 +18,7 @@ export const metadata = pageMetadata({
 const shops = [
   ["Embroidery shops", "Digitizing for your machines, cap and puff files, production fixes and patch supply."],
   ["Screen printers", "Vector redraws, separations, embroidered add-ons and patch or cap production for customer orders."],
-  ["Promotional distributors", "White-label patches, apparel and caps quoted per job with shipping to you or your customer."],
+  ["Promotional distributors", "White-label patches, apparel and caps quoted per job. The delivery address is confirmed on the quote."],
   ["Agencies and brand studios", "Logo design, vector masters and production samples for client presentations."],
 ];
 
@@ -35,7 +35,7 @@ const faqs = [
   { q: "How do I submit a repeat order?", a: "Quote your previous reference number in the quote form or by email. We confirm the approved file, quantity and any changes before running it." },
   { q: "How are my files handled?", a: "Artwork is used only for your job. We do not publish trade work or contact your customers. Files are kept on record for reorders unless you ask us to delete them." },
   { q: "How is trade pricing agreed?", a: "After your first job we agree written trade terms based on typical volume and job mix. Terms are confirmed on each quote; we do not publish a discount table." },
-  { q: "Can you ship directly to my customer?", a: "Yes. Give the delivery address on the quote form. Packaging carries no OneGo Stitch branding unless you ask for it." },
+  { q: "Can you ship directly to my customer?", a: "Give the delivery address on the quote form. Whether goods ship to your shop or to your customer is confirmed on the written quote. Packaging is unmarked unless you ask otherwise." },
 ];
 
 export default function Page() {
@@ -102,7 +102,7 @@ export default function Page() {
           <ol className="mt-8 grid gap-5 md:grid-cols-3">
             {[
               ["Submit a job", "Use the quote form with your shop name and select Business. Attach artwork and your customer's specification. You receive an itemized quote under your reference."],
-              ["Approve and produce", "For files, we prepare a draft and you approve the preview before the final file is released. For products, you approve the proof and then bulk production starts. Files and goods are delivered to you, not your customer."],
+              ["Approve and produce", "For files, we prepare a draft and you approve the preview before the final file is released. For products, you approve the proof and then bulk production starts. Files and goods go to the address on the approved quote."],
               ["Reorder", "Quote the previous reference. The approved file and specification are reused, and we reconfirm price, availability and any changes before running the job."],
             ].map(([title, body], i) => (
               <li key={title} className="rounded-sm border border-line bg-card p-6">

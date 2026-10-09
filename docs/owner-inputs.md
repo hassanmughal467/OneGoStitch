@@ -10,6 +10,7 @@ These are facts the repository must not invent. Items marked **Launch blocker** 
 | Verified sender (`RESEND_FROM_EMAIL`, `RESEND_API_KEY`) | A saved request can exist without an email. Staff still need a working notification path. | Yes, before relying on email |
 | Legal name, registered country, production location, dispatch origin | Copy no longer says United States or Pakistan. Schema has no address. | Yes, before any location claim |
 | Whether DTF is garments only | The page now says finished garments, not loose transfers or gang sheets. | Confirm |
+| Trade ship-to policy | Copy now says the delivery address is confirmed on the written quote. Decide if default is the trade shop, the end customer, or either. | Confirm |
 | Payment milestone | Site says the written quote states when payment is due. Confirm that matches invoices. | Confirm |
 | Support hours and response statement | Hidden until `NEXT_PUBLIC_SUPPORT_HOURS` and `NEXT_PUBLIC_RESPONSE_STATEMENT` are true. | No |
 | Phone or WhatsApp | Shown only if staffed. | No |

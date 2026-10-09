@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 
 export function ServiceCard({ service, compact, className }: { service: ServicePage; compact?: boolean; className?: string }) {
   return (
-    <li className={cn("group flex min-w-0 flex-col overflow-hidden rounded-sm border border-line bg-card transition-colors hover:border-blue", className)}>
+    <li className={cn("group flex min-w-0 flex-col overflow-hidden rounded-sm border border-line bg-card shadow-[0_1px_2px_rgba(21,21,21,0.05)] transition-colors hover:border-blue", className)}>
       <Link href={service.href} className="block aspect-[16/9] overflow-hidden border-b border-line bg-warm" aria-hidden tabIndex={-1}>
         <ServiceVisual kind={service.visual} />
       </Link>

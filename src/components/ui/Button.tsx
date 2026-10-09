@@ -2,7 +2,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 const variants = {
-  primary: "bg-blue text-card hover:bg-blue-dark",
+  primary: "bg-blue text-card shadow-[0_1px_2px_rgba(21,21,21,0.18)] hover:bg-blue-dark",
   secondary: "border border-charcoal/15 bg-card text-charcoal hover:bg-charcoal hover:text-card",
   ghost: "text-blue underline-offset-4 hover:underline",
   invert: "bg-card text-charcoal hover:bg-warm",

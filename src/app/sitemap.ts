@@ -8,6 +8,7 @@ export function publicPaths() {
   const paths = [
     "/",
     "/digitizing-artwork",
+    "/printing",
     "/custom-products",
     ...services.map((s) => s.href),
     "/trade",
