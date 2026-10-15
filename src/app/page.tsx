@@ -32,19 +32,19 @@ export default function HomePage() {
           <div className="grid items-center gap-8 lg:grid-cols-12 lg:gap-x-10">
             <div className="lg:col-span-6">
               <Eyebrow className="text-copper-soft">Embroidery digitizing and custom patches</Eyebrow>
-              <h1 className="mt-4 max-w-[16ch] text-[1.75rem] font-semibold leading-[1.15] tracking-[-0.03em] text-card sm:text-[2.5rem] lg:text-[3.05rem]">
-                Embroidery Digitizing &amp; Custom Patches for Your Next Order
+              <h1 className="mt-4 max-w-[18ch] text-[1.75rem] font-semibold leading-[1.12] tracking-[-0.03em] text-card sm:max-w-[22ch] sm:text-[2.35rem] lg:max-w-none lg:text-[2.75rem] lg:leading-[1.08]">
+                Embroidery Digitizing &amp; Custom Patches, Made for Your Brand
               </h1>
-              <p className="mt-5 max-w-md text-base leading-7 text-card/80 sm:text-lg sm:leading-8">
-                Machine-ready stitch files and custom patches for print shops, brands, and teams. Share your artwork and requirements for an itemized quote.
+              <p className="mt-5 max-w-xl text-base leading-7 text-card/80 sm:text-lg sm:leading-8">
+                We turn artwork into machine-ready stitch files and finished patches, and we help you choose the size, material, and file format that will sew cleanly.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <ButtonLink href="/quote" className="bg-card text-charcoal hover:bg-warm">
-                  Request a Quote
+                  Get My Quote
                 </ButtonLink>
                 {showWork ? (
                   <ButtonLink href="/portfolio" variant="invertGhost">
-                    View Our Work
+                    See Our Work
                   </ButtonLink>
                 ) : (
                   <ButtonLink href="#services" variant="invertGhost">
@@ -52,6 +52,10 @@ export default function HomePage() {
                   </ButtonLink>
                 )}
               </div>
+              <p className="mt-4 max-w-xl text-sm leading-6 text-card/70">
+                Requesting a quote does not commit you to an order.
+                {site.responseStatement ? ` ${site.responseStatement}` : ""}
+              </p>
             </div>
             <div className="lg:col-span-6">
               <HeroComposition />
@@ -84,7 +88,11 @@ export default function HomePage() {
 
       <section id="services" className="scroll-mt-24 border-b border-line py-16 sm:py-20">
         <Container>
-          <SectionHeading eyebrow="Services" title="Choose the work you need" lede="Three groups, one quote form. Every service stays in the menu." />
+          <SectionHeading
+            eyebrow="Services"
+            title="Choose the work you need"
+            lede="Pick files, printed garments, or finished products. If you are unsure which one fits the job, say so in the project details and we will recommend a route."
+          />
           <div className="mt-10 grid gap-5 md:grid-cols-3">
             {routes.map((route) => (
               <Link
