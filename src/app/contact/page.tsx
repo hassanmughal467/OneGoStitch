@@ -10,7 +10,7 @@ import { site } from "@/lib/site";
 
 export const metadata = pageMetadata({
   title: "Contact",
-  description: "Contact OneGo Stitch about embroidery digitizing, vector artwork, patches, apparel, printing or caps. Email, WhatsApp and quote form.",
+  description: "Contact OneGo Stitch about embroidery digitizing, vector artwork, patches, apparel, printing or caps. Email, phone and WhatsApp.",
   path: "/contact",
 });
 
