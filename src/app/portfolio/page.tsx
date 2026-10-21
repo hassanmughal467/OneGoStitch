@@ -4,8 +4,10 @@ import { CtaBand } from "@/components/sections/CtaBand";
 import { PageHero } from "@/components/sections/PageHero";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+import { leadCta, leadHref } from "@/lib/copy";
 import { hasPublishedPortfolio, portfolioFilters, publishedPortfolio } from "@/lib/portfolio";
 import { pageMetadata } from "@/lib/seo";
+import { getIntakeStatus } from "@/lib/server/intake-config";
 import { services } from "@/lib/services";
 
 export const metadata: Metadata = pageMetadata({
@@ -19,6 +21,7 @@ export const metadata: Metadata = pageMetadata({
 export default function Page() {
   const items = publishedPortfolio();
   const serviceTitles = Object.fromEntries(services.map((s) => [s.id, s.title]));
+  const intakeOnline = getIntakeStatus().online;
 
   if (!items.length) {
     return (
@@ -30,7 +33,7 @@ export default function Page() {
         />
         <section className="py-14">
           <Container className="flex flex-wrap gap-3">
-            <ButtonLink href="/quote">Request a Quote</ButtonLink>
+            <ButtonLink href={leadHref(intakeOnline)}>{leadCta(intakeOnline)}</ButtonLink>
             <ButtonLink href="/custom-products" variant="secondary">
               Browse products
             </ButtonLink>

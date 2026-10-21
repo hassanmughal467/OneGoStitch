@@ -8,7 +8,7 @@ import { checkArtworkBytes } from "@/lib/server/file-check";
 import { getIntakeStatus } from "@/lib/server/intake-config";
 import type { MailConfig } from "@/lib/server/mailer";
 import { generateReference, intakeLimits, processQuoteIntake, storedFileName } from "@/lib/server/quote-intake";
-import { DuplicateSubmissionError, FileQuoteStore, MemoryQuoteStore, resolveQuoteStore } from "@/lib/server/quote-store";
+import { DuplicateSubmissionError, EmailQuoteStore, FileQuoteStore, MemoryQuoteStore, resolveQuoteStore } from "@/lib/server/quote-store";
 import { createRateLimiter } from "@/lib/server/rate-limit";
 
 const submissionId = "6f1c2a3e-4b5d-4c6e-8f70-1a2b3c4d5e6f";
@@ -117,6 +117,10 @@ describe("store resolution and intake status", () => {
     expect(resolveQuoteStore(env({ QUOTE_STORE: "vercel-blob", BLOB_READ_WRITE_TOKEN: "x" })).store?.name).toBe("vercel-blob");
     expect(resolveQuoteStore(env({ BLOB_READ_WRITE_TOKEN: "x" })).store?.name).toBe("vercel-blob");
     expect(resolveQuoteStore(env({ NODE_ENV: "development" })).store?.name).toBe("file");
+    expect(resolveQuoteStore(env({ NODE_ENV: "production" })).store?.name).toBe("file");
+    expect(resolveQuoteStore(env({ NODE_ENV: "production", VERCEL: "1" })).reason).toBe("unset");
+    expect(resolveQuoteStore(env({ NODE_ENV: "production", VERCEL: "1", RESEND_API_KEY: "re_test", RESEND_FROM_EMAIL: "quotes@studio.test", QUOTE_INBOX_EMAIL: "staff@studio.test" })).store?.name).toBe("email");
+    expect(resolveQuoteStore(env({ QUOTE_STORE: "email" })).reason).toBe("email-missing-mailer");
   });
 
   it("supports deliberate maintenance mode with a configurable message", async () => {
@@ -333,6 +337,38 @@ describe("intake with the file store", () => {
     const clash = { ...found!, reference: "SC-999999-ZZZZ" };
     await expect(other.save(clash, [])).rejects.toBeInstanceOf(DuplicateSubmissionError);
     expect(await store.referenceExists("SC-999999-ZZZZ")).toBe(false);
+  });
+});
+
+describe("intake with the email store", () => {
+  it("treats a sent staff email as the saved record", async () => {
+    const store = new EmailQuoteStore();
+    const mail = fakeMail();
+    const result = await processQuoteIntake({
+      form: toForm(validDigitizing({ rights: true }), [png()]),
+      headers: freshHeaders(),
+      store,
+      env: { ...baseEnv, QUOTE_STORE: "email" },
+      notify: { config: mail.config },
+    });
+    expect(result.status).toBe(201);
+    if (!result.body.ok) throw new Error("expected ok");
+    expect(mail.sent).toHaveLength(2);
+    expect(store.records.size).toBe(1);
+  });
+
+  it("does not keep a record when the inbox email fails", async () => {
+    const store = new EmailQuoteStore();
+    const mail = fakeMail("staff");
+    const result = await processQuoteIntake({
+      form: toForm(validDigitizing()),
+      headers: freshHeaders(),
+      store,
+      env: { ...baseEnv, QUOTE_STORE: "email" },
+      notify: { config: mail.config },
+    });
+    expect(result.status).toBe(500);
+    expect(store.records.size).toBe(0);
   });
 });
 

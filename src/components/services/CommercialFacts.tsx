@@ -14,7 +14,7 @@ export function CommercialFacts({ serviceId, kind }: { serviceId: string; kind: 
           </div>
         ))}
       </dl>
-      <p className="mt-4 text-xs leading-5 text-stone">{kind === "digital" ? fulfilmentCopy.digitalDelivery : fulfilmentCopy.physicalDelivery}</p>
+      <p className="mt-4 text-xs leading-5 text-stone">{kind === "digital" ? fulfilmentCopy.digitalSequence : fulfilmentCopy.physicalDelivery}</p>
     </div>
   );
 }
@@ -24,8 +24,17 @@ export function FulfilmentNotes({ kind }: { kind: "digital" | "physical" }) {
     <div className="rounded-sm border border-line p-6">
       <h3 className="text-lg font-semibold">How fulfilment works</h3>
       <ul className="mt-3 space-y-2 text-sm leading-6 text-ink-soft">
-        <li>{fulfilmentCopy.afterApproval}</li>
-        {kind === "physical" ? <li>{fulfilmentCopy.shippingSeparate}</li> : <li>{fulfilmentCopy.digitalDelivery}</li>}
+        {kind === "digital" ? (
+          <>
+            <li>{fulfilmentCopy.digitalSequence}</li>
+            <li>{fulfilmentCopy.digitalDelivery}</li>
+          </>
+        ) : (
+          <>
+            <li>{fulfilmentCopy.afterApproval}</li>
+            <li>{fulfilmentCopy.shippingSeparate}</li>
+          </>
+        )}
         <li>{fulfilmentCopy.deadlinesUnconfirmed}</li>
       </ul>
     </div>

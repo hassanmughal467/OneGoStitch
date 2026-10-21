@@ -6,7 +6,9 @@ import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/SectionHeading";
 import { StitchField } from "@/components/visuals/StitchField";
+import { leadCta, leadHref } from "@/lib/copy";
 import { breadcrumbJsonLd } from "@/lib/seo";
+import { getIntakeStatus } from "@/lib/server/intake-config";
 import { routes, services, type ServiceRoute } from "@/lib/services";
 
 export function RouteOverview({ route, lede, points }: { route: ServiceRoute; lede: string; points: string[] }) {
@@ -15,6 +17,8 @@ export function RouteOverview({ route, lede, points }: { route: ServiceRoute; le
     .filter((s) => s.route === route)
     .slice()
     .sort((a, b) => (a.id === "screen-printing" ? -1 : b.id === "screen-printing" ? 1 : 0));
+  const intakeOnline = getIntakeStatus().online;
+  const quotePath = list.length === 1 ? `/quote?service=${list[0].id}` : "/quote";
   return (
     <>
       <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: info.title, path: info.href }])} />
@@ -32,8 +36,8 @@ export function RouteOverview({ route, lede, points }: { route: ServiceRoute; le
             <h1 className="mt-4 text-[2rem] font-semibold leading-[1.1] tracking-[-0.03em] sm:text-5xl">{info.title}</h1>
             <p className="mt-5 max-w-xl text-lg leading-8 text-card/75">{lede}</p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <ButtonLink href={list.length === 1 ? `/quote?service=${list[0].id}` : "/quote"} className="bg-card text-charcoal hover:bg-warm">
-                Request a Quote
+              <ButtonLink href={leadHref(intakeOnline, quotePath)} className="bg-card text-charcoal hover:bg-warm">
+                {leadCta(intakeOnline)}
               </ButtonLink>
             </div>
           </div>

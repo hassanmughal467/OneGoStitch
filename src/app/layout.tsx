@@ -5,8 +5,10 @@ import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { leadCta, leadHref } from "@/lib/copy";
 import { siteEnv } from "@/lib/env";
 import { organizationJsonLd, robotsFor } from "@/lib/seo";
+import { getIntakeStatus } from "@/lib/server/intake-config";
 import { site } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import "./globals.css";
@@ -41,6 +43,7 @@ export const viewport: Viewport = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const intakeOnline = getIntakeStatus().online;
   return (
     <html lang="en" data-scroll-behavior="smooth">
       <body className={cn(sans.variable, "font-sans antialiased")}>
@@ -52,7 +55,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Skip to content
         </a>
         <AnnouncementBanner />
-        <Header />
+        <Header quoteHref={leadHref(intakeOnline)} quoteLabel={leadCta(intakeOnline)} />
         <main id="main">{children}</main>
         <Footer />
         <WhatsAppButton />

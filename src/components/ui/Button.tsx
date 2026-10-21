@@ -26,9 +26,11 @@ export function ButtonLink({
   external,
 }: Common & { href: string; external?: boolean }) {
   const classes = cn(base, variants[variant], className);
-  if (external) {
+  const offsite = external || /^(mailto:|tel:|sms:|https?:)/i.test(href);
+  if (offsite) {
+    const remote = /^https?:/i.test(href);
     return (
-      <a href={href} className={classes} target="_blank" rel="noreferrer">
+      <a href={href} className={classes} {...(remote ? { target: "_blank", rel: "noreferrer" } : {})}>
         {children}
       </a>
     );

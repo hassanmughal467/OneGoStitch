@@ -9,7 +9,7 @@ import { Container } from "@/components/ui/Container";
 import { digitizingNav, primaryLinks, printingNav, productsNav, studioNav, type NavGroup } from "@/lib/nav";
 import { cn } from "@/lib/utils";
 
-export function Header() {
+export function Header({ quoteHref = "/quote", quoteLabel = "Request a Quote" }: { quoteHref?: string; quoteLabel?: string }) {
   const pathname = usePathname();
   // The menu is "open" only for the path it was opened on, so navigation closes it without an effect.
   const [openPath, setOpenPath] = useState<string | null>(null);
@@ -103,14 +103,14 @@ export function Header() {
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
-          <ButtonLink href="/quote" className="min-h-10 px-4 text-[0.78rem]">
-            Request a Quote
+          <ButtonLink href={quoteHref} className="min-h-10 px-4 text-[0.78rem]">
+            {quoteLabel}
           </ButtonLink>
         </div>
 
         <div className="flex shrink-0 items-center gap-2 lg:hidden">
-          <ButtonLink href="/quote" className="min-h-10 px-3 text-[0.72rem]">
-            Quote
+          <ButtonLink href={quoteHref} className="min-h-10 px-3 text-[0.72rem]">
+            {quoteHref === "/contact" ? "Email" : "Quote"}
           </ButtonLink>
           <button
             ref={menuTriggerRef}
@@ -141,8 +141,8 @@ export function Header() {
             </Link>
           ))}
           <MobileGroup group={studioNav} />
-          <ButtonLink href="/quote" className="mt-3 w-full">
-            Request a Quote
+          <ButtonLink href={quoteHref} className="mt-3 w-full">
+            {quoteLabel}
           </ButtonLink>
         </Container>
       </div>

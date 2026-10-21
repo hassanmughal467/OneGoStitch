@@ -10,7 +10,8 @@ import { Container } from "@/components/ui/Container";
 import { Eyebrow, SectionHeading } from "@/components/ui/SectionHeading";
 import { ServiceVisual } from "@/components/visuals/ServiceVisual";
 import { StitchField } from "@/components/visuals/StitchField";
-import { quoteCta } from "@/lib/copy";
+import { leadCta, leadHref, quoteCta, serviceInSentence } from "@/lib/copy";
+import { getIntakeStatus } from "@/lib/server/intake-config";
 import { publishedPortfolio } from "@/lib/portfolio";
 import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from "@/lib/seo";
 import { getService, routes, type ServicePage as Service } from "@/lib/services";
@@ -18,7 +19,9 @@ import { getService, routes, type ServicePage as Service } from "@/lib/services"
 export function ServiceView({ service }: { service: Service }) {
   const related = service.related.map((id) => getService(id)).filter((s): s is Service => Boolean(s));
   const route = routes.find((r) => r.id === service.route)!;
-  const quoteHref = `/quote?service=${service.id}`;
+  const intakeOnline = getIntakeStatus().online;
+  const quoteHref = leadHref(intakeOnline, `/quote?service=${service.id}`);
+  const quoteLabel = leadCta(intakeOnline, service.id);
   const work = publishedPortfolio().filter((item) => item.service === service.id);
   const crumbs =
     service.href === route.href
@@ -62,7 +65,7 @@ export function ServiceView({ service }: { service: Service }) {
             <p className="mt-5 max-w-xl text-lg leading-8 text-card/75">{service.intro}</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <ButtonLink href={quoteHref} className="bg-card text-charcoal hover:bg-warm">
-                {quoteCta(service.id)}
+                {quoteLabel}
               </ButtonLink>
               <ButtonLink href="#details" variant="invertGhost">
                 What to send
@@ -163,7 +166,7 @@ export function ServiceView({ service }: { service: Service }) {
               ))}
             </ul>
             <ButtonLink href={quoteHref} className="mt-8">
-              {quoteCta(service.id)}
+              {quoteLabel}
             </ButtonLink>
           </div>
           <div className="grid gap-6 lg:col-span-7">
@@ -252,7 +255,7 @@ export function ServiceView({ service }: { service: Service }) {
           </ul>
         </Container>
       </section>
-      <CtaBand title={`Ready to quote your ${service.title.toLowerCase()} job?`} href={quoteHref} cta={quoteCta(service.id)} />
+      <CtaBand title={`Ready to quote your ${serviceInSentence(service.title)} job?`} href={quoteHref} cta={quoteCta(service.id)} />
     </>
   );
 }

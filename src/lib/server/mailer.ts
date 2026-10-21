@@ -7,7 +7,8 @@
  * If EMAIL_PROVIDER is unset but Resend variables are present, Resend is used.
  * Artwork is never attached; staff receive expiring links instead.
  */
-export type MailMessage = { to: string; subject: string; text: string; replyTo?: string };
+export type MailAttachment = { filename: string; content: Uint8Array; contentType: string };
+export type MailMessage = { to: string; subject: string; text: string; replyTo?: string; attachments?: MailAttachment[] };
 
 export interface Mailer {
   readonly name: string;
@@ -26,7 +27,22 @@ export function resendMailer(key: string, from: string, fetchImpl: typeof fetch 
       const response = await fetchImpl("https://api.resend.com/emails", {
         method: "POST",
         headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
-        body: JSON.stringify({ from, to: [message.to], subject: message.subject, text: message.text, ...(message.replyTo ? { reply_to: message.replyTo } : {}) }),
+        body: JSON.stringify({
+          from,
+          to: [message.to],
+          subject: message.subject,
+          text: message.text,
+          ...(message.replyTo ? { reply_to: message.replyTo } : {}),
+          ...(message.attachments?.length
+            ? {
+                attachments: message.attachments.map((file) => ({
+                  filename: file.filename,
+                  content: Buffer.from(file.content).toString("base64"),
+                  content_type: file.contentType,
+                })),
+              }
+            : {}),
+        }),
       });
       if (!response.ok) throw new Error(`Resend responded ${response.status}`);
     },
@@ -38,7 +54,8 @@ export function logMailer(): Mailer {
     name: "log",
     resultStatus: "logged",
     async send(message) {
-      console.info(`\n[mail:log] To: ${message.to}\n[mail:log] Subject: ${message.subject}\n${message.text}\n`);
+      const files = message.attachments?.map((file) => file.filename).join(", ");
+      console.info(`\n[mail:log] To: ${message.to}\n[mail:log] Subject: ${message.subject}${files ? `\n[mail:log] Attachments: ${files}` : ""}\n${message.text}\n`);
     },
   };
 }

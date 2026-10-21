@@ -1,7 +1,8 @@
+import Link from "next/link";
 import { PageHero } from "@/components/sections/PageHero";
 import { Container } from "@/components/ui/Container";
 import { pageMetadata } from "@/lib/seo";
-import { site } from "@/lib/site";
+import { mailtoHref, site } from "@/lib/site";
 
 export const metadata = pageMetadata({
   title: "Accessibility",
@@ -20,8 +21,15 @@ export default function Page() {
             your reduced-motion setting. Menus and form errors are announced to screen readers.
           </p>
           <p>
-            If anything blocks you, tell us the page address and what you were trying to do{site.email ? ` at ${site.email}` : " through the contact page"}, and we will fix it or
-            help you complete the task another way.
+            If anything blocks you, tell us the page address and what you were trying to do at{" "}
+            <a href={mailtoHref() ?? `mailto:${site.email}`} className="font-semibold text-blue hover:underline">
+              {site.email}
+            </a>{" "}
+            or through the{" "}
+            <Link href="/contact" className="font-semibold text-blue hover:underline">
+              contact page
+            </Link>
+            , and we will fix it or help you complete the task another way.
           </p>
         </Container>
       </section>

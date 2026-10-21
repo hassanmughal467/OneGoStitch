@@ -22,5 +22,21 @@ export function quoteCta(serviceId?: string) {
 
 export function similarProjectCta(serviceId?: string) {
   const service = serviceId ? services.find((item) => item.id === serviceId) : undefined;
-  return service ? `Quote a similar ${service.title.toLowerCase()} project` : "Quote a similar project";
+  return service ? `Quote a similar ${serviceInSentence(service.title)} project` : "Quote a similar project";
+}
+
+/** Lowercases a service title for a sentence while keeping DTF and similar marks intact. */
+export function serviceInSentence(title: string) {
+  return title
+    .split(/(\bDTF\b)/)
+    .map((part) => (part === "DTF" ? "DTF" : part.toLowerCase()))
+    .join("");
+}
+
+export function leadHref(online: boolean, quotePath = "/quote") {
+  return online ? quotePath : "/contact";
+}
+
+export function leadCta(online: boolean, serviceId?: string) {
+  return online ? quoteCta(serviceId) : "Email a quote request";
 }

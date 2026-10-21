@@ -4,9 +4,8 @@ import { siteEnv } from "@/lib/env";
 /**
  * Company identity and contact channels.
  *
- * Every contact channel is optional and comes from validated environment
- * configuration. Unset or malformed values resolve to `null`, and the UI hides
- * that channel instead of showing a placeholder. Do not hard-code contact data.
+ * Public contact details have owner-supplied defaults. Environment variables
+ * override them. Malformed values still resolve to `null`.
  */
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -50,38 +49,43 @@ function validUrl(value: string | undefined, hostIncludes: string) {
   }
 }
 
-const phone = validPhone(process.env.NEXT_PUBLIC_PHONE);
+function orDefault(value: string | undefined, fallback: string) {
+  return clean(value) ?? fallback;
+}
+
+const phone = validPhone(orDefault(process.env.NEXT_PUBLIC_PHONE, "+1 929 299 1866"));
+
+/** Published support inbox. Environment overrides must still be a real address. */
+export const SUPPORT_EMAIL = "info@onegostitch.com";
 
 export const site = {
   name: "OneGo Stitch",
   shortName: "OneGo Stitch",
   copyrightYear: 2026,
-  legalName: clean(process.env.NEXT_PUBLIC_LEGAL_NAME),
+  legalName: orDefault(process.env.NEXT_PUBLIC_LEGAL_NAME, "OneGo Stitch"),
   tagline: "Embroidery Digitizing, Custom Patches & Branded Apparel",
   description:
     "Embroidery digitizing, vector tracing, DTF printing, logo design, custom patches, embroidered apparel, screen printing and caps for print shops, brands, teams and individual orders.",
   /**
-   * Public location line. Country is not stated until the owner sets
-   * NEXT_PUBLIC_ADDRESS_COUNTRY. Markets served are not an office address.
+   * Public location line. A street address is shown only when
+   * NEXT_PUBLIC_ADDRESS_LINE1 is set. North Carolina is the published location.
    */
   location: "Embroidery digitizing, custom patches and decorated apparel for print shops, brands, teams and individual orders.",
-  country: clean(process.env.NEXT_PUBLIC_ADDRESS_COUNTRY),
+  country: orDefault(process.env.NEXT_PUBLIC_ADDRESS_COUNTRY, "United States"),
   markets: [] as string[],
   url: siteEnv.baseUrl,
-  email: validEmail(process.env.NEXT_PUBLIC_CONTACT_EMAIL),
+  email: validEmail(orDefault(process.env.NEXT_PUBLIC_CONTACT_EMAIL, SUPPORT_EMAIL)) ?? SUPPORT_EMAIL,
   phone,
-  whatsapp: validWhatsApp(process.env.NEXT_PUBLIC_WHATSAPP),
-  /** Customer-service availability, e.g. "Monday to Saturday, 09:00–18:00 ET". Hidden when unset. */
-  hours: clean(process.env.NEXT_PUBLIC_SUPPORT_HOURS),
-  /**
-   * Response-time statement shown on Contact and in confirmations, e.g.
-   * "We usually reply within one business day." Hidden when unset; never invented.
-   */
-  responseStatement: clean(process.env.NEXT_PUBLIC_RESPONSE_STATEMENT),
+  whatsapp: validWhatsApp(orDefault(process.env.NEXT_PUBLIC_WHATSAPP, "19292991866")),
+  /** Customer-service availability. Override with NEXT_PUBLIC_SUPPORT_HOURS. */
+  hours: orDefault(process.env.NEXT_PUBLIC_SUPPORT_HOURS, "Open 24 hours, Monday to Sunday, Eastern Time"),
+  timezone: "America/New_York",
+  /** Reply-time statement. Override with NEXT_PUBLIC_RESPONSE_STATEMENT. */
+  responseStatement: orDefault(process.env.NEXT_PUBLIC_RESPONSE_STATEMENT, "We usually reply within 3–4 hours, Eastern Time."),
   address: {
     line1: clean(process.env.NEXT_PUBLIC_ADDRESS_LINE1),
-    city: clean(process.env.NEXT_PUBLIC_ADDRESS_CITY),
-    country: clean(process.env.NEXT_PUBLIC_ADDRESS_COUNTRY),
+    city: orDefault(process.env.NEXT_PUBLIC_ADDRESS_CITY, "North Carolina"),
+    country: orDefault(process.env.NEXT_PUBLIC_ADDRESS_COUNTRY, "United States"),
   },
   social: {
     instagram: validUrl(process.env.NEXT_PUBLIC_INSTAGRAM_URL, "instagram.com"),
@@ -127,6 +131,24 @@ export function whatsappDisplay() {
 
 export function mailtoHref() {
   return site.email ? `mailto:${site.email}` : null;
+}
+
+/** Prefills a quote request so the inbox remains usable when the form is offline. */
+export function mailtoQuoteHref(service?: string) {
+  if (!site.email) return "/contact";
+  const subject = service ? `Quote request: ${service}` : "Quote request";
+  const body = [
+    "Hello OneGo Stitch,",
+    "",
+    `I would like a quote${service ? ` for ${service}` : ""}.`,
+    "",
+    "Service:",
+    "Quantity or size:",
+    "Date needed:",
+    "",
+    "I will attach artwork to this email.",
+  ].join("\n");
+  return `mailto:${site.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }
 
 export function telHref() {

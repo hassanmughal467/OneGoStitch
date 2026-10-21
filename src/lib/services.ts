@@ -44,7 +44,7 @@ export const routes = [
     id: "printing",
     href: "/printing",
     title: "Screen Printing & DTF",
-    body: "Finished garments with screen printing or Direct-to-Film. These are separate services.",
+    body: "Finished garments decorated with screen printing or Direct-to-Film. Screen printing suits larger runs of solid colors. DTF suits smaller runs and full-color artwork.",
     items: ["Screen printing", "DTF printing"],
   },
   {
@@ -113,7 +113,7 @@ export const services: ServicePage[] = [
       { q: "Which formats do you deliver?", a: "DST, PES, EXP, JEF, EMB and other shop formats. Tell us the machine and we will match the format." },
       { q: "Can one file be used on a cap, a polo and a jacket back?", a: "No. Each placement has a different size, fabric and sewing direction, so each is digitized separately. We quote them together when you order together." },
       { q: "Will you fix a file that does not sew well on my machine?", a: "Yes. Send a photo of the sew-out and the fabric details and we adjust density, underlay or pull compensation." },
-      { q: "Do you sew a physical sample?", a: "A stitch preview is standard. If you need a physical sew-out before a bulk run, ask on the quote form and we will quote it as a line item." },
+      { q: "Do you sew a physical sample?", a: "A stitch preview is included with the file. If you need a physical sew-out before you approve the file, ask on the quote form and we will price it as its own line." },
     ],
     related: ["vector-tracing", "custom-patches", "custom-hats"],
   },
@@ -522,11 +522,11 @@ export const buyingAnswers = [
   },
   {
     q: "How long does it take?",
-    a: "Each quote separates response, draft or production time, and shipping. Draft artwork is created so you can review a preview. Bulk product production starts after that proof is approved and the payment on the quote is received.",
+    a: "Each quote separates response, draft or production time, and shipping. Draft artwork is created so you can review a preview. For products, bulk production starts after that proof is approved and the payment on the quote is received. Digital files are released for download after preview approval and payment.",
   },
   {
     q: "What about revisions?",
-    a: "Changes before you approve the proof are part of the job. Changes after approval that need a new file, screen or production run are quoted before we continue.",
+    a: "Revisions are included within the agreed scope and number of rounds on your quote. Changes before you approve the proof are part of that scope. Extra rounds, or changes after approval that need a new file, screen or production run, are quoted before we continue.",
   },
 ] as const;
 
@@ -534,7 +534,7 @@ export const tradeBenefits = [
   { title: "Artwork kept on file", body: "Approved embroidery files, vectors and proofs stay attached to your quote reference, so repeat jobs start from the approved version." },
   { title: "Overflow and white-label work", body: "Digitizing, vector and production work delivered under your reference. We do not contact your customers." },
   { title: "Consistent proofs", body: "Digital jobs include a preview of the draft file. Product jobs include a placement proof before bulk production, in a format you can forward to your customer." },
-  { title: "Trade pricing by agreement", body: "Tell us the volume you expect. Terms are confirmed in writing on each quote. Volume does not by itself guarantee a discount." },
+  { title: "Trade pricing by agreement", body: "Share the services and volume you expect. We assess repeat work, file complexity, and production together, then confirm the terms in writing on each quote." },
 ] as const;
 
 export const guides = [
