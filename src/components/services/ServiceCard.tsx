@@ -1,9 +1,12 @@
 import Link from "next/link";
 import { ServiceVisual } from "@/components/visuals/ServiceVisual";
+import { leadCta, leadHref } from "@/lib/copy";
+import { getIntakeStatus } from "@/lib/server/intake-config";
 import type { ServicePage } from "@/lib/services";
 import { cn } from "@/lib/utils";
 
 export function ServiceCard({ service, compact, className }: { service: ServicePage; compact?: boolean; className?: string }) {
+  const intakeOnline = getIntakeStatus().online;
   return (
     <li className={cn("group flex min-w-0 flex-col overflow-hidden rounded-sm border border-line bg-card shadow-[0_1px_2px_rgba(21,21,21,0.05)] transition-colors hover:border-blue", className)}>
       <Link href={service.href} className="block aspect-[16/9] overflow-hidden border-b border-line bg-warm" aria-hidden tabIndex={-1}>
@@ -21,8 +24,8 @@ export function ServiceCard({ service, compact, className }: { service: ServiceP
           <Link href={service.href} className="text-blue hover:underline">
             Details
           </Link>
-          <Link href={`/quote?service=${service.id}`} className="text-charcoal hover:text-blue hover:underline">
-            Request a quote
+          <Link href={leadHref(intakeOnline, `/quote?service=${service.id}`)} className="text-charcoal hover:text-blue hover:underline">
+            {intakeOnline ? "Request a quote" : "Email a quote request"}
           </Link>
         </div>
       </div>

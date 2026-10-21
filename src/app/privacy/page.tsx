@@ -1,7 +1,8 @@
+import Link from "next/link";
 import { PageHero } from "@/components/sections/PageHero";
 import { Container } from "@/components/ui/Container";
 import { pageMetadata } from "@/lib/seo";
-import { site } from "@/lib/site";
+import { mailtoHref, site } from "@/lib/site";
 
 export const metadata = pageMetadata({
   title: "Privacy Policy",
@@ -28,7 +29,11 @@ export default function Page() {
           <h2 className="mt-8 text-xl font-semibold text-charcoal">Artwork</h2>
           <p>
             Uploaded files are stored privately for quoting and production and are never made public. We do not publish customer work without written permission. Files are
-            kept so repeat orders can reuse the approved version; email us with your reference to have them deleted.
+            kept so repeat orders can reuse the approved version. Email{" "}
+            <a href={mailtoHref() ?? `mailto:${site.email}`} className="font-semibold text-blue hover:underline">
+              {site.email}
+            </a>{" "}
+            with your reference to have them deleted.
           </p>
           <h2 className="mt-8 text-xl font-semibold text-charcoal">Service providers</h2>
           <p>
@@ -39,7 +44,15 @@ export default function Page() {
           <p>Only cookies essential to running the site are set. Any analytics added in future will run only with your consent and will never receive artwork or contact details.</p>
           <h2 className="mt-8 text-xl font-semibold text-charcoal">Your rights and contact</h2>
           <p>
-            You can ask for a copy of the information we hold about you, corrections, or deletion. {site.email ? `Contact ${site.email}.` : "Use the contact page to reach us."}
+            You can ask for a copy of the information we hold about you, corrections, or deletion. Email{" "}
+            <a href={mailtoHref() ?? `mailto:${site.email}`} className="font-semibold text-blue hover:underline">
+              {site.email}
+            </a>{" "}
+            or use the{" "}
+            <Link href="/contact" className="font-semibold text-blue hover:underline">
+              contact page
+            </Link>
+            .
           </p>
         </Container>
       </section>

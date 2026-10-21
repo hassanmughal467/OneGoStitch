@@ -2,6 +2,7 @@ import { createHash, randomBytes } from "node:crypto";
 import { fileLimits, extensionOf } from "@/lib/config/limits";
 import { countryName } from "@/lib/countries";
 import { booleanFields, canonicalServiceId, emptyQuote, validateArtworkFiles, validateQuote, type QuoteFieldErrors, type QuotePayload } from "@/lib/quote";
+import { artworkLinksEnabled } from "@/lib/server/artwork-links";
 import { checkArtworkBytes } from "@/lib/server/file-check";
 import { getIntakeStatus } from "@/lib/server/intake-config";
 import { log } from "@/lib/server/log";
@@ -259,8 +260,26 @@ async function persistAndNotify({
   }
   log.info("quote.intake.saved", { reference, service: payload.service, files: artwork.length, store: store.name });
 
-  // Notifications run after persistence; a failure here must never ask the customer to resubmit.
-  const notification = await sendQuoteNotifications(record, { responseStatement: status.responseStatement, now, env, ...input.notify });
+  // Notifications run after persistence; a failure here must never ask the customer to resubmit
+  // unless the inbox *is* the store (email-backed serverless fallback).
+  const attachments = verified.map((item, index) => ({
+    filename: artwork[index]?.originalName || item.originalName,
+    content: item.file.bytes,
+    contentType: item.file.contentType,
+  }));
+  const attachToStaff = store.name === "email" || !artworkLinksEnabled(env);
+  const notification = await sendQuoteNotifications(record, {
+    responseStatement: status.responseStatement,
+    now,
+    env,
+    attachments: attachToStaff && attachments.length ? attachments : undefined,
+    ...input.notify,
+  });
+  if (store.name === "email" && notification.staff.status !== "sent" && notification.staff.status !== "logged") {
+    if ("forget" in store && typeof store.forget === "function") store.forget(reference);
+    log.error("quote.intake.email_store_failed", undefined, { reference, staff: notification.staff.status });
+    return { status: 500, body: { ok: false, message: "We could not save your request. Nothing was submitted; please try again in a moment.", retryable: true } };
+  }
   if (notification.staff.status === "failed" || notification.customer.status === "failed") {
     log.error("quote.intake.notify_failed", undefined, { reference, staff: notification.staff.status, customer: notification.customer.status, provider: notification.staff.provider ?? null });
   }

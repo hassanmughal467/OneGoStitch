@@ -54,6 +54,35 @@ export default function Page() {
           </div>
           <aside className="lg:col-span-5">
             <div className="rounded-sm border border-line bg-card p-6">
+              <p className="text-[0.75rem] font-semibold uppercase tracking-[0.16em] text-copper-dark">Company</p>
+              <dl className="mt-4 space-y-3 text-sm leading-6 text-ink-soft">
+                <div>
+                  <dt className="text-xs font-semibold uppercase tracking-[0.12em] text-stone">Legal name</dt>
+                  <dd className="mt-1 font-medium text-charcoal">{site.legalName}</dd>
+                </div>
+                <div>
+                  <dt className="text-xs font-semibold uppercase tracking-[0.12em] text-stone">Location</dt>
+                  <dd className="mt-1">{[site.address.city, site.address.country].filter(Boolean).join(", ")}</dd>
+                </div>
+                <div>
+                  <dt className="text-xs font-semibold uppercase tracking-[0.12em] text-stone">Support hours</dt>
+                  <dd className="mt-1">{site.hours}</dd>
+                </div>
+                <div>
+                  <dt className="text-xs font-semibold uppercase tracking-[0.12em] text-stone">Response</dt>
+                  <dd className="mt-1">{site.responseStatement}</dd>
+                </div>
+                <div>
+                  <dt className="text-xs font-semibold uppercase tracking-[0.12em] text-stone">Email</dt>
+                  <dd className="mt-1">
+                    <a href={`mailto:${site.email}`} className="font-semibold text-blue hover:underline">
+                      {site.email}
+                    </a>
+                  </dd>
+                </div>
+              </dl>
+            </div>
+            <div className="mt-6 rounded-sm border border-line bg-card p-6">
               <p className="text-[0.75rem] font-semibold uppercase tracking-[0.16em] text-copper-dark">How to buy</p>
               <ul className="mt-4 space-y-5">
                 {routes.map((route) => (

@@ -8,7 +8,8 @@ import { resolveCustomerParam, resolveServiceParam } from "@/lib/quote";
 import { getIntakeStatus } from "@/lib/server/intake-config";
 import { pageMetadata } from "@/lib/seo";
 import { getService } from "@/lib/services";
-import { contactChannels } from "@/lib/site";
+import { serviceInSentence } from "@/lib/copy";
+import { site } from "@/lib/site";
 
 export const metadata = pageMetadata({
   title: "Request a quote",
@@ -30,12 +31,10 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ s
     <>
       <PageHero
         eyebrow="Request a quote"
-        title={service ? `Quote for ${service.title.toLowerCase()}` : "Tell us about your job"}
+        title={service ? `Quote for ${serviceInSentence(service.title)}` : "Tell us about your job"}
         lede={
           !status.online
-            ? contactChannels.hasAny
-              ? "The online form is paused. Email or message us with the service, size or quantity, and your artwork."
-              : "The online form is paused until requests can be saved. Check this page again when intake is available."
+            ? `Email ${site.email} with the service, size or quantity, and your artwork. We reply with a reference and a quotation.`
             : service
               ? `${service.kind === "digital" ? "You receive files by download." : "You receive finished products, shipped with tracking."} Two short steps; attach artwork if you have it.`
               : "Two short steps: who you are and which service, then only the details that service needs. Attach artwork if you have it."
@@ -60,23 +59,13 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ s
                     <li>You get an itemised quotation with timing and payment terms.</li>
                     <li>Work starts after you approve the quotation and the proof.</li>
                   </>
-                ) : contactChannels.hasAny ? (
-                  <>
-                    <li>Send the service, size or quantity, date and artwork using the contact details on this page.</li>
-                    <li>We reply with a reference and any questions.</li>
-                    <li>You receive an itemised quotation with timing and payment terms.</li>
-                  </>
                 ) : (
                   <>
-                    <li>Online requests are paused, so nothing is submitted from this page yet.</li>
-                    <li>When the form is back, you will receive a reference as soon as the request is saved.</li>
                     <li>
-                      See{" "}
-                      <Link href="/how-it-works" className="font-semibold text-blue hover:underline">
-                        how ordering works
-                      </Link>{" "}
-                      for what we will need.
+                      Email {site.email} with the service, size or quantity, date and artwork.
                     </li>
+                    <li>We reply with a reference and any questions.</li>
+                    <li>You receive an itemised quotation with timing and payment terms.</li>
                   </>
                 )}
               </ol>
@@ -85,7 +74,7 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ s
                 <p className="mt-5">
                   Not sure what to send? See{" "}
                   <Link href={`${service.href}#details`} className="font-semibold text-blue hover:underline">
-                    what to send for {service.title.toLowerCase()}
+                    what to send for {serviceInSentence(service.title)}
                   </Link>
                   .
                 </p>
@@ -99,14 +88,12 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ s
                 </p>
               )}
             </div>
-            {contactChannels.hasAny ? (
-              <div className="rounded-sm border border-line bg-card p-6">
-                <h2 className="text-base font-semibold text-charcoal">{status.online ? "Prefer to talk first?" : "Contact OneGo Stitch"}</h2>
-                <div className="mt-3">
-                  <ContactChannels compact message={`Hello OneGo Stitch, I would like a quote${service ? ` for ${service.title.toLowerCase()}` : ""}.`} />
-                </div>
+            <div className="rounded-sm border border-line bg-card p-6">
+              <h2 className="text-base font-semibold text-charcoal">{status.online ? "Prefer to talk first?" : "Contact OneGo Stitch"}</h2>
+              <div className="mt-3">
+                <ContactChannels compact message={`Hello OneGo Stitch, I would like a quote${service ? ` for ${service.title}` : ""}.`} />
               </div>
-            ) : null}
+            </div>
           </aside>
         </Container>
       </section>

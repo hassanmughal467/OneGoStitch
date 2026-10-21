@@ -522,11 +522,11 @@ export const buyingAnswers = [
   },
   {
     q: "How long does it take?",
-    a: "Each quote separates response, draft or production time, and shipping. Draft artwork is created so you can review a preview. Bulk product production starts after that proof is approved and the payment on the quote is received.",
+    a: "Each quote separates response, draft or production time, and shipping. Draft artwork is created so you can review a preview. For products, bulk production starts after that proof is approved and the payment on the quote is received. Digital files are released for download after preview approval and payment.",
   },
   {
     q: "What about revisions?",
-    a: "Changes before you approve the proof are part of the job. Changes after approval that need a new file, screen or production run are quoted before we continue.",
+    a: "Revisions are included within the agreed scope and number of rounds on your quote. Changes before you approve the proof are part of that scope. Extra rounds, or changes after approval that need a new file, screen or production run, are quoted before we continue.",
   },
 ] as const;
 

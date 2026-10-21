@@ -10,6 +10,8 @@ import { StitchField } from "@/components/visuals/StitchField";
 import { featuredPortfolio, hasPublishedPortfolio } from "@/lib/portfolio";
 import { PortfolioPreview } from "@/components/portfolio/PortfolioPreview";
 import { faqJsonLd, pageMetadata } from "@/lib/seo";
+import { leadCta, leadHref } from "@/lib/copy";
+import { getIntakeStatus } from "@/lib/server/intake-config";
 import { buyingAnswers, routes, tradeBenefits } from "@/lib/services";
 import { site } from "@/lib/site";
 
@@ -21,6 +23,10 @@ export const metadata = pageMetadata({
 
 export default function HomePage() {
   const showWork = hasPublishedPortfolio();
+  const intakeOnline = getIntakeStatus().online;
+  const quoteHref = leadHref(intakeOnline);
+  const quoteLabel = leadCta(intakeOnline);
+  const tradeHref = leadHref(intakeOnline, "/quote?customer=business");
 
   return (
     <>
@@ -30,17 +36,17 @@ export default function HomePage() {
         <StitchField />
         <Container className="relative z-10 py-14 sm:py-16 lg:min-h-[34rem] lg:py-20">
           <div className="grid items-center gap-8 lg:grid-cols-12 lg:gap-x-10">
-            <div className="lg:col-span-6">
+            <div className="lg:col-span-7">
               <Eyebrow className="text-copper-soft">Embroidery digitizing and custom patches</Eyebrow>
-              <h1 className="mt-4 max-w-[18ch] text-[1.75rem] font-semibold leading-[1.12] tracking-[-0.03em] text-card sm:max-w-[22ch] sm:text-[2.35rem] lg:max-w-none lg:text-[2.75rem] lg:leading-[1.08]">
-                Embroidery Digitizing &amp; Custom Patches, Made for Your Brand
+              <h1 className="mt-4 max-w-[20ch] text-[1.75rem] font-semibold leading-[1.12] tracking-[-0.03em] text-card sm:max-w-[24ch] sm:text-[2.35rem] lg:max-w-none lg:text-[2.75rem] lg:leading-[1.08]">
+                Digitizing and custom patches for your brand
               </h1>
               <p className="mt-5 max-w-xl text-base leading-7 text-card/80 sm:text-lg sm:leading-8">
                 We turn artwork into machine-ready stitch files and finished patches, and we help you choose the size, material, and file format that will sew cleanly.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
-                <ButtonLink href="/quote" className="bg-card text-charcoal hover:bg-warm">
-                  Get My Quote
+                <ButtonLink href={quoteHref} className="bg-card text-charcoal hover:bg-warm">
+                  {quoteLabel}
                 </ButtonLink>
                 {showWork ? (
                   <ButtonLink href="/portfolio" variant="invertGhost">
@@ -57,7 +63,7 @@ export default function HomePage() {
                 {site.responseStatement ? ` ${site.responseStatement}` : ""}
               </p>
             </div>
-            <div className="lg:col-span-6">
+            <div className="lg:col-span-5">
               <HeroComposition />
             </div>
           </div>
@@ -136,7 +142,7 @@ export default function HomePage() {
               <ButtonLink href="/trade" variant="invert">
                 Trade information
               </ButtonLink>
-              <ButtonLink href="/quote?customer=business" variant="invertGhost">
+              <ButtonLink href={tradeHref} variant="invertGhost">
                 Send a trade enquiry
               </ButtonLink>
             </div>

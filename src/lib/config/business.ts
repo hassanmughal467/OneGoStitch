@@ -75,6 +75,7 @@ export const fulfilmentCopy = {
   afterApproval: "Production starts after you approve the proof and the payment on the quote is received.",
   shippingSeparate: "Shipping time is quoted separately from production time.",
   deadlinesUnconfirmed: "Requested dates are noted but are not confirmed until they appear on your written quotation.",
-  digitalDelivery: "After you accept the quote, we prepare a draft, you review the preview, and the final file is delivered by download.",
+  digitalDelivery: "Digital jobs follow quote acceptance, a draft, your preview approval, payment, then final download. There is no bulk production step.",
+  digitalSequence: "Quote acceptance → draft → preview approval → payment → final download.",
   physicalDelivery: "Finished products are manufactured after proof approval and the required payment, then shipped with tracking.",
 } as const;

@@ -1,7 +1,7 @@
 import { absoluteUrl } from "@/lib/env";
 import { summarizeQuote } from "@/lib/quote";
 import { artworkLinksEnabled, linkTtlMs, signArtworkLink } from "@/lib/server/artwork-links";
-import { resolveMailer, type MailConfig } from "@/lib/server/mailer";
+import { resolveMailer, type MailAttachment, type MailConfig } from "@/lib/server/mailer";
 import type { NotificationState, QuoteRecord } from "@/lib/server/quote-store";
 import { getService } from "@/lib/services";
 import { contactChannels, site, whatsappDisplay } from "@/lib/site";
@@ -11,6 +11,8 @@ export type NotifyOptions = {
   responseStatement?: string | null;
   now?: Date;
   env?: NodeJS.ProcessEnv;
+  /** Artwork bytes attached to the staff email when signed links are unavailable. */
+  attachments?: MailAttachment[];
 };
 
 const defaultResponseWording = "We review every request personally and reply by your preferred contact method. If anything is missing we will ask before quoting.";
@@ -67,7 +69,7 @@ export function staffEmailText(record: QuoteRecord, options: NotifyOptions = {})
       lines.push(`  ${file.originalName} (${formatSize(file.size)}, ${file.detectedType})`);
       lines.push(`    ${link ?? `stored as ${file.storedName}`}`);
     }
-    lines.push(artworkLinksEnabled(env) ? `  Links expire ${new Date(expiresAt).toISOString()}.` : "  Open files from the quote store (no link secret configured).");
+    lines.push(artworkLinksEnabled(env) ? `  Links expire ${new Date(expiresAt).toISOString()}.` : options.attachments?.length ? "  Artwork is attached to this email." : "  Open files from the quote store (no link secret configured).");
   } else {
     lines.push("Artwork: none attached");
   }
@@ -129,7 +131,13 @@ export async function sendQuoteNotifications(record: QuoteRecord, options: Notif
   const subjectService = serviceTitle(record.payload.service);
   const repeat = record.payload.previousReference ? " [REPEAT ORDER]" : "";
   const staff = await run(() =>
-    config.mailer.send({ to: config.inbox, subject: `Quote request ${record.reference}: ${subjectService}${repeat}`, text: staffEmailText(record, options), replyTo: record.payload.email }),
+    config.mailer.send({
+      to: config.inbox,
+      subject: `Quote request ${record.reference}: ${subjectService}${repeat}`,
+      text: staffEmailText(record, options),
+      replyTo: record.payload.email,
+      attachments: options.attachments,
+    }),
   );
   const customer = await run(() => config.mailer.send({ to: record.payload.email, subject: `We received your quote request (${record.reference})`, text: customerEmailText(record, options) }));
   return { staff, customer };

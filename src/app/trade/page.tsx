@@ -6,7 +6,9 @@ import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow, SectionHeading } from "@/components/ui/SectionHeading";
 import { StitchField } from "@/components/visuals/StitchField";
+import { leadCta, leadHref } from "@/lib/copy";
 import { breadcrumbJsonLd, faqJsonLd, pageMetadata } from "@/lib/seo";
+import { getIntakeStatus } from "@/lib/server/intake-config";
 import { services, tradeBenefits } from "@/lib/services";
 
 export const metadata = pageMetadata({
@@ -39,6 +41,8 @@ const faqs = [
 ];
 
 export default function Page() {
+  const intakeOnline = getIntakeStatus().online;
+  const tradeHref = leadHref(intakeOnline, "/quote?customer=business");
   return (
     <>
       <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "For Trade", path: "/trade" }])} />
@@ -53,8 +57,8 @@ export default function Page() {
               Send overflow digitizing, vector work and product runs under your own reference. You get consistent proofs, files that run, and a record of every approved job.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <ButtonLink href="/quote?customer=business" variant="invert">
-                Send a trade enquiry
+              <ButtonLink href={tradeHref} variant="invert">
+                {intakeOnline ? "Send a trade enquiry" : leadCta(false)}
               </ButtonLink>
               <ButtonLink href="#how" variant="invertGhost">
                 How it works
@@ -155,7 +159,7 @@ export default function Page() {
           <ul className="mt-6 flex flex-wrap gap-2">
             {services.map((service) => (
               <li key={service.id}>
-                <Link href={`/quote?service=${service.id}&customer=business`} className="inline-flex min-h-10 items-center rounded-full border border-line bg-card px-4 text-sm font-medium hover:border-blue hover:text-blue">
+                <Link href={leadHref(intakeOnline, `/quote?service=${service.id}&customer=business`)} className="inline-flex min-h-10 items-center rounded-full border border-line bg-card px-4 text-sm font-medium hover:border-blue hover:text-blue">
                   {service.title}
                 </Link>
               </li>
@@ -163,7 +167,7 @@ export default function Page() {
           </ul>
         </Container>
       </section>
-      <CtaBand title="Send your first trade job" body="Select Business on the quote form, attach the artwork and your customer's specification. We reply with an itemized quote under your reference." href="/quote?customer=business" />
+      <CtaBand title="Send your first trade job" body="Select Business on the quote form, attach the artwork and your customer's specification. We reply with an itemized quote under your reference." href="/quote?customer=business" cta={intakeOnline ? "Send a trade enquiry" : leadCta(false)} />
     </>
   );
 }

@@ -1,5 +1,6 @@
 import path from "node:path";
 import type { QuotePayload } from "@/lib/quote";
+import { EmailQuoteStore, hasResendMailer } from "@/lib/server/stores/email";
 import { FileQuoteStore } from "@/lib/server/stores/file";
 import { MemoryQuoteStore } from "@/lib/server/stores/memory";
 import { VercelBlobQuoteStore, vercelBlobClient } from "@/lib/server/stores/vercel-blob";
@@ -74,7 +75,9 @@ export interface QuoteStore {
   openArtwork(reference: string, storedName: string): Promise<ArtworkStream | null>;
 }
 
-export type StoreResolution = { store: QuoteStore; reason: null } | { store: null; reason: "unset" | "unknown" | "file-on-serverless" | "memory-in-production" | "blob-missing-token" };
+export type StoreResolution =
+  | { store: QuoteStore; reason: null }
+  | { store: null; reason: "unset" | "unknown" | "file-on-serverless" | "memory-in-production" | "blob-missing-token" | "email-missing-mailer" };
 
 /**
  * Resolves the configured store. Returns no store (and a reason) when nothing
@@ -84,9 +87,10 @@ export type StoreResolution = { store: QuoteStore; reason: null } | { store: nul
 function inferredStoreKind(env: NodeJS.ProcessEnv): string | undefined {
   if (env.BLOB_READ_WRITE_TOKEN?.trim()) return "vercel-blob";
   const serverless = Boolean(env.VERCEL);
-  const production = env.NODE_ENV === "production";
   const test = env.NODE_ENV === "test" || env.VITEST === "true";
-  if (!serverless && !production && !test) return "file";
+  // Persistent disk is available on a single server, including `next start`.
+  if (!serverless && !test) return "file";
+  if (hasResendMailer(env)) return "email";
   return undefined;
 }
 
@@ -106,6 +110,10 @@ export function resolveQuoteStore(env: NodeJS.ProcessEnv = process.env): StoreRe
     if (!env.BLOB_READ_WRITE_TOKEN?.trim()) return { store: null, reason: "blob-missing-token" };
     return { store: new VercelBlobQuoteStore(vercelBlobClient(env.BLOB_READ_WRITE_TOKEN.trim()), env.QUOTE_STORE_PREFIX?.trim() || "stitchcraft"), reason: null };
   }
+  if (kind === "email") {
+    if (!hasResendMailer(env)) return { store: null, reason: "email-missing-mailer" };
+    return { store: emailSingleton(), reason: null };
+  }
   return { store: null, reason: "unknown" };
 }
 
@@ -114,4 +122,9 @@ function memorySingleton() {
   return (memory ||= new MemoryQuoteStore());
 }
 
-export { FileQuoteStore, MemoryQuoteStore, VercelBlobQuoteStore };
+let email: EmailQuoteStore | null = null;
+function emailSingleton() {
+  return (email ||= new EmailQuoteStore());
+}
+
+export { EmailQuoteStore, FileQuoteStore, MemoryQuoteStore, VercelBlobQuoteStore };

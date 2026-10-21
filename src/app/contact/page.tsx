@@ -6,7 +6,7 @@ import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { getIntakeStatus } from "@/lib/server/intake-config";
 import { pageMetadata } from "@/lib/seo";
-import { contactChannels, site } from "@/lib/site";
+import { site } from "@/lib/site";
 
 export const metadata = pageMetadata({
   title: "Contact",
@@ -25,15 +25,16 @@ export default function Page() {
         lede={
           status.online
             ? "Send a quote request with the service, size or quantity, and your artwork. We reply with a price and any questions."
-            : contactChannels.hasAny
-              ? "The online form is paused. Email or message us with the service, size or quantity, the date you need it, and your artwork."
-              : "The online quote form is paused until requests can be saved."
+            : `Email ${site.email} with the service, size or quantity, the date you need it, and your artwork. Phone and WhatsApp stay available as a backup.`
         }
       />
       <section className="py-14 sm:py-16">
         <Container className="grid gap-12 lg:grid-cols-12">
           <aside className="lg:col-span-4">
             <h2 className="text-2xl font-semibold">How to reach us</h2>
+            <p className="mt-3 text-sm leading-6 text-ink-soft">
+              {site.legalName} is based in {site.address.city}, {site.address.country}. {site.hours}. {site.responseStatement}
+            </p>
             <p className="mt-3 text-sm leading-6 text-ink-soft">{site.location}</p>
             <div className="mt-6">
               <ContactChannels message="Hello OneGo Stitch, I have a question." />

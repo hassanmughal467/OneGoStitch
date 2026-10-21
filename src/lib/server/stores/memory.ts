@@ -6,7 +6,7 @@ import { DuplicateSubmissionError, type ArtworkStream, type IncomingFile, type Q
  * QUOTE_STORE_ALLOW_VOLATILE=true is set deliberately.
  */
 export class MemoryQuoteStore implements QuoteStore {
-  readonly name = "memory";
+  readonly name: string = "memory";
   readonly direct = null;
   readonly records = new Map<string, QuoteRecord>();
   readonly files = new Map<string, { bytes: Uint8Array; contentType: string }>();
@@ -64,5 +64,13 @@ export class MemoryQuoteStore implements QuoteStore {
   clear() {
     this.records.clear();
     this.files.clear();
+  }
+
+  /** Drop a failed persist so the same submission id can be retried. */
+  forget(reference: string) {
+    this.records.delete(reference);
+    for (const key of [...this.files.keys()]) {
+      if (key.startsWith(`${reference}/`)) this.files.delete(key);
+    }
   }
 }

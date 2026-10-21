@@ -1,6 +1,8 @@
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+import { leadCta, leadHref } from "@/lib/copy";
 import { pageMetadata } from "@/lib/seo";
+import { getIntakeStatus } from "@/lib/server/intake-config";
 
 export const metadata = pageMetadata({
   title: "Page not found",
@@ -10,6 +12,7 @@ export const metadata = pageMetadata({
 });
 
 export default function NotFound() {
+  const intakeOnline = getIntakeStatus().online;
   return (
     <section className="py-24 sm:py-32">
       <Container className="max-w-2xl">
@@ -18,8 +21,8 @@ export default function NotFound() {
         <p className="mt-5 text-base leading-7 text-ink-soft">The address may have changed or the page does not exist. Use the links below to continue.</p>
         <div className="mt-8 flex flex-wrap gap-3">
           <ButtonLink href="/">Back to home</ButtonLink>
-          <ButtonLink href="/quote" variant="secondary">
-            Request a Quote
+          <ButtonLink href={leadHref(intakeOnline)} variant="secondary">
+            {leadCta(intakeOnline)}
           </ButtonLink>
         </div>
       </Container>
