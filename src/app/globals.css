@@ -140,6 +140,32 @@ body {
   }
 }
 
+.footer-logo-stage {
+  isolation: isolate;
+}
+
+.footer-logo-stitch {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, transparent 0 6px, #a84b16 6px 10px, transparent 10px 16px) 0 0 / 16px 2px repeat-x,
+    linear-gradient(90deg, transparent 0 6px, #a84b16 6px 10px, transparent 10px 16px) 0 100% / 16px 2px repeat-x,
+    linear-gradient(180deg, transparent 0 6px, #a84b16 6px 10px, transparent 10px 16px) 0 0 / 2px 16px repeat-y,
+    linear-gradient(180deg, transparent 0 6px, #a84b16 6px 10px, transparent 10px 16px) 100% 0 / 2px 16px repeat-y;
+  animation: stitch-run 2.8s linear infinite;
+}
+
+@keyframes stitch-run {
+  to {
+    background-position:
+      16px 0,
+      -16px 100%,
+      0 -16px,
+      100% 16px;
+  }
+}
+
 @keyframes needle-sew {
   from {
     offset-distance: 0%;

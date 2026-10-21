@@ -13,7 +13,10 @@ export function Footer() {
       <Container className="py-14 sm:py-16">
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <Logo invert />
+            <div className="footer-logo-stage relative inline-flex overflow-hidden rounded-sm bg-warm p-3 shadow-[0_1px_2px_rgba(21,21,21,0.2)]">
+              <span className="footer-logo-stitch" aria-hidden />
+              <Logo className="relative z-10" />
+            </div>
             <p className="mt-5 max-w-sm text-sm leading-6 text-card/70">{site.location}</p>
             <div className="mt-6 max-w-sm">
               <ContactChannels compact invert message="Hello OneGo Stitch, I have a question." />
