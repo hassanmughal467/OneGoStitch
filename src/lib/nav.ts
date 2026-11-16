@@ -45,6 +45,7 @@ export const studioNav: NavGroup = {
   label: "Company",
   children: [
     { href: "/how-it-works", label: "How It Works" },
+    { href: "/pricing", label: "Pricing" },
     { href: "/about", label: "About" },
     { href: "/resources", label: "Guides" },
     { href: "/faq", label: "FAQ" },
@@ -66,6 +67,7 @@ export const footerServices: NavItem[] = [
 
 export const footerHelp: NavItem[] = [
   { href: "/how-it-works", label: "How it works" },
+  { href: "/pricing", label: "Pricing" },
   { href: "/faq", label: "FAQ" },
   { href: "/shipping", label: "Shipping & delivery" },
   { href: "/artwork-guidelines", label: "Artwork guidelines" },
