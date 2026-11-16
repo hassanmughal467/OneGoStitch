@@ -13,6 +13,7 @@ export function publicPaths() {
     ...services.map((s) => s.href),
     "/trade",
     "/how-it-works",
+    "/pricing",
     "/about",
     "/resources",
     ...guides.map((g) => g.href),
