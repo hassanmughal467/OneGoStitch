@@ -24,7 +24,7 @@ export function ServiceVisual({ kind }: { kind: VisualKind }) {
 }
 
 function Sample({ src, alt }: { src: string; alt: string }) {
-  return <img src={src} alt={alt} className="h-full w-full bg-warm object-cover object-center" />;
+  return <img src={src} alt={alt} className="h-full w-full bg-warm object-cover object-center" loading="lazy" decoding="async" />;
 }
 
 export function RasterVsVector() {

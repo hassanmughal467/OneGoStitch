@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PromiseStrip } from "@/components/sections/PromiseStrip";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { ProcessStrip } from "@/components/sections/ProcessStrip";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -17,7 +18,8 @@ import { site } from "@/lib/site";
 
 export const metadata = pageMetadata({
   title: `Embroidery Digitizing & Custom Patches | ${site.name}`,
-  description: site.description,
+  description:
+    "Production partner for embroidery shops, screen printers, promo distributors and brands. Hand-built digitizing from $4, custom patches and decorated apparel — reply in 2–3 hours.",
   path: "/",
 });
 
@@ -37,30 +39,24 @@ export default function HomePage() {
         <Container className="relative z-10 py-14 sm:py-16 lg:min-h-[34rem] lg:py-20">
           <div className="grid items-center gap-8 lg:grid-cols-12 lg:gap-x-10">
             <div className="lg:col-span-7">
-              <Eyebrow className="text-copper-soft">Embroidery digitizing and custom patches</Eyebrow>
-              <h1 className="mt-4 max-w-[20ch] text-[1.75rem] font-semibold leading-[1.12] tracking-[-0.03em] text-card sm:max-w-[24ch] sm:text-[2.35rem] lg:max-w-none lg:text-[2.75rem] lg:leading-[1.08]">
-                Digitizing and custom patches for your brand
+              <Eyebrow className="text-copper-soft">For print shops, decorators and brands</Eyebrow>
+              <h1 className="mt-4 max-w-[22ch] text-[1.75rem] font-semibold leading-[1.12] tracking-[-0.03em] text-card sm:max-w-[26ch] sm:text-[2.35rem] lg:max-w-none lg:text-[2.75rem] lg:leading-[1.08]">
+                Production-ready digitizing and custom patches for trade buyers
               </h1>
               <p className="mt-5 max-w-xl text-base leading-7 text-card/80 sm:text-lg sm:leading-8">
-                We turn artwork into machine-ready stitch files and finished patches, and we help you choose the size, material, and file format that will sew cleanly.
+                Built for embroidery shops, screen printers, promo distributors and brands. Hand-built files from $4, white-label production, and a clear path for teams and one-off orders.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
-                <ButtonLink href={quoteHref} className="bg-card text-charcoal hover:bg-warm">
+                <ButtonLink href={tradeHref} className="bg-card text-charcoal hover:bg-warm">
+                  Send a trade enquiry
+                </ButtonLink>
+                <ButtonLink href={quoteHref} variant="invertGhost">
                   {quoteLabel}
                 </ButtonLink>
-                {showWork ? (
-                  <ButtonLink href="/portfolio" variant="invertGhost">
-                    See Our Work
-                  </ButtonLink>
-                ) : (
-                  <ButtonLink href="#services" variant="invertGhost">
-                    Explore Services
-                  </ButtonLink>
-                )}
               </div>
               <p className="mt-4 max-w-xl text-sm leading-6 text-card/70">
                 Requesting a quote does not commit you to an order.
-                {site.responseStatement ? ` ${site.responseStatement}` : ""}
+                {site.responseStatement ? ` ${site.responseStatement}` : ""} No sales calls — we reply when you send work.
               </p>
             </div>
             <div className="lg:col-span-5">
@@ -70,6 +66,8 @@ export default function HomePage() {
         </Container>
       </section>
 
+      <PromiseStrip />
+
       {featuredPortfolio().length ? (
         <PortfolioPreview featured />
       ) : (
@@ -78,7 +76,7 @@ export default function HomePage() {
             <div className="lg:col-span-5">
               <SectionHeading
                 eyebrow="Quality"
-                title="What changes between your logo and the sew-out"
+                title="What changes between your logo and the stitch-out"
                 lede="Embroidery is not a print. Thin lines get thickened, tiny text is simplified, and the border is planned so the patch edge does not fray. The stitch preview shows these decisions before production."
               />
               <Link href="/resources/embroidery-proofs" className="mt-6 inline-block text-sm font-semibold text-blue hover:underline">

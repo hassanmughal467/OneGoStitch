@@ -1,11 +1,14 @@
 import type { Metadata, Viewport } from "next";
 import { Manrope } from "next/font/google";
+import { AnalyticsScripts } from "@/components/analytics/AnalyticsScripts";
+import { ConsentBanner } from "@/components/analytics/ConsentBanner";
 import { AnnouncementBanner } from "@/components/layout/AnnouncementBanner";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { leadCta, leadHref } from "@/lib/copy";
+import { publicAnalytics } from "@/lib/config/analytics-public";
 import { siteEnv } from "@/lib/env";
 import { organizationJsonLd, robotsFor } from "@/lib/seo";
 import { getIntakeStatus } from "@/lib/server/intake-config";
@@ -59,6 +62,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main id="main">{children}</main>
         <Footer />
         <WhatsAppButton />
+        <ConsentBanner analyticsConfigured={publicAnalytics.configured} />
+        <AnalyticsScripts gaMeasurementId={publicAnalytics.gaMeasurementId} linkedInPartnerId={publicAnalytics.linkedInPartnerId} />
       </body>
     </html>
   );

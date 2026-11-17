@@ -10,7 +10,7 @@ import { mailtoQuoteHref, site } from "@/lib/site";
 export function IntakeOffline({ message, service }: { message: string; service?: string }) {
   return (
     <div className="bg-card p-6 sm:p-8" role="status">
-      <p className="text-[0.75rem] font-semibold uppercase tracking-[0.16em] text-copper-dark">Email a quote request</p>
+      <p className="text-[0.75rem] font-semibold uppercase tracking-[0.16em] text-copper-dark">Quote intake temporarily offline</p>
       <h2 className="mt-3 text-2xl font-semibold">Send your request to {site.email}</h2>
       <p className="mt-3 leading-7 text-ink-soft">
         The online form is not taking requests right now. Email {site.email}

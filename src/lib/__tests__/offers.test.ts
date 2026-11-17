@@ -46,10 +46,13 @@ describe("offer scheduling", () => {
     expect(offerIsPublishable(sample({ message: "20% off first file", approvedValue: "20% off one file" }), now)).toBe(true);
   });
 
-  it("filters by page and keeps prepared campaigns unpublished", () => {
+  it("filters by page and schedules Black Friday for late November", () => {
     expect(activeOffers("/embroidery-digitizing", now)).toEqual([]);
     const trade = sample({ pages: ["/trade"] });
     expect(offerIsPublishable(trade, now)).toBe(true);
-    expect(offerCampaigns.every((offer) => offer.enabled === false)).toBe(true);
+    const blackFriday = offerCampaigns.find((offer) => offer.id === "black-friday-2026");
+    expect(blackFriday?.enabled).toBe(true);
+    expect(offerIsPublishable(blackFriday!, new Date("2026-11-21T12:00:00Z"))).toBe(true);
+    expect(offerIsPublishable(blackFriday!, new Date("2026-11-10T12:00:00Z"))).toBe(false);
   });
 });

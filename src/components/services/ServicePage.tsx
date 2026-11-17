@@ -73,7 +73,7 @@ export function ServiceView({ service }: { service: Service }) {
             </div>
             {service.id === "embroidery-digitizing" ? (
               <p className="mt-5 max-w-xl text-sm leading-6 text-card/70">
-                If a file does not sew cleanly on your machine, send a sew-out photo and the fabric. We adjust density, underlay or pull compensation as a production correction.
+                If a file does not stitch out well on your machine, send a sew-out photo and the fabric. We adjust density, underlay or pull compensation as a production correction.
               </p>
             ) : (
               <p className="mt-5 text-sm text-card/55">{service.kind === "digital" ? "You receive files by download." : "You receive finished products, shipped with tracking."}</p>

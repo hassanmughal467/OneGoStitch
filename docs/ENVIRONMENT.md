@@ -24,7 +24,11 @@ All optional. Unset or placeholder values resolve to `null` and the UI hides tha
 | `NEXT_PUBLIC_SUPPORT_HOURS` | Customer-service hours |
 | `NEXT_PUBLIC_RESPONSE_STATEMENT` | Response-time wording on Contact and confirmations |
 | `NEXT_PUBLIC_ADDRESS_LINE1` / `NEXT_PUBLIC_ADDRESS_CITY` | Structured address (only if set) |
-| `NEXT_PUBLIC_INSTAGRAM_URL` / `LINKEDIN` / `FACEBOOK` | Profile URLs (bare homepages ignored) |
+| `NEXT_PUBLIC_INSTAGRAM_URL` / `LINKEDIN` / `FACEBOOK` / `PINTEREST` | Profile URLs (bare homepages ignored) |
+| `NEXT_PUBLIC_FOUNDER_NOTE` | Optional founder line on `/about` |
+| `NEXT_PUBLIC_PHONE_NOTE` | Explains the published phone number |
+| `NEXT_PUBLIC_GA_MEASUREMENT_ID` | GA4 ID; scripts load only after consent |
+| `NEXT_PUBLIC_LINKEDIN_PARTNER_ID` | LinkedIn Insight partner ID; consent-gated |
 
 ## Quote intake (server)
 
@@ -46,10 +50,17 @@ All optional. Unset or placeholder values resolve to `null` and the UI hides tha
 
 | Variable | Purpose |
 | --- | --- |
-| `EMAIL_PROVIDER` | `resend` or `log` |
+| `EMAIL_PROVIDER` | `smtp`, `resend`, or `log` |
+| `EMAIL_USER` / `EMAIL_APP_PASSWORD` | Gmail / Workspace SMTP login (alias of `SMTP_USER` / `SMTP_PASS`) |
+| `SMTP_HOST` | SMTP host (default `smtp.gmail.com`) |
+| `SMTP_PORT` | SMTP port (default `465`) |
+| `SMTP_SECURE` | `true`/`false` (default: secure when port is 465) |
+| `SMTP_FROM` | From address (default: SMTP user) |
+| `QUOTE_INBOX_EMAIL` | Staff inbox (default: SMTP user) |
 | `RESEND_API_KEY` | Resend secret |
-| `RESEND_FROM_EMAIL` | Verified From address |
-| `QUOTE_INBOX_EMAIL` | Staff inbox |
+| `RESEND_FROM_EMAIL` | Verified From address (Resend) |
+
+If `EMAIL_PROVIDER` is unset, SMTP credentials are preferred; otherwise Resend is used when its keys are present.
 
 Quotes are saved even if email is not configured. The customer is told to keep the reference; staff must open the store.
 
@@ -64,4 +75,13 @@ QUOTE_STORE=file
 EMAIL_PROVIDER=log
 ```
 
-Do not commit `.env.local`. On Vercel, set `QUOTE_STORE=vercel-blob` plus Blob and Resend values before promoting the form to production.
+Gmail / Workspace SMTP (local or Vercel):
+
+```
+EMAIL_PROVIDER=smtp
+EMAIL_USER=info@yourdomain.com
+EMAIL_APP_PASSWORD=
+QUOTE_INBOX_EMAIL=info@yourdomain.com
+```
+
+Do not commit `.env.local`. On Vercel, set `QUOTE_STORE=vercel-blob`, `BLOB_READ_WRITE_TOKEN`, and the SMTP values above before promoting the form to production.

@@ -1,5 +1,3 @@
-import { hasPublishedPortfolio } from "@/lib/portfolio";
-
 export type NavItem = {
   href: string;
   label: string;
@@ -52,9 +50,9 @@ export const studioNav: NavGroup = {
   ],
 };
 
-/** Portfolio appears in navigation only once published work exists. */
+/** Portfolio stays in primary nav so buyers can request stitch-out examples even before case studies are published. */
 export const primaryLinks: NavItem[] = [
-  ...(hasPublishedPortfolio() ? [{ href: "/portfolio", label: "Portfolio" }] : []),
+  { href: "/portfolio", label: "Portfolio" },
   { href: "/trade", label: "For Trade" },
   { href: "/contact", label: "Contact" },
 ];
@@ -78,7 +76,7 @@ export const footerHelp: NavItem[] = [
 export const footerCompany: NavItem[] = [
   { href: "/about", label: "About" },
   { href: "/trade", label: "For trade" },
-  ...(hasPublishedPortfolio() ? [{ href: "/portfolio", label: "Portfolio" }] : []),
+  { href: "/portfolio", label: "Portfolio" },
   { href: "/resources", label: "Guides" },
   { href: "/contact", label: "Contact" },
 ];
