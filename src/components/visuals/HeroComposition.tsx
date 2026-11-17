@@ -16,7 +16,7 @@ export function HeroComposition() {
         </div>
       </div>
       <figcaption className="mt-3 inline-block rounded-sm bg-charcoal px-2 py-1 text-left text-sm leading-5 text-[#D0C7BF]">
-        Sample work: artwork turned into a stitched patch, 3D puff cap embroidery, and patch constructions.
+        Studio samples showing artwork-to-stitch, 3D puff cap embroidery, and patch constructions. Client logos are published only with written permission.
       </figcaption>
     </figure>
   );
@@ -25,16 +25,16 @@ export function HeroComposition() {
 export function ArtworkToStitch(_props?: { id?: string }) {
   return (
     <div className="grid h-full min-h-48 grid-cols-2 bg-warm" role="img" aria-label="Vector artwork beside the finished embroidered patch">
-      <img src="/samples/vector-artwork.jpg" alt="" className="h-full w-full object-cover object-center" />
-      <img src="/samples/embroidered-patch.png" alt="" className="h-full w-full object-cover object-center" />
+      <img src="/samples/vector-artwork.jpg" alt="Clean vector artwork prepared for embroidery" className="h-full w-full object-cover object-center" loading="lazy" decoding="async" />
+      <img src="/samples/embroidered-patch.png" alt="Finished embroidered patch stitched from the artwork" className="h-full w-full object-cover object-center" loading="lazy" decoding="async" />
     </div>
   );
 }
 
 export function CapPuff(_props?: { id?: string }) {
-  return <img src="/samples/cap-front-3d-puff.jpg" alt="Black cap with a white 3D puff embroidered mark on the front" className="h-full w-full object-cover object-center" />;
+  return <img src="/samples/cap-front-3d-puff.jpg" alt="Black cap with a white 3D puff embroidered mark on the front" className="h-full w-full object-cover object-center" loading="lazy" decoding="async" />;
 }
 
 export function PatchSwatches(_props?: { id?: string }) {
-  return <img src="/samples/patch-types.jpg" alt="Embroidered, woven, PVC, and chenille custom patches" className="h-full w-full object-cover object-center" />;
+  return <img src="/samples/patch-types.jpg" alt="Embroidered, woven, PVC, and chenille custom patches" className="h-full w-full object-cover object-center" loading="lazy" decoding="async" />;
 }

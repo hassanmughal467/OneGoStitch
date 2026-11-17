@@ -20,14 +20,14 @@ const nextConfig: NextConfig = {
         value: [
           "default-src 'self'",
           isDev
-            ? "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://challenges.cloudflare.com"
-            : "script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com",
+            ? "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://challenges.cloudflare.com https://www.googletagmanager.com https://snap.licdn.com"
+            : "script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com https://www.googletagmanager.com https://snap.licdn.com",
           "style-src 'self' 'unsafe-inline'",
-          "img-src 'self' data: blob:",
+          "img-src 'self' data: blob: https://www.google-analytics.com https://www.googletagmanager.com https://px.ads.linkedin.com",
           "font-src 'self'",
           isDev
-            ? "connect-src 'self' ws: wss: http://127.0.0.1:* http://localhost:* https://*.blob.vercel-storage.com https://challenges.cloudflare.com"
-            : "connect-src 'self' https://*.blob.vercel-storage.com https://challenges.cloudflare.com",
+            ? "connect-src 'self' ws: wss: http://127.0.0.1:* http://localhost:* https://*.blob.vercel-storage.com https://challenges.cloudflare.com https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com https://px.ads.linkedin.com"
+            : "connect-src 'self' https://*.blob.vercel-storage.com https://challenges.cloudflare.com https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com https://px.ads.linkedin.com",
           "frame-src https://challenges.cloudflare.com",
           "object-src 'none'",
           "base-uri 'self'",

@@ -34,7 +34,7 @@ const groups: { title: string; items: { q: string; a: string }[] }[] = [
   {
     title: "Payment, shipping and reorders",
     items: [
-      { q: "How do I pay?", a: "Accepted payment methods and terms are stated on your quote. We do not take payment on the website." },
+      { q: "How do I pay?", a: "Accepted payment methods and due dates are stated on your quote. Trade customers can request invoices after the first completed job. We do not take payment on the website." },
       { q: "Do you ship to the US, UK and Australia?", a: "Yes. Shipping is quoted separately to your postal code, with an estimated transit time, on every product quote." },
       { q: "Can I reorder later?", a: "Yes. Quote your previous reference. We reuse the approved file and specification and reconfirm price and availability before running the job." },
       { q: "Do you handle customs or duties?", a: "Import duties and taxes in your country are the responsibility of the recipient unless the quote states otherwise." },

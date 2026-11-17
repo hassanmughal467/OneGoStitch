@@ -81,7 +81,14 @@ export const site = {
   hours: orDefault(process.env.NEXT_PUBLIC_SUPPORT_HOURS, "Open 24 hours, Monday to Sunday, Eastern Time"),
   timezone: "America/New_York",
   /** Reply-time statement. Override with NEXT_PUBLIC_RESPONSE_STATEMENT. */
-  responseStatement: orDefault(process.env.NEXT_PUBLIC_RESPONSE_STATEMENT, "We usually reply within 3–4 hours, Eastern Time."),
+  responseStatement: orDefault(process.env.NEXT_PUBLIC_RESPONSE_STATEMENT, "We usually reply within 2–3 hours, Eastern Time."),
+  /**
+   * Optional founder line for /about. Shown only when set; never invent a bio.
+   * Example: "Muhammad Hassan, founder"
+   */
+  founderNote: clean(process.env.NEXT_PUBLIC_FOUNDER_NOTE),
+  /** Short note explaining the published phone (e.g. NY area code for US support). */
+  phoneNote: clean(process.env.NEXT_PUBLIC_PHONE_NOTE) ?? "US support line (New York area code).",
   address: {
     line1: clean(process.env.NEXT_PUBLIC_ADDRESS_LINE1),
     city: orDefault(process.env.NEXT_PUBLIC_ADDRESS_CITY, "North Carolina"),
@@ -91,6 +98,7 @@ export const site = {
     instagram: validUrl(process.env.NEXT_PUBLIC_INSTAGRAM_URL, "instagram.com"),
     linkedin: validUrl(process.env.NEXT_PUBLIC_LINKEDIN_URL, "linkedin.com"),
     facebook: validUrl(process.env.NEXT_PUBLIC_FACEBOOK_URL, "facebook.com"),
+    pinterest: validUrl(process.env.NEXT_PUBLIC_PINTEREST_URL, "pinterest.com"),
   },
 } as const;
 
@@ -106,6 +114,7 @@ export const socialLinks: Array<[label: string, href: string]> = (
     ["Instagram", site.social.instagram],
     ["LinkedIn", site.social.linkedin],
     ["Facebook", site.social.facebook],
+    ["Pinterest", site.social.pinterest],
   ] as Array<[string, string | null]>
 ).filter((entry): entry is [string, string] => Boolean(entry[1]));
 

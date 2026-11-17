@@ -46,8 +46,21 @@ const labels: Record<keyof ServiceCommercial, string> = {
 
 /** Per-service commercial facts. Copy a field from `empty` and set only approved values. */
 export const serviceCommercial: Record<string, ServiceCommercial> = {
-  "embroidery-digitizing": { ...empty },
-  "vector-tracing": { ...empty },
+  "embroidery-digitizing": {
+    ...empty,
+    startingPrice: "From $4 left chest, $6 jacket back",
+    typicalTurnaround: "Quoted per job; first reply usually within 2–3 hours",
+    revisionsIncluded: "Unlimited revisions until you approve the preview; sew-out corrections included when the issue is in our digitizing",
+    proofType: "Stitch preview before delivery",
+    supportedFormats: "DST, PES, EXP, JEF, EMB and other machine formats you name",
+  },
+  "vector-tracing": {
+    ...empty,
+    startingPrice: "From $5 for a simple logo",
+    typicalTurnaround: "Quoted per job; first reply usually within 2–3 hours",
+    revisionsIncluded: "Corrections that bring the vector closer to your original mark are included",
+    proofType: "Preview before delivery",
+  },
   "dtf-printing": { ...empty },
   "custom-logo-design": { ...empty },
   "custom-patches": { ...empty },

@@ -37,7 +37,7 @@ export default function Page() {
           body: (
             <ul className="list-disc space-y-1 pl-5">
               <li>Overall shape, proportions and finished size</li>
-              <li>Which details were simplified, thickened or removed to sew cleanly</li>
+              <li>Which details were simplified, thickened or removed to stitch out well</li>
               <li>Stitch direction and how areas are filled</li>
               <li>Color sequence and the number of thread changes</li>
               <li>Stitch count, which drives production time and, for products, part of the price</li>

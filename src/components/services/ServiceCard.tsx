@@ -25,7 +25,7 @@ export function ServiceCard({ service, compact, className }: { service: ServiceP
             Details
           </Link>
           <Link href={leadHref(intakeOnline, `/quote?service=${service.id}`)} className="text-charcoal hover:text-blue hover:underline">
-            {intakeOnline ? "Request a quote" : "Email a quote request"}
+            Request a quote
           </Link>
         </div>
       </div>

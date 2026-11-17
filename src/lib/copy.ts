@@ -33,10 +33,15 @@ export function serviceInSentence(title: string) {
     .join("");
 }
 
-export function leadHref(online: boolean, quotePath = "/quote") {
-  return online ? quotePath : "/contact";
+/**
+ * Quote CTAs always land on /quote. When intake is offline the quote page still
+ * shows contact channels and the offline notice — routing to /contact hid the form
+ * and made every button look like a dead end.
+ */
+export function leadHref(_online: boolean, quotePath = "/quote") {
+  return quotePath;
 }
 
-export function leadCta(online: boolean, serviceId?: string) {
-  return online ? quoteCta(serviceId) : "Email a quote request";
+export function leadCta(_online: boolean, serviceId?: string) {
+  return quoteCta(serviceId);
 }

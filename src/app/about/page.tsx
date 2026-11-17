@@ -9,11 +9,13 @@ import { site } from "@/lib/site";
 
 export const metadata = pageMetadata({
   title: "About",
-  description: "OneGo Stitch provides embroidery digitizing, vector artwork and custom decorated products for print shops, brands and teams.",
+  description: "OneGo Stitch provides hand-built embroidery digitizing, vector artwork and custom decorated products for print shops, brands and teams from North Carolina, United States.",
   path: "/about",
 });
 
 export default function Page() {
+  const addressLine = [site.address.line1, site.address.city, site.address.country].filter(Boolean).join(", ");
+
   return (
     <>
       <PageHero
@@ -27,7 +29,7 @@ export default function Page() {
             <h2 className="text-2xl font-semibold">What we do</h2>
             <div className="prose-site mt-4 leading-7 text-ink-soft">
               <p>
-                OneGo Stitch does two kinds of work. The first is artwork: turning a logo into an embroidery file that sews cleanly, redrawing a low-quality
+                OneGo Stitch does two kinds of work. The first is artwork: turning a logo into an embroidery file that will stitch out well, redrawing a low-quality
                 logo as vector paths, or designing a new mark. The second is finished products: custom patches, embroidered apparel, screen-printed shirts and caps,
                 produced to an approved proof and shipped to you.
               </p>
@@ -44,9 +46,15 @@ export default function Page() {
               </p>
               <p>
                 Your artwork is used only to prepare and produce your job. We do not publish customer work without written permission, and we do not contact a
-                trade customer&apos;s clients.
+                trade customer&apos;s clients. No sales calls — we reply when you send work. {site.responseStatement}
               </p>
             </div>
+            {site.founderNote ? (
+              <>
+                <h2 className="mt-10 text-2xl font-semibold">Founder</h2>
+                <p className="mt-4 leading-7 text-ink-soft">{site.founderNote}</p>
+              </>
+            ) : null}
             <h2 className="mt-10 text-2xl font-semibold">Who we work with</h2>
             <p className="mt-4 leading-7 text-ink-soft">
               We work in English with print shops, brands, teams and individual customers. Product quotes include shipping to the destination you give us.
@@ -62,8 +70,19 @@ export default function Page() {
                 </div>
                 <div>
                   <dt className="text-xs font-semibold uppercase tracking-[0.12em] text-stone">Location</dt>
-                  <dd className="mt-1">{[site.address.city, site.address.country].filter(Boolean).join(", ")}</dd>
+                  <dd className="mt-1">{addressLine || [site.address.city, site.address.country].filter(Boolean).join(", ")}</dd>
                 </div>
+                {site.phone ? (
+                  <div>
+                    <dt className="text-xs font-semibold uppercase tracking-[0.12em] text-stone">Phone</dt>
+                    <dd className="mt-1">
+                      <a href={`tel:${site.phone.href}`} className="font-semibold text-blue hover:underline">
+                        {site.phone.display}
+                      </a>
+                      {site.phoneNote ? <span className="mt-1 block text-ink-soft">{site.phoneNote}</span> : null}
+                    </dd>
+                  </div>
+                ) : null}
                 <div>
                   <dt className="text-xs font-semibold uppercase tracking-[0.12em] text-stone">Support hours</dt>
                   <dd className="mt-1">{site.hours}</dd>

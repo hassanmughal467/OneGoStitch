@@ -11,11 +11,11 @@ describe("quote CTAs", () => {
     expect(quoteCta()).toBe("Request a quote");
   });
 
-  it("routes dead-end quote CTAs to contact while intake is offline", () => {
+  it("keeps quote CTAs on /quote whether intake is online or offline", () => {
     expect(leadHref(true, "/quote?service=dtf-printing")).toBe("/quote?service=dtf-printing");
-    expect(leadHref(false, "/quote?service=dtf-printing")).toBe("/contact");
+    expect(leadHref(false, "/quote?service=dtf-printing")).toBe("/quote?service=dtf-printing");
     expect(leadCta(true, "dtf-printing")).toBe("Request a DTF printing quote");
-    expect(leadCta(false)).toBe("Email a quote request");
+    expect(leadCta(false)).toBe("Request a quote");
   });
 
   it("keeps DTF capitalized in sentence case", () => {

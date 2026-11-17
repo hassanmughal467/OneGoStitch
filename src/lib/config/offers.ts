@@ -30,6 +30,20 @@ export type OfferCampaign = {
 
 export const offerCampaigns: OfferCampaign[] = [
   {
+    id: "black-friday-2026",
+    enabled: true,
+    message: "Black Friday: 20% off digitizing and vector files.",
+    linkLabel: "Request a quote",
+    href: "/quote",
+    startsAt: "2026-11-20",
+    endsAt: "2026-11-30",
+    audience: "all",
+    pages: [],
+    dismissible: true,
+    campaign: "black-friday-2026",
+    approvedValue: "20%",
+  },
+  {
     id: "first-order-one-design",
     enabled: false,
     message: "First order? Start with one design.",

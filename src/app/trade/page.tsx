@@ -7,6 +7,7 @@ import { Container } from "@/components/ui/Container";
 import { Eyebrow, SectionHeading } from "@/components/ui/SectionHeading";
 import { StitchField } from "@/components/visuals/StitchField";
 import { leadCta, leadHref } from "@/lib/copy";
+import { tradeTerms } from "@/lib/config/promises";
 import { breadcrumbJsonLd, faqJsonLd, pageMetadata } from "@/lib/seo";
 import { getIntakeStatus } from "@/lib/server/intake-config";
 import { services, tradeBenefits } from "@/lib/services";
@@ -116,9 +117,30 @@ export default function Page() {
               </li>
             ))}
           </ol>
+        </Container>
+      </section>
+
+      <section className="border-b border-line bg-warm py-14 sm:py-16">
+        <Container>
+          <SectionHeading eyebrow="Trade terms" title="What trade buyers compare before they send work" />
+          <ul className="mt-8 grid gap-5 md:grid-cols-2">
+            {tradeTerms.map((item) => (
+              <li key={item.title} className="rounded-sm border border-line bg-card p-6">
+                <h3 className="text-lg font-semibold">{item.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-ink-soft">{item.body}</p>
+              </li>
+            ))}
+          </ul>
           <p className="mt-8 max-w-2xl text-sm leading-6 text-ink-soft">
-            Online accounts with saved specifications and self-service reordering are not offered yet. Reorders are handled through the quote form and email using your reference
-            number.
+            Follow{" "}
+            <Link href="/pricing" className="font-semibold text-blue hover:underline">
+              published file prices
+            </Link>{" "}
+            and the{" "}
+            <Link href="/refund-policy" className="font-semibold text-blue hover:underline">
+              refund and remake policy
+            </Link>
+            . Social updates for trade partners appear on LinkedIn when that profile is linked in the footer.
           </p>
         </Container>
       </section>

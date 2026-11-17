@@ -49,7 +49,7 @@ export function pageMetadata({ title, description, path, noindex, type = "websit
 /** Organization schema without unconfirmed contact data or opening hours. */
 export function organizationJsonLd() {
   const origin = siteEnv.productionUrl;
-  const sameAs = [site.social.instagram, site.social.linkedin, site.social.facebook].filter(Boolean);
+  const sameAs = [site.social.instagram, site.social.linkedin, site.social.facebook, site.social.pinterest].filter(Boolean);
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -61,6 +61,29 @@ export function organizationJsonLd() {
     ...(site.email ? { email: site.email } : {}),
     ...(site.phone ? { telephone: site.phone.href } : {}),
     ...(sameAs.length ? { sameAs } : {}),
+  };
+}
+
+/** Offer catalog for published file prices (/pricing). */
+export function offerCatalogJsonLd(
+  offers: Array<{ name: string; description: string; price: number; path: string; currency?: string }>,
+) {
+  const origin = siteEnv.productionUrl;
+  return {
+    "@context": "https://schema.org",
+    "@type": "OfferCatalog",
+    name: `${site.name} file pricing`,
+    itemListElement: offers.map((offer, index) => ({
+      "@type": "Offer",
+      position: index + 1,
+      name: offer.name,
+      description: offer.description,
+      price: offer.price,
+      priceCurrency: offer.currency ?? "USD",
+      availability: "https://schema.org/InStock",
+      ...(publicAbsoluteUrl(offer.path) ? { url: publicAbsoluteUrl(offer.path) } : {}),
+      ...(origin ? { seller: { "@id": `${origin}/#organization` } } : {}),
+    })),
   };
 }
 
